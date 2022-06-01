@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
 
-const SingleEventUpdate = () => {
-  const {user} = useAuth()
+const EventUpdatePage = () => {
   const { singleEventId } = useParams();
   const [event, setEvent] = useState({});
 //   const [title, setTitle] = useState(event?.title);
@@ -45,11 +43,9 @@ const SingleEventUpdate = () => {
 
   const handleBannerChange = (e) => { 
     const newBanner = e.target.value;
-    // console.log("1",event.banner);
     const newEvent = {...event}
     newEvent.banner = newBanner;
     setEvent(newEvent)
-    // console.log("2",event.banner);
     e.preventDefault();
   }
 
@@ -63,18 +59,19 @@ const SingleEventUpdate = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-          console.log(data);
-       if(data?.modifiedCount){
-         alert("Event Updated Successful")
-         navigate("/myEvents")
-       }
+          console.log("events", data);
+          if(data?.modifiedCount){
+            alert("Event Updated Successful")
+            navigate("/myEvents")
+          }
+       
       });
     e.preventDefault();
   };
 
   return (
     <div>
-      <h3>Update Event</h3>
+      <h3>Update Event Page</h3>
       <form onSubmit={handleEventUpdate}>
       <input
           type="text"
@@ -103,13 +100,12 @@ const SingleEventUpdate = () => {
           name=""
           id=""
           value={event.banner || ""} onChange={handleBannerChange}
-          />
-        
+          />        
         <br />
-        <input className="btn btn-primary" type="submit" value="Update Event" />
+        <input className="btn btn-warning" type="submit" value="Update Event Page" />
       </form>
     </div>
   );
 };
 
-export default SingleEventUpdate;
+export default EventUpdatePage;

@@ -19,7 +19,7 @@ const SingleEventRegister = () => {
   }, []);
 
   const handleVolunteerRegister = (e) => {
-    const eventRegister = {name: user.displayName, email: user.email, date: event.date, desc: event.desc, title:event.title, banner: event.banner }
+    const eventRegister = {index: event.index, key: event.key, name: user.displayName, email: user.email, date: event.date, desc: event.desc, title:event.title, banner: event.banner }
     fetch("http://localhost:5000/register", {
       method: "POST",
       headers: {

@@ -11,8 +11,10 @@ import MyEvents from "./Pages/MyEvents/MyEvents";
 import Header from "./Pages/Shared/Header/Header";
 import SingleEventRegister from "./Pages/SingleEventRegister/SingleEventRegister";
 import AllRegistration from "./Pages/AllRegistration/AllRegistration";
-import SingleEventUpdate from "./Pages/SingleEventUpdate/SingleEventUpdate";
+import SingleEventUpdate from "./Pages/EventUpdatePage/EventUpdatePage";
 import AllEvents from "./Pages/AllEvents/AllEvents";
+import EventUpdateRegisters from "./Pages/EventUpdateRegisters/EventUpdateRegisters";
+import EventUpdatePage from "./Pages/EventUpdatePage/EventUpdatePage";
 
 function App() {
   return (
@@ -41,8 +43,12 @@ function App() {
               element={<SingleEventRegister />}
             ></Route>
             <Route
-              path="/events/update/:singleEventId"
-              element={<SingleEventUpdate />}
+              path="/events/eventUpdatePage/:singleEventId"
+              element={<EventUpdatePage />}
+            ></Route>
+            <Route
+              path="/events/eventUpdateRegisters/:singleEventId"
+              element={<EventUpdateRegisters />}
             ></Route>
             <Route path="*" element={<NoMatch />}></Route>
           </Routes>

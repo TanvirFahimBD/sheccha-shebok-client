@@ -10,11 +10,13 @@ const AddEvent = () => {
   const dateRef = useRef();
 
   const handleAdd = (e) => {
+    const index = indexRef.current.value;
+    const key = keyRef.current.value;
     const title = titleRef.current.value;
     const desc = descRef.current.value;
     const banner = bannerRef.current.value;
     const date = dateRef.current.value;
-    const newEvent = { title, desc, banner, date };
+    const newEvent = { index, key, title, desc, banner, date };
     axios.post("http://localhost:5000/events", newEvent).then((res) => {
       if (res?.data?.insertedId) {
         alert("Event Added Successfully");
