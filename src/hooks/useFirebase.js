@@ -6,6 +6,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
 
 initializeAuthentication();
@@ -13,7 +14,6 @@ initializeAuthentication();
 const useFirebase = () => {
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
-
   const googleProvider = new GoogleAuthProvider();
   const auth = getAuth();
 
