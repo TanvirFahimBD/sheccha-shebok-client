@@ -1,16 +1,16 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 
 const Login = () => {
   const { signInUsingGoogle, user } = useAuth();
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const handleGoogleSignIn=()=> {
     signInUsingGoogle()
-    if(user?.email){
-      navigate("/")
-    }
+    // if(user?.email){
+    //   navigate("/")
+    // }
   }
 
   return (

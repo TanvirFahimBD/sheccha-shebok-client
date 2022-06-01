@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 const SingleEvent = (props) => {
     const {event} = props;
+    
     return (
               <div className='col-md-6 col-lg-4'>
             <Link to={`/events/register/${event._id}`}>

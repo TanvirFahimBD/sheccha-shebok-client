@@ -1,39 +1,23 @@
 import React from 'react';
 
 const MySingleEvent = (props) => {
-   const {title,desc,banner,date} = props.myEvent;
-   
-//DELETE ITEM
-  const handleDelete = (id) => {
-    // const deleteData = window.confirm("Are you sure you want to delete?");
-    // if (deleteData) {
-    //   fetch(`http://localhost:5000/users/${id}`, {
-    //     method: "DELETE",
-    //   })
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //       if (data.deletedCount) {
-    //         alert("The data is deleted successfully");
-    //         const remainingUsers = users.filter((user) => user._id !== id);
-    //         setUsers(remainingUsers);
-    //       }
-    //     });
-    // } else {
-    //   alert("The data is not deleted");
-    // }
-  };
+
+   const {_id, title,desc,banner,date} = props.myEvent;
+   console.log(props.myEvent);
+
     return (
         <div className='col-md-12 col-lg-6'>
             <img src={banner} alt="" height="300px" />
             <h1>{title}</h1>
             <p>{date}</p>
             <small>{desc}</small>
-                        {/* <button
+            <br />
+            <button
               className="btn btn-danger"
-              onClick={() => handleDelete(event._id)}
+              onClick={() => props.handleDelete(_id)}
               >
-              X
-            </button> */}
+              Cancel
+            </button>
         </div>
     );
 };

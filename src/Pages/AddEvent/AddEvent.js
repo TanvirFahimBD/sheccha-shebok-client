@@ -34,7 +34,7 @@ const AddEvent = () => {
       <br />
         <input type="text" placeholder="Event Date" ref={dateRef} />
       <br />
-        <input type="submit" value="Submit" />
+        <input className="btn btn-success" type="submit"  value="Add Event" />
 
       </form>
     </div>
