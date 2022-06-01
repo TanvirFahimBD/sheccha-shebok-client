@@ -45,42 +45,42 @@ const SingleEventRegister = () => {
           type="text"
           name=""
           id=""
-          value={user.displayName || ""}
+          value={user.displayName || ""} readOnly
         />
         <br />
         <input
           type="text"
           name=""
           id=""
-          value={user.email || ""}
+          value={user.email || ""} readOnly
         />
         <br />
         <input
           type="text"
           name=""
           id=""
-          value={event.date || ""}
+          value={event?.date || ""} readOnly
         />
         <br />
         <input
           type="text"
           name=""
           id=""
-          value={event.desc || ""}
+          value={event?.desc || ""} readOnly
           />
           <br />
           <input
           type="text"
           name=""
           id=""
-          value={event.title || ""}
+          value={event?.title || ""} readOnly
         />
         <br />
           <input
           type="text"
           name=""
           id=""
-          value={event.banner || ""}
+          value={event?.banner || ""} readOnly
         />
         <br />
         <input className="btn btn-primary" type="submit" value="Registration" />

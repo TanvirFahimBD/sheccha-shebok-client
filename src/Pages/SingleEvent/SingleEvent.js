@@ -11,9 +11,7 @@ const SingleEvent = (props) => {
             <Link to={`/events/register/${event._id}`}>
                   <button className="btn btn-primary">Register</button>
             </Link>
-            <Link to={`/events/update/${event._id}`}>
-                  <button className="btn btn-warning">Update</button>
-            </Link>
+            
 
             </div>
     );

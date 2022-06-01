@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useRef } from "react";
 
 const AddEvent = () => {
+  const indexRef = useRef();
+  const keyRef = useRef();
   const titleRef = useRef();
   const descRef = useRef();
   const bannerRef = useRef();
@@ -23,9 +25,13 @@ const AddEvent = () => {
   };
   return (
     <div >
-      <h1>Please Add an User</h1>
+      <h1>Please Add an Event</h1>
       <form onSubmit={handleAdd}>
 
+      <input type="text" placeholder="Event Index" ref={indexRef}/>
+      <br />
+      <input type="text" placeholder="Event Key" ref={keyRef}/>
+      <br />
       <input type="text" placeholder="Event Title" ref={titleRef}/>
       <br />
       <textarea  id="txtid" name="txtname" rows="3" cols="30" maxLength="200" ref={descRef} placeholder="Enter Description"></textarea>

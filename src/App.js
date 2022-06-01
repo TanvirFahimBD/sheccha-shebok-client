@@ -10,8 +10,9 @@ import NoMatch from "./Pages/NoMatch/NoMatch";
 import MyEvents from "./Pages/MyEvents/MyEvents";
 import Header from "./Pages/Shared/Header/Header";
 import SingleEventRegister from "./Pages/SingleEventRegister/SingleEventRegister";
-import AllEvents from "./Pages/AllEvents/AllEvents";
+import AllRegistration from "./Pages/AllRegistration/AllRegistration";
 import SingleEventUpdate from "./Pages/SingleEventUpdate/SingleEventUpdate";
+import AllEvents from "./Pages/AllEvents/AllEvents";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/home" element={<Home />}></Route>
             <Route path="/events" element={<Events />}></Route>
             <Route path="/myEvents" element={<MyEvents />}></Route>
+            <Route path="/allRegistration" element={<AllRegistration />}></Route>
             <Route path="/allEvents" element={<AllEvents />}></Route>
             <Route
               path="/addEvent"
