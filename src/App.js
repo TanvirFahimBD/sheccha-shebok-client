@@ -14,6 +14,7 @@ import AllEvents from "./Pages/AllEvents/AllEvents";
 import EventUpdateRegisters from "./Pages/EventUpdateRegisters/EventUpdateRegisters";
 import EventUpdatePage from "./Pages/EventUpdatePage/EventUpdatePage";
 import NoMatch from "./Pages/NoMatch/NoMatch";
+import Register from "./Pages/Login/Register/Register";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
               }
             ></Route>
             <Route path="/login" element={<Login />}></Route>
+            <Route path="/register" element={<Register />}></Route>
             <Route
               path="/events/register/:singleEventId"
               element={<SingleEventRegister />}
