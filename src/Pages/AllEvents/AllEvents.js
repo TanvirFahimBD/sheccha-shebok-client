@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Table } from 'react-bootstrap';
 import EventTable from "../EventTable/EventTable";
 
 const AllEvents = () => {
@@ -37,7 +36,7 @@ const AllEvents = () => {
 
     return (
         <>
-        <Table striped bordered hover>
+        <table >
             <thead>
                 <tr>
                     <th>Title</th>
@@ -48,7 +47,7 @@ const AllEvents = () => {
                 </tr>
             </thead>
                 {events.map(event => <EventTable key={event._id} event={event} handleDelete={handleDelete}></EventTable> )}
-        </Table>
+        </table>
     </>
     );
 };
