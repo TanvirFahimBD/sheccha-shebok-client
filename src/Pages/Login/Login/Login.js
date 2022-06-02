@@ -7,14 +7,14 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { NavLink } from "react-router-dom";
 
 const Login = () => {
-  const { signInUsingGoogle, user } = useAuth();
+  const { signInUsingGoogle, user,setError } = useAuth();
   // const navigate = useNavigate()
   const [loginData, setLoginData] = useState({})
 
   const handleOnChange = (e) => {
     const field = e.target.name;
     const value = e.target.value;
-    const newLoginData = {...loginData}
+    const newLoginData = { ...loginData }
     newLoginData[field] = value;
     setLoginData(newLoginData)
     console.log(newLoginData);
@@ -43,9 +43,13 @@ const Login = () => {
               Login
             </Typography>
             <form onSubmit={handleLoginSubmit}>
-              <TextField sx={{ width: 300 }} id="standard-basic" label="Email" variant="standard"
-              name="email"
-              onChange={handleOnChange}
+              <TextField sx={{ width: 300 }}
+                 id="standard-basic"
+                 label="Email"
+                 name="email"
+                 type="email"
+                 onChange={handleOnChange}
+                 variant="filled"
               />
               <br />
               <br />
@@ -56,18 +60,18 @@ const Login = () => {
                 autoComplete="current-password"
                 variant="filled"
                 name="password"
-              onChange={handleOnChange}
+                onChange={handleOnChange}
               />
               <br />
               <br />
-              
+
               <Button sx={{ width: 300 }} variant="contained" type="submit">Log In</Button>
             </form>
             <Button sx={{ width: 300 }} className="mt-5" variant="contained" onClick={handleGoogleSignIn}><GoogleIcon className="mx-4" /> Sign In With Google</Button>
             <br />
-              <br />
-            <p>New User?<NavLink style={{textDecoration: "none"}} to="/register"> Create a account</NavLink></p>
-              
+            <br />
+            <p>New User?<NavLink style={{ textDecoration: "none" }} to="/register"> Create a account</NavLink></p>
+
           </Grid>
         </Grid>
       </Box>

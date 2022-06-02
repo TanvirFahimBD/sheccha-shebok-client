@@ -14,7 +14,10 @@ const Header = () => {
       {user?.email && <Link  className="mx-5" to="/allEvents">All Events</Link>}
       {!user?.email && <Link className="mx-5"  to="/login">Login</Link>}
       {!user?.email && <Link className="mx-5"  to="/register">Register</Link>}
-      {user?.email && <span  className="mx-5" style={{ color: "black" }}>{user?.displayName}</span>}           
+      {user?.email && 
+        <img style={{borderRadius: "100%"}} src={user?.photoURL} alt="" width="50px" height="50px" />
+      }           
+      {user?.email && <span  className="mx-5" style={{ color: "black" }}>{user?.email}</span>}           
       {user?.email && <button onClick={logOut}>Sign Out</button>}
     </div>
   );
