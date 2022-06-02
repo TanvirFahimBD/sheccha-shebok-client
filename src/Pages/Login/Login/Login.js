@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Alert, Box, Button, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
@@ -7,7 +7,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { NavLink } from "react-router-dom";
 
 const Login = () => {
-  const { signInUsingGoogle, user,setError } = useAuth();
+  const {  signInUsingGoogle, loginUser, setError, error, user } = useAuth();
   // const navigate = useNavigate()
   const [loginData, setLoginData] = useState({})
 
@@ -20,14 +20,16 @@ const Login = () => {
     console.log(newLoginData);
   }
 
-  const handleGoogleSignIn = () => {
-    signInUsingGoogle()
-    // if(user?.email){
-    //   navigate("/")
-    // }
-  }
-
   const handleLoginSubmit = (e) => {
+    const pattern = /\S+@\S+\.\S+/;
+
+    if (loginData.password.length < 6) {
+      setError("Password length must be greater than 5 character")
+    }
+    else if (!pattern.test(loginData.email)) {
+      setError("Enter proper email")
+    }
+    loginUser(loginData.email, loginData.password)
     e.preventDefault()
   }
 
@@ -67,7 +69,9 @@ const Login = () => {
 
               <Button sx={{ width: 300 }} variant="contained" type="submit">Log In</Button>
             </form>
-            <Button sx={{ width: 300 }} className="mt-5" variant="contained" onClick={handleGoogleSignIn}><GoogleIcon className="mx-4" /> Sign In With Google</Button>
+            {error && <Alert sx={{mt: 4, width: "300px"}} severity="error">{error}</Alert>}
+            {user?.email && <Alert sx={{mt: 4, width: "300px"}} severity="success">Login Successful</Alert>}
+            <Button sx={{ width: 300 }} className="mt-5" variant="contained" onClick={signInUsingGoogle}><GoogleIcon className="mx-4" /> Sign In With Google</Button>
             <br />
             <br />
             <p>New User?<NavLink style={{ textDecoration: "none" }} to="/register"> Create a account</NavLink></p>

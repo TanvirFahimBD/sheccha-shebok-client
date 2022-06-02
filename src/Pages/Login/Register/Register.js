@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Alert, Box, Button, CircularProgress, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
@@ -46,6 +46,8 @@ const Register = () => {
             <Typography sx={{ my: 8 }} variant="h2" component="h2">
               Register
             </Typography>
+            {user?.email && <CircularProgress /> }
+            <br />
             <form onSubmit={handleRegisterSubmit}>
               <TextField sx={{ width: 300 }}
                 id="standard-basic"
@@ -82,8 +84,9 @@ const Register = () => {
 
               <Button sx={{ width: 300 }} variant="contained" type="submit" onClick={handleRegisterSubmit}>Register</Button>
             </form>
-            {error && <p className="text-danger mt-4">{error}</p>}
-            {user?.email && <p className="text-success mt-4">Registration Successful</p>}
+            {error && <Alert sx={{mt: 4, width: "300px"}} severity="error">{error}</Alert>}
+            {user?.email && <Alert sx={{mt: 4, width: "300px"}} severity="success">Registration Successful</Alert>}
+            
             <Button sx={{ width: 300 }} className="mt-4" variant="contained" onClick={signInUsingGoogle}><GoogleIcon className="mx-4" /> Sign In With Google</Button>
             <br />
             <br />

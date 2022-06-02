@@ -23,9 +23,11 @@ const useFirebase = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        setError("")
       })
       .catch((error) => {
         const errorMessage = error.message;
+        setError(errorMessage)
       })
       .finally(() => {
         setIsLoading(false);
@@ -55,9 +57,12 @@ const useFirebase = () => {
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
+      setUser(user)
+        setError("")
     })
     .catch((error) => {
       const errorMessage = error.message;
+      setError(errorMessage)
     })
       .finally(() => {
         setIsLoading(false);
@@ -69,8 +74,12 @@ const useFirebase = () => {
     signOut(auth)
       .then(() => {
         setUser({});
+        setError("")
       })
-      .catch((error) => { })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setError(errorMessage)
+       })
       .finally(() => {
         setIsLoading(false);
       });
