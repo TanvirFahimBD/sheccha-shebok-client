@@ -4,11 +4,14 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import TextField from '@mui/material/TextField';
 import GoogleIcon from '@mui/icons-material/Google';
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation} from "react-router-dom";
+
 
 const Register = () => {
   const { signInUsingGoogle, registerUser, setError, error, user } = useAuth();
   const navigate = useNavigate()
+  const location = useLocation()
+  const redirect_uri = location?.state?.from  || "/"
   const [registerData, setRegisterData] = useState({})
 
   const handleOnChange = (e) => {
@@ -33,7 +36,7 @@ const Register = () => {
       setError("Enter proper email")
     }
       registerUser(registerData.email, registerData.password)
-      // navigate("/")
+      navigate(redirect_uri)
    
     e.preventDefault()
   }
@@ -46,7 +49,7 @@ const Register = () => {
             <Typography sx={{ my: 8 }} variant="h2" component="h2">
               Register
             </Typography>
-            {user?.email && <CircularProgress /> }
+            {/* {user?.email && <CircularProgress /> } */}
             <br />
             <form onSubmit={handleRegisterSubmit}>
               <TextField sx={{ width: 300 }}

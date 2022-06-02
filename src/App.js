@@ -25,7 +25,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
             <Route path="/home" element={<Home />}></Route>
-            <Route path="/events" element={<Events />}></Route>
+            <Route path="/events" element={<PrivateRoute><Events /></PrivateRoute>}></Route>
             <Route path="/myEvents" element={<MyEvents />}></Route>
             <Route path="/allRegistration" element={<AllRegistration />}></Route>
             <Route path="/allEvents" element={<AllEvents />}></Route>
