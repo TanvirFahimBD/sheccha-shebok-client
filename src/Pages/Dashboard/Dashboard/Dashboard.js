@@ -23,7 +23,14 @@ import { Button } from "@mui/material";
 import PropTypes from "prop-types";
 import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
-
+import EventAvailableIcon from '@mui/icons-material/EventAvailable';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import EventNoteIcon from '@mui/icons-material/EventNote';
+import AddCardIcon from '@mui/icons-material/AddCard';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
+import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
+import LogoutIcon from '@mui/icons-material/Logout';
 const drawerWidth = 200;
 
 // interface Props {
@@ -63,42 +70,42 @@ export default function Dashboard(props) {
           boxShadow: "5px 5px 5px gray",
         }}
       />
-      <h5>{user.displayName}</h5>
+      <h5  className='mx-2'>{user.displayName}</h5>
       <Divider />
       <NavLink style={{ textDecoration: "none" }} to="/dashboard">
         <Button color="inherit">
-          <i className="mx-2 fas fa-columns"></i> Dashboard
+          <DashboardIcon className='mx-2'/> Dashboard
         </Button>
       </NavLink>
       <Divider />
       <NavLink style={{ textDecoration: "none" }} to="/dashboard/myEvents">
         <Button color="inherit">
-          <i className="mx-2 fas fa-shopping-cart"></i> My Events
+          <EventAvailableIcon  className='mx-2'/> My Events
         </Button>
       </NavLink>
       <Divider />
-      <NavLink style={{ textDecoration: "none" }} to="/dashboard/addEvent">
+      {admin && <><NavLink style={{ textDecoration: "none" }} to="/dashboard/addEvent">
         <Button color="inherit">
-          <i className="mx-2 fas fa-shopping-cart"></i> Add Event
+        <AddCardIcon  className='mx-2'/> Add Event
         </Button>
       </NavLink>
       <Divider />
       <NavLink style={{ textDecoration: "none" }} to="/dashboard/allEvents">
         <Button color="inherit">
           {" "}
-          <i className="mx-2 fas fa-money-check-alt"></i> All Events
+          <EventNoteIcon  className='mx-2'/>All Events
         </Button>
       </NavLink>{" "}
       <Divider />
       <NavLink style={{ textDecoration: "none" }} to="/dashboard/allRegistration">
         <Button color="inherit">
-          <i className="mx-2 far fa-star"></i> All Registration
+        <HowToRegIcon  className='mx-2'/> All Reg.
         </Button>
       </NavLink>{" "}
       <Divider />
       <NavLink style={{ textDecoration: "none" }} to="/dashboard/makeAdmin">
         <Button color="inherit">
-          <i className="mx-2 fas fa-user-plus"></i> Make Admin
+        <AdminPanelSettingsIcon className='mx-2'/> Make Admin
         </Button>
       </NavLink>
       <Divider />
@@ -108,36 +115,13 @@ export default function Dashboard(props) {
         to="/dashboard/addVolunteer"
       >
         <Button color="inherit">
-          <i className="mx-2 fab fa-product-hunt"></i> Add Volunteer
+        <VolunteerActivismIcon  className='mx-2'/> Add Volunteer
         </Button>
-      </NavLink>{" "}
-      {admin && (
-        <Box>
-
-          <Divider />
-          <NavLink
-            style={{ textDecoration: "none" }}
-            to="/dashboard/manageallorder"
-          >
-            <Button color="inherit">
-              <i className="mx-2 fas fa-tasks"></i> Manage All Order
-            </Button>
-          </NavLink>{" "}
-          <Divider />
-          <NavLink
-            style={{ textDecoration: "none" }}
-            to="dashboard/manageallproducts"
-          >
-            <Button color="inherit">
-              <i className="mx-2 fas fa-sitemap"></i> Manage All Products
-            </Button>
-          </NavLink>
-          <Divider />
-        </Box>
-      )}
+      </NavLink></>}
+      
       <NavLink style={{ textDecoration: "none" }} to={"/"}>
         <Button color="inherit" onClick={logOut}>
-          <i className="mx-2 fas fa-sign-out-alt"></i> Log Out
+        <LogoutIcon  className='mx-2'/> Log Out
         </Button>
       </NavLink>
       <Divider />

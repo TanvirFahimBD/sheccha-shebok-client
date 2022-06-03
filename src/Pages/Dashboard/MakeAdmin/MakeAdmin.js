@@ -24,6 +24,7 @@ const MakeAdmin = () => {
         e.preventDefault()
         const pattern = /\S+@\S+\.\S+/;
         if (!pattern.test(email)) {
+            setSuccess("")
             setError("Enter proper email")
         }
         fetch("http://localhost:5000/users/admin", {
@@ -39,6 +40,7 @@ const MakeAdmin = () => {
                 if (data.modifiedCount > 0) {
                     setError("")
                     setSuccess("Admin Added Successfully")
+                   
                 }
             })
     }
