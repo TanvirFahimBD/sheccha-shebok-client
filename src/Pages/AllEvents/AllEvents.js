@@ -8,6 +8,7 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { ClassNames } from "@emotion/react";
+import { Box, Grid } from "@mui/material";
 
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
@@ -44,7 +45,13 @@ const AllEvents = () => {
 
   return (
     <>
-      <TableContainer component={Paper}>
+    <Box  sx={{ width: '100%' }}>
+        <Grid  className="d-flex" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          <Grid item xs={4}>
+            <img className="mb-5" src="https://i.ibb.co/cy4ghxM/Events-rafiki.png" alt="" height="600px" width="400px" />
+          </Grid>
+          <Grid item xs={8}>
+          <TableContainer component={Paper}>
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
@@ -62,7 +69,11 @@ const AllEvents = () => {
             </TableRow>
           </TableBody>
         </Table>
-      </TableContainer>
+      </TableContainer>       
+          </Grid>
+        </Grid>
+      </Box>
+      
 
     </>
   );

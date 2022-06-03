@@ -25,6 +25,7 @@ const useFirebase = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
+        saveUser(user.email, user.displayName, "PUT")
         setError("")
       })
       .catch((error) => {
@@ -42,6 +43,7 @@ const useFirebase = () => {
       .then((userCredential) => {
         const newUser = {email, displayName: name, photoURL: url} 
         setUser(newUser)
+        saveUser(email, name, "POST")
         updateProfile(auth.currentUser, {
           displayName: name, photoURL: url
         }).then(() => {
@@ -104,6 +106,18 @@ const useFirebase = () => {
     });
     return () => unsubscribed;
   }, []);
+
+  const saveUser = (email, displayName, method) => {
+    const user = {email, displayName}
+    fetch("http://localhost:5000/users",{
+      method: method,
+      headers: {
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(user)
+    })
+    .then()
+  }
 
   return {
     signInUsingGoogle,

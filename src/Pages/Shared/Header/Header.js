@@ -8,10 +8,6 @@ const Header = () => {
     <div>
       <Link className="mx-5" to="/home">Home</Link>
       <Link className="mx-5"  to="/events">Events</Link>
-      {user?.email && <Link  className="mx-5" to="/addEvent">Add Event</Link>}
-      {user?.email && <Link  className="mx-5" to="/myEvents">My Events</Link>}
-      {user?.email && <Link  className="mx-5" to="/allRegistration">All Registration</Link>}
-      {user?.email && <Link  className="mx-5" to="/allEvents">All Events</Link>}
       {user?.email && <Link  className="mx-5" to="/dashboard">Dashboard</Link>}
       {!user?.email && <Link className="mx-5"  to="/login">Login</Link>}
       {!user?.email && <Link className="mx-5"  to="/register">Register</Link>}
