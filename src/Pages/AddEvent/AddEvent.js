@@ -42,7 +42,7 @@ const AddEvent = () => {
       <br />
         <input type="text" placeholder="Event Date" ref={dateRef} />
       <br />
-        <input className="btn btn-success" type="submit"  value="Add Event" />
+        <input className="btn btn-primary" type="submit"  value="Add Event" />
 
       </form>
     </div>

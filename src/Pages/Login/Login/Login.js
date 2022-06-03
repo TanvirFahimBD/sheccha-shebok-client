@@ -21,6 +21,10 @@ const Login = () => {
     console.log(newLoginData);
   }
 
+  const handleGoogleLogin = (e) => {
+    signInUsingGoogle()
+    e.preventDefault()
+  }
   const handleLoginSubmit = (e) => {
     const pattern = /\S+@\S+\.\S+/;
 
@@ -73,7 +77,7 @@ const Login = () => {
             <p className="mt-4">------------Or Continue Us With------------</p>
             {error && <Alert sx={{mt: 4, width: "300px"}} severity="error">{error}</Alert>}
             {user?.email && <Alert sx={{mt: 4, width: "300px"}} severity="success">Login Successful</Alert>}
-            <Button sx={{ width: 300 }} className="mt-3" variant="contained" onClick={signInUsingGoogle}><GoogleIcon className="mx-4" /> Sign In With Google</Button>
+            <Button sx={{ width: 300 }} className="mt-3" variant="contained" onClick={handleGoogleLogin}><GoogleIcon className="mx-4" /> Sign In With Google</Button>
             <br />
             <br />
             <p>New User?<NavLink style={{ textDecoration: "none" }} to="/register"> Create a account</NavLink></p>

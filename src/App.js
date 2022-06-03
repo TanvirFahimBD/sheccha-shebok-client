@@ -15,6 +15,7 @@ import EventUpdateRegisters from "./Pages/EventUpdateRegisters/EventUpdateRegist
 import EventUpdatePage from "./Pages/EventUpdatePage/EventUpdatePage";
 import NoMatch from "./Pages/NoMatch/NoMatch";
 import Register from "./Pages/Login/Register/Register";
+import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             <Route exact path="/" element={<Home />}></Route>
             <Route path="/home" element={<Home />}></Route>
             <Route path="/events" element={<PrivateRoute><Events /></PrivateRoute>}></Route>
+            <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>}></Route>
             <Route path="/myEvents" element={<MyEvents />}></Route>
             <Route path="/allRegistration" element={<AllRegistration />}></Route>
             <Route path="/allEvents" element={<AllEvents />}></Route>

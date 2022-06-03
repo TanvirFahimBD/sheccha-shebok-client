@@ -12,6 +12,7 @@ const Header = () => {
       {user?.email && <Link  className="mx-5" to="/myEvents">My Events</Link>}
       {user?.email && <Link  className="mx-5" to="/allRegistration">All Registration</Link>}
       {user?.email && <Link  className="mx-5" to="/allEvents">All Events</Link>}
+      {user?.email && <Link  className="mx-5" to="/dashboard">Dashboard</Link>}
       {!user?.email && <Link className="mx-5"  to="/login">Login</Link>}
       {!user?.email && <Link className="mx-5"  to="/register">Register</Link>}
       {user?.email && 
