@@ -1,13 +1,12 @@
 import { Alert, Box, Button, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import TextField from '@mui/material/TextField';
 import GoogleIcon from '@mui/icons-material/Google';
 import { NavLink, useLocation, useNavigate} from "react-router-dom";
 
 const Login = () => {
-  const {  signInUsingGoogle, loginUser, setError, error, user } = useAuth();
+  const {signInUsingGoogle, loginUser, setError, error, user } = useAuth();
   const navigate = useNavigate()
   const location = useLocation()
   const redirect_uri = location?.state?.from  || "/"
@@ -53,7 +52,7 @@ const Login = () => {
                  label="Email"
                  name="email"
                  type="email"
-                 onChange={handleOnChange}
+                 onBlur={handleOnChange}
                  variant="filled"
               />
               <br />
@@ -65,20 +64,19 @@ const Login = () => {
                 autoComplete="current-password"
                 variant="filled"
                 name="password"
-                onChange={handleOnChange}
+                onBlur={handleOnChange}
               />
               <br />
               <br />
-
               <Button sx={{ width: 300 }} variant="contained" type="submit">Log In</Button>
             </form>
+            <p className="mt-4">------------Or Continue Us With------------</p>
             {error && <Alert sx={{mt: 4, width: "300px"}} severity="error">{error}</Alert>}
             {user?.email && <Alert sx={{mt: 4, width: "300px"}} severity="success">Login Successful</Alert>}
-            <Button sx={{ width: 300 }} className="mt-5" variant="contained" onClick={signInUsingGoogle}><GoogleIcon className="mx-4" /> Sign In With Google</Button>
+            <Button sx={{ width: 300 }} className="mt-3" variant="contained" onClick={signInUsingGoogle}><GoogleIcon className="mx-4" /> Sign In With Google</Button>
             <br />
             <br />
             <p>New User?<NavLink style={{ textDecoration: "none" }} to="/register"> Create a account</NavLink></p>
-
           </Grid>
         </Grid>
       </Box>

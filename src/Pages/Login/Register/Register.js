@@ -6,7 +6,6 @@ import TextField from '@mui/material/TextField';
 import GoogleIcon from '@mui/icons-material/Google';
 import { NavLink, useLocation} from "react-router-dom";
 
-
 const Register = () => {
   const { signInUsingGoogle, registerUser, setError, error, user } = useAuth();
   const navigate = useNavigate()
@@ -14,7 +13,7 @@ const Register = () => {
   const redirect_uri = location?.state?.from  || "/"
   const [registerData, setRegisterData] = useState({})
 
-  const handleOnChange = (e) => {
+  const handleOnBlur = (e) => {
     const field = e.target.name;
     const value = e.target.value;
     const newLoginData = { ...registerData }
@@ -35,8 +34,7 @@ const Register = () => {
     else if (!pattern.test(registerData.email)) {
       setError("Enter proper email")
     }
-      registerUser(registerData.email, registerData.password)
-      navigate(redirect_uri)
+      registerUser(registerData.email, registerData.password, registerData.name , registerData.profileImage )
    
     e.preventDefault()
   }
@@ -46,18 +44,27 @@ const Register = () => {
       <Box sx={{ width: '100%' }}>
         <Grid className="mx-5" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Grid item xs={6}>
-            <Typography sx={{ my: 8 }} variant="h2" component="h2">
+            <Typography sx={{ mt: 8 }} variant="h2" component="h2">
               Register
             </Typography>
-            {/* {user?.email && <CircularProgress /> } */}
             <br />
             <form onSubmit={handleRegisterSubmit}>
               <TextField sx={{ width: 300 }}
                 id="standard-basic"
+                label="Name"
+                name="name"
+                type="text"
+                onBlur={handleOnBlur}
+                variant="filled"
+              />
+              <br />
+              <br />
+              <TextField sx={{ width: 300 }}
+                id="standard-basic2"
                 label="Email"
                 name="email"
                 type="email"
-                onChange={handleOnChange}
+                onBlur={handleOnBlur}
                 variant="filled"
               />
               <br />
@@ -69,7 +76,7 @@ const Register = () => {
                 autoComplete="current-password"
                 variant="filled"
                 name="password"
-                onChange={handleOnChange}
+                onBlur={handleOnBlur}
               />
               <br />
               <br />
@@ -80,24 +87,30 @@ const Register = () => {
                 autoComplete="current-password"
                 variant="filled"
                 name="confirmPassword"
-                onChange={handleOnChange}
+                onBlur={handleOnBlur}
               />
               <br />
               <br />
-
+              <TextField sx={{ width: 300 }}
+                id="standard-basic3"
+                label="Profile Image"
+                type="text"
+                variant="filled"
+                name="profileImage"
+                onBlur={handleOnBlur}
+              />
+              <br />
+              <br />
               <Button sx={{ width: 300 }} variant="contained" type="submit" onClick={handleRegisterSubmit}>Register</Button>
             </form>
+            <p className="mt-4">------------Or Continue Us With------------</p>
             {error && <Alert sx={{mt: 4, width: "300px"}} severity="error">{error}</Alert>}
             {user?.email && <Alert sx={{mt: 4, width: "300px"}} severity="success">Registration Successful</Alert>}
-            
-            <Button sx={{ width: 300 }} className="mt-4" variant="contained" onClick={signInUsingGoogle}><GoogleIcon className="mx-4" /> Sign In With Google</Button>
+            <Button sx={{ width: 300 }} className="mt-3" variant="contained" onClick={signInUsingGoogle}><GoogleIcon className="mx-4" /> Sign In With Google</Button>
             <br />
             <br />
             <p>Already a User?<NavLink style={{ textDecoration: "none" }} to="/login"> Login</NavLink></p>
-
-
           </Grid>
-
           <Grid item xs={6}>
             <img src="https://i.ibb.co/Wp80CQ0/Sign-up-rafiki.png" alt="" height="700px" />
           </Grid>
