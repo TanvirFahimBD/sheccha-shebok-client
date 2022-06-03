@@ -10,7 +10,6 @@ const Header = () => {
       <Link className="mx-5"  to="/events">Events</Link>
       {user?.email && <Link  className="mx-5" to="/dashboard">Dashboard</Link>}
       {!user?.email && <Link className="mx-5"  to="/login">Login</Link>}
-      {!user?.email && <Link className="mx-5"  to="/register">Register</Link>}
       {user?.email && 
         <img style={{borderRadius: "100%"}} src={user?.photoURL} alt="" width="50px" height="50px" />
       }           

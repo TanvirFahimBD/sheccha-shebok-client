@@ -26,6 +26,8 @@ const Login = () => {
     e.preventDefault()
   }
   const handleLoginSubmit = (e) => {
+    e.preventDefault()
+
     const pattern = /\S+@\S+\.\S+/;
 
     if (loginData.password.length < 6) {
@@ -36,7 +38,6 @@ const Login = () => {
     }
     loginUser(loginData.email, loginData.password)
     navigate(redirect_uri)
-    e.preventDefault()
   }
 
   return (
