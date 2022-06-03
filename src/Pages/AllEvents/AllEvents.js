@@ -63,10 +63,9 @@ const AllEvents = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableRow>
               {events.map((event) => <EventTable key={event._id} event={event} handleDelete={handleDelete}
                 sx={{ '&:last-child td, &:last-child th': { border: 0 } }}></EventTable>)}
-            </TableRow>
+            
           </TableBody>
         </Table>
       </TableContainer>       

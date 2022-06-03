@@ -31,7 +31,7 @@ const SingleEventRegister = () => {
       .then((data) => {
        if(data?.insertedId){
          alert("Registration Successful")
-         navigate("/myEvents")
+         navigate("/dashboard/myEvents")
        }
       });
     e.preventDefault();

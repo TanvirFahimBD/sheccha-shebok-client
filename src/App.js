@@ -17,6 +17,8 @@ import NoMatch from "./Pages/NoMatch/NoMatch";
 import Register from "./Pages/Login/Register/Register";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
+import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
+import AddVolunteer from "./Pages/Dashboard/AddVolunteer/AddVolunteer";
 
 function App() {
   return (
@@ -60,9 +62,11 @@ function App() {
                 }
               ></Route>
 
-            <Route path="/dashboard/allEvents" element={<AllEvents />}></Route>
+              <Route path="/dashboard/allEvents" element={<AllEvents />}></Route>
 
-            <Route path="/dashboard/allRegistration" element={<AllRegistration />}></Route>
+              <Route path="/dashboard/allRegistration" element={<AllRegistration />}></Route>
+              <Route path="/dashboard/makeAdmin" element={<MakeAdmin />}></Route>
+              <Route path="/dashboard/addVolunteer" element={<AddVolunteer />}></Route>
 
 
 
