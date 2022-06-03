@@ -18,6 +18,7 @@ import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import { Grid } from '@mui/material';
 import AddEvent from '../../AddEvent/AddEvent';
+import AllEvents from '../../AllEvents/AllEvents';
 
 const drawerWidth = 200;
 
@@ -41,6 +42,7 @@ export default function Dashboard(props) {
     <div>
       <Toolbar />
       <Divider />
+      <Link to="/events">Events</Link>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -129,18 +131,18 @@ export default function Dashboard(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box
+      <Box div ClassName="d-flex"
         component="main"
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
         <Box sx={{ width: '100%' }}>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          <Grid item xs={6}>
-            <img className="m-5" src="https://i.ibb.co/cy4ghxM/Events-rafiki.png" alt="" height="700px" />
+          <Grid item xs={4}>
+            <img className="mb-5" src="https://i.ibb.co/cy4ghxM/Events-rafiki.png" alt="" height="600px" width="400px" />
           </Grid>
-          <Grid item xs={6}>
-           <AddEvent></AddEvent>            
+          <Grid item xs={8}>
+          <AllEvents></AllEvents>            
           </Grid>
         </Grid>
       </Box>
