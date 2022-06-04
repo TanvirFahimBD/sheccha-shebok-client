@@ -6,7 +6,7 @@ import GoogleIcon from '@mui/icons-material/Google';
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const MakeAdmin = () => {
-    const { user } = useAuth();
+    const { token } = useAuth();
     const [email, setEmail] = useState({})
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
@@ -30,10 +30,11 @@ const MakeAdmin = () => {
         fetch("http://localhost:5000/users/admin", {
             method: "PUT",
             headers: {
+                "authorization": `Bearer ${token}`,
                 "content-type": "application/json"
             },
             body: JSON.stringify(email)
-        })
+        }) 
             .then(res => res.json())
             .then(data => {
                 console.log(data)

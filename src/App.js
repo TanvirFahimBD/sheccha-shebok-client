@@ -19,6 +19,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
 import AddVolunteer from "./Pages/Dashboard/AddVolunteer/AddVolunteer";
+import AdminRoute from "./Pages/Login/AdminRoute/AdminRoute";
 
 function App() {
   return (
@@ -65,7 +66,7 @@ function App() {
               <Route path="/dashboard/allEvents" element={<AllEvents />}></Route>
 
               <Route path="/dashboard/allRegistration" element={<AllRegistration />}></Route>
-              <Route path="/dashboard/makeAdmin" element={<MakeAdmin />}></Route>
+              <Route path="/dashboard/makeAdmin" element={<AdminRoute><MakeAdmin /></AdminRoute>}></Route>
               <Route path="/dashboard/addVolunteer" element={<AddVolunteer />}></Route>
 
 

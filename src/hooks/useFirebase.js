@@ -3,7 +3,7 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithPopup,
-  signOut, createUserWithEmailAndPassword,signInWithEmailAndPassword,updateProfile
+  signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, getIdToken
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -16,6 +16,7 @@ const useFirebase = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
   const [admin, setAdmin] = useState(false);
+  const [token, setToken] = useState("");
   const googleProvider = new GoogleAuthProvider();
   const auth = getAuth();
   // const navigate = useNavigate()
@@ -42,7 +43,7 @@ const useFirebase = () => {
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const newUser = {email, displayName: name, photoURL: url} 
+        const newUser = { email, displayName: name, photoURL: url }
         setUser(newUser)
         saveUser(email, name, "POST")
         updateProfile(auth.currentUser, {
@@ -65,15 +66,15 @@ const useFirebase = () => {
   const loginUser = (email, password) => {
     setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
-      setUser(user)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setUser(user)
         setError("")
-    })
-    .catch((error) => {
-      const errorMessage = error.message;
-      setError(errorMessage)
-    })
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setError(errorMessage)
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -89,7 +90,7 @@ const useFirebase = () => {
       .catch((error) => {
         const errorMessage = error.message;
         setError(errorMessage)
-       })
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -100,6 +101,11 @@ const useFirebase = () => {
     const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
+        getIdToken(user)
+          .then(idToken => {
+            setToken(idToken)
+            console.log(idToken)
+          })
       } else {
         setUser({});
       }
@@ -109,32 +115,32 @@ const useFirebase = () => {
   }, []);
 
   const saveUser = (email, displayName, method) => {
-    const user = {email, displayName}
-    fetch("http://localhost:5000/users",{
+    const user = { email, displayName }
+    fetch("http://localhost:5000/users", {
       method: method,
       headers: {
         "content-type": "application/json"
       },
       body: JSON.stringify(user)
     })
-    .then()
+      .then()
   }
 
   useEffect(() => {
     fetch(`http://localhost:5000/users/${user?.email}`)
-    .then(res => res.json())
-    .then(data => {
-      console.log(data)
-      setAdmin(data.admin)
-    })
+      .then(res => res.json())
+      .then(data => {
+        console.log(data)
+        setAdmin(data.admin)
+      })
   }, [user?.email])
-  
+
 
   return {
     signInUsingGoogle,
     logOut,
     user,
-    isLoading, registerUser,loginUser,setError,error,admin
+    isLoading, registerUser, loginUser, setError, error, admin, token
   };
 };
 

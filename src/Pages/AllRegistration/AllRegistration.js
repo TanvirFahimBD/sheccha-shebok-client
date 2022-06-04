@@ -10,11 +10,18 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { ClassNames } from "@emotion/react";
 import { Box, Grid } from "@mui/material";
+import useAuth from '../../hooks/useAuth';
 
 const AllRegistration = () => {
+  const {token} = useAuth()
   const [registrations, setRegistrations] = useState([])
+
   useEffect(() => {
-    fetch("http://localhost:5000/register")
+    fetch("http://localhost:5000/register",{
+      headers: {
+        'authorization': `Bearer ${token}`
+      }
+    })
       .then(res => res.json())
       .then(data => {
         console.log(data);
