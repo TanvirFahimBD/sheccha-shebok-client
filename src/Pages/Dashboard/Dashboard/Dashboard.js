@@ -78,6 +78,18 @@ export default function Dashboard(props) {
         </Button>
       </NavLink>
       <Divider />
+      <NavLink style={{ textDecoration: "none" }} to="/dashboard">
+        <Button color="inherit">
+          <DashboardIcon className='mx-2'/> Donation
+        </Button>
+      </NavLink>
+      <Divider />
+      <NavLink style={{ textDecoration: "none" }} to="/dashboard">
+        <Button color="inherit">
+          <DashboardIcon className='mx-2'/> Review
+        </Button>
+      </NavLink>
+      <Divider />
       <NavLink style={{ textDecoration: "none" }} to="/dashboard/myEvents">
         <Button color="inherit">
           <EventAvailableIcon  className='mx-2'/> My Events

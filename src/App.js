@@ -20,6 +20,8 @@ import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
 import AddVolunteer from "./Pages/Dashboard/AddVolunteer/AddVolunteer";
 import AdminRoute from "./Pages/Login/AdminRoute/AdminRoute";
+import Donation from "./Pages/Donation/Donation/Donation";
+import EventDetails from "./Pages/EventDetails/EventDetails";
 
 function App() {
   return (
@@ -30,6 +32,8 @@ function App() {
           <Routes>
             <Route exact path="/" element={<Home />}></Route>
             <Route path="/home" element={<Home />}></Route>
+            <Route path="/donation/:eventId" element={<Donation />}></Route>
+            <Route path="/eventDetails/:eventId" element={<EventDetails />}></Route>
             <Route path="/events" element={<PrivateRoute><Events /></PrivateRoute>}></Route>
 
 

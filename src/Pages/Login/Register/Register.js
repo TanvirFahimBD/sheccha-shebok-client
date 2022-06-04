@@ -106,7 +106,7 @@ const Register = () => {
             <p className="mt-4">------------Or Continue Us With------------</p>
             {error && <Alert sx={{mt: 4, width: "300px"}} severity="error">{error}</Alert>}
             {user?.email && <Alert sx={{mt: 4, width: "300px"}} severity="success">Registration Successful</Alert>}
-            <Button sx={{ width: 300 }} className="mt-3" variant="contained" onClick={signInUsingGoogle}><GoogleIcon className="mx-4" /> Sign In With Google</Button>
+            <Button sx={{ width: 300 }} className="mt-3" variant="contained" onClick={signInUsingGoogle}><GoogleIcon className="mx-4" /> Continue With Google</Button>
             <br />
             <br />
             <p>Already a User?<NavLink style={{ textDecoration: "none" }} to="/login"> Login</NavLink></p>

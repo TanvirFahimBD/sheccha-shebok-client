@@ -1,0 +1,26 @@
+[
+    {
+      "_id": "629b48aa10a18ac5421a438c",
+      "balance": "$100"
+    },
+    {
+      "_id": "629b48aa458c2c7f66c08c9a",
+      "balance": "$200"
+    },
+    {
+      "_id": "629b48aa6afdf332b483f452",
+      "balance": "$300"
+    },
+    {
+      "_id": "629b48aac2016da36cee99fc",
+      "balance": "$400"
+    },
+    {
+      "_id": "629b48aa15b242cfb64918d7",
+      "balance": "$500"
+    },
+    {
+      "_id": "629b48aae93954bba57bad81",
+      "balance": "$1000"
+    }
+  ]
