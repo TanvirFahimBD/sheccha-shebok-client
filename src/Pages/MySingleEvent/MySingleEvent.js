@@ -3,7 +3,7 @@ import React from 'react';
 const MySingleEvent = (props) => {
 
    const {_id, title,desc,banner,date} = props.myEvent;
-   console.log(props.myEvent);
+//    console.log(props.myEvent);
 
     return (
         <div className='col-md-12 col-lg-6'>

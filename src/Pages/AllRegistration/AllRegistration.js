@@ -24,7 +24,7 @@ const AllRegistration = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
+        // console.log(data);
         setRegistrations(data);
       })
   }, [])
@@ -38,7 +38,7 @@ const AllRegistration = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
+          // console.log(data)
           if (data.deletedCount) {
             alert("The data is deleted successfully");
             const userRemainingEvents = registrations.filter((userEvent) => userEvent._id !== id);

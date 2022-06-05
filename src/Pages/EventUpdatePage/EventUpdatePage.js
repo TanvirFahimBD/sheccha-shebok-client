@@ -13,7 +13,7 @@ const EventUpdatePage = () => {
       .then((res) => res.json())
       .then((data) => {
         setEvent(data);
-        console.log(data);
+        // console.log(data);
       });
   }, []);
 
@@ -59,7 +59,7 @@ const EventUpdatePage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-          console.log("events", data);
+          // console.log("events", data);
           if(data?.modifiedCount){
             alert("Event Updated Successful")
             navigate("/myEvents")

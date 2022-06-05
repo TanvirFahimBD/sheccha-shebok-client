@@ -8,7 +8,7 @@ const Events = () => {
       .then((res) => res.json())
       .then((data) => {
         setEvents(data);
-        console.log(data);
+        // console.log(data);
       });
   }, []);
 

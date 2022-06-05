@@ -17,7 +17,7 @@ const AllEvents = () => {
       .then((res) => res.json())
       .then((data) => {
         setEvents(data);
-        console.log(data);
+        // console.log(data);
       });
   }, []);
 
@@ -30,7 +30,7 @@ const AllEvents = () => {
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
+          // console.log(data)
           if (data.deletedCount) {
             alert("The data is deleted successfully");
             const userRemainingEvents = events.filter((userEvent) => userEvent._id !== id);

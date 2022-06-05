@@ -10,7 +10,7 @@ const MyEvents = () => {
       fetch(`http://localhost:5000/register/${myEmail}`)
       .then(res => res.json())
       .then(data => {
-          console.log(data);
+          // console.log(data);
           setMyEvents(data);
       })
     }, [myEmail])

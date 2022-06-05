@@ -10,7 +10,7 @@ const EventDetails = () => {
         .then((res) => res.json())
         .then((data) => {
             const event = data.find( ev => ev._id === eventId)
-            console.log(event);
+            // console.log(event);
             setMatchEvent(event)
         });
     }, []);

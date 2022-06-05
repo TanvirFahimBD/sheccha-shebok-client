@@ -14,7 +14,7 @@ const SingleEventRegister = () => {
       .then((res) => res.json())
       .then((data) => {
         setEvent(data);
-        console.log(data);
+        // console.log(data);
       });
   }, []);
 

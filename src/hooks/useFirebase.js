@@ -104,7 +104,7 @@ const useFirebase = () => {
         getIdToken(user)
           .then(idToken => {
             setToken(idToken)
-            console.log(idToken)
+            // console.log(idToken)
           })
       } else {
         setUser({});
@@ -123,14 +123,17 @@ const useFirebase = () => {
       },
       body: JSON.stringify(user)
     })
-      .then()
-  }
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/users/${user.email}`)
       .then(res => res.json())
       .then(data => {
         console.log(data)
+      })
+  }
+
+  useEffect(() => {
+    fetch(`http://localhost:5000/users/${user?.email || ""}`)
+      .then(res => res.json())
+      .then(data => {
+        // console.log(data)
         setAdmin(data.admin)
       })
   }, [user?.email])

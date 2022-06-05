@@ -14,7 +14,7 @@ const EventUpdateRegisters = () => {
         .then((res) => res.json())
         .then((data) => {
           setEvent(data[0]);
-          console.log(data[0]);
+          // console.log(data[0]);
         });
     }, []);
   
@@ -60,7 +60,7 @@ const EventUpdateRegisters = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-              console.log("register",data);
+              // console.log("register",data);
            if(data?.modifiedCount){
              alert("Event Updated Successful")
              navigate("/myEvents")
