@@ -24,10 +24,10 @@ const Donation = () => {
 
     return (
         <div>
-                <p>{user.email}</p>
-                <p>{currentDonation.title}</p>
+            <p>{user.email}</p>
+            <p>{currentDonation.title}</p>
             {amount && <Elements stripe={stripePromise}>
-                <CheckoutForm currentDonation={currentDonation} amount={amount}/>
+                <CheckoutForm amount={amount} currentDonation={currentDonation}/>
             </Elements>}
         </div>
     );

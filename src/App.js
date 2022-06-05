@@ -22,6 +22,7 @@ import AddVolunteer from "./Pages/Dashboard/AddVolunteer/AddVolunteer";
 import AdminRoute from "./Pages/Login/AdminRoute/AdminRoute";
 import Donation from "./Pages/Donation/Donation/Donation";
 import EventDetails from "./Pages/EventDetails/EventDetails";
+import MyDonation from "./Pages/Donation/MyDonation/MyDonation";
 
 function App() {
   return (
@@ -60,6 +61,7 @@ function App() {
               >
               </Route>
               <Route path="/dashboard/myEvents" element={<MyEvents />}></Route>
+              <Route path="/dashboard/donation" element={<MyDonation />}></Route>
               <Route
                 path="/dashboard/addEvent"
                 element={

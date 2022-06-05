@@ -1,4 +1,5 @@
 import * as React from 'react';
+import RateReviewIcon from '@mui/icons-material/RateReview';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -31,6 +32,7 @@ import HowToRegIcon from '@mui/icons-material/HowToReg';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import LogoutIcon from '@mui/icons-material/Logout';
+import PaidIcon from '@mui/icons-material/Paid';
 const drawerWidth = 200;
 
 // interface Props {
@@ -78,15 +80,15 @@ export default function Dashboard(props) {
         </Button>
       </NavLink>
       <Divider />
-      <NavLink style={{ textDecoration: "none" }} to="/dashboard">
+      <NavLink style={{ textDecoration: "none" }} to="/dashboard/donation">
         <Button color="inherit">
-          <DashboardIcon className='mx-2'/> Donation
+          <PaidIcon className='mx-2'/> Donation
         </Button>
       </NavLink>
       <Divider />
       <NavLink style={{ textDecoration: "none" }} to="/dashboard">
         <Button color="inherit">
-          <DashboardIcon className='mx-2'/> Review
+          <RateReviewIcon className='mx-2'/> Add Review
         </Button>
       </NavLink>
       <Divider />
