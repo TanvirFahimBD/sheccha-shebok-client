@@ -18,11 +18,11 @@ import Register from "./Pages/Login/Register/Register";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
-import AddVolunteer from "./Pages/Dashboard/AddVolunteer/AddVolunteer";
 import AdminRoute from "./Pages/Login/AdminRoute/AdminRoute";
 import Donation from "./Pages/Donation/Donation/Donation";
 import EventDetails from "./Pages/EventDetails/EventDetails";
 import MyDonation from "./Pages/Donation/MyDonation/MyDonation";
+import AddMember from "./Pages/Dashboard/AddMember/AddMember";
 
 function App() {
   return (
@@ -73,7 +73,7 @@ function App() {
 
               <Route path="/dashboard/allRegistration" element={<AllRegistration />}></Route>
               <Route path="/dashboard/makeAdmin" element={<AdminRoute><MakeAdmin /></AdminRoute>}></Route>
-              <Route path="/dashboard/addVolunteer" element={<AddVolunteer />}></Route>
+              <Route path="/dashboard/addMember" element={<AddMember />}></Route>
 
 
 

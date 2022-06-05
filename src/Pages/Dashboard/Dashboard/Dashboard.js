@@ -33,6 +33,7 @@ import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PaidIcon from '@mui/icons-material/Paid';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 const drawerWidth = 200;
 
 // interface Props {
@@ -126,10 +127,10 @@ export default function Dashboard(props) {
 
       <NavLink
         style={{ textDecoration: "none" }}
-        to="/dashboard/addVolunteer"
+        to="/dashboard/addMember"
       >
         <Button color="inherit">
-        <VolunteerActivismIcon  className='mx-2'/> Add Volunteer
+        <GroupAddIcon  className='mx-2'/> Add Member
         </Button>
       </NavLink></>}
       
