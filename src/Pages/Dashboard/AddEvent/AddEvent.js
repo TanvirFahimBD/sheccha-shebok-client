@@ -38,7 +38,7 @@ const AddEvent = () => {
           </Grid>
           <Grid item xs={6}>
             <Typography sx={{ my: 2 }} variant="h2" component="h2">
-            Please <span className="text-primary">Add</span> an <span className="text-primary">Event</span>
+            <span className="text-primary">Add</span> an <span className="text-primary">Event</span>
             </Typography>
             <form onSubmit={handleAdd}>
               <TextField sx={{ width: 300 }}

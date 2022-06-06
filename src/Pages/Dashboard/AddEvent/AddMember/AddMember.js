@@ -18,7 +18,7 @@ const AddMember = () => {
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
 
-    const handleAddVolunteer = (e) => {
+    const handleAddMember = (e) => {
         e.preventDefault()
         console.log("working")
         const pattern = /\S+@\S+\.\S+/;
@@ -47,7 +47,7 @@ const AddMember = () => {
         })
             .then(response => response.json())
             .then(result => {
-                if(result.insertedId){
+                if (result.insertedId) {
                     alert("New Member Added Successfully")
                     navigate("/")
                 }
@@ -60,102 +60,106 @@ const AddMember = () => {
 
 
     return (
-        <div>
-            
-            <form onSubmit={handleAddVolunteer}>
-                <TextField sx={{ width: 300 }}
-                    id="standard-basic"
-                    label="index"
-                    name="index"
-                    type="text"
-                    onChange={e => setIndex(e.target.value)}
-                    variant="filled" required
-                />
-                <br />
-                <br />
-                <TextField sx={{ width: 300 }}
-                    id="standard-basic"
-                    label="key"
-                    name="key"
-                    type="text"
-                    onChange={e => setKey(e.target.value)}
-                    variant="filled" required
-                />
-                <br />
-                <br />
+        <Box sx={{ width: '100%' }}>
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid style={{ borderRight: "1px solid lightGray" }} item xs={6}>
+                    <img className="m-5" src="https://i.ibb.co/p0FN2ry/Profile-Interface-bro.png" alt="" height="700px" />
+                </Grid>
+                <Grid item xs={6}>
+                    <form onSubmit={handleAddMember}>
+                        <TextField sx={{ width: 300 }}
+                            id="standard-basic"
+                            label="index"
+                            name="index"
+                            type="text"
+                            onChange={e => setIndex(e.target.value)}
+                            variant="filled" required
+                        />
+                        <br />
+                        <br />
+                        <TextField sx={{ width: 300 }}
+                            id="standard-basic"
+                            label="key"
+                            name="key"
+                            type="text"
+                            onChange={e => setKey(e.target.value)}
+                            variant="filled" required
+                        />
+                        <br />
+                        <br />
+
+                        <TextField sx={{ width: 300 }}
+                            id="standard-basic"
+                            label="date"
+                            name="date"
+                            type="text"
+                            onChange={e => setDate(e.target.value)}
+                            variant="filled" required
+                        />
+                        <br />
+                        <br />
+                        <TextField sx={{ width: 300 }}
+                            id="standard-basic"
+                            label="desc"
+                            name="desc"
+                            type="text"
+                            onChange={e => setDesc(e.target.value)}
+                            variant="filled" required
+                        />
+                        <br />
+                        <br />
+                        <TextField sx={{ width: 300 }}
+                            id="standard-basic"
+                            label="title"
+                            name="title"
+                            type="text"
+                            onChange={e => setTitle(e.target.value)}
+                            variant="filled" required
+                        />
+                        <br />
+                        <br />
+                        <TextField sx={{ width: 300 }}
+                            id="standard-basic"
+                            label="name"
+                            name="name"
+                            type="text"
+                            onChange={e => setName(e.target.value)}
+                            variant="filled" required
+                        />
+                        <br />
+                        <br />
+                        <TextField sx={{ width: 300 }}
+                            id="standard-basic"
+                            label="Email"
+                            name="email"
+                            type="email"
+                            onChange={e => setEmail(e.target.value)}
+                            variant="filled" required
+                        />
+                        <br />
+                        <br />
+                        <label htmlFor="bannerImage">Banner Image</label>
+                        <br />
+                        <Input accept="image/*" type="file"
+                            onChange={e => setBanner(e.target.files[0])}
+                        />
+                        <br />
+                        <br />
+                        <label htmlFor="profileImage">Profile Image</label>
+                        <br />
+                        <Input accept="image/*" type="file"
+                            onChange={e => setImage(e.target.files[0])}
+                        />
+                        <br />
+                        <br />
+                        <Button sx={{ width: 300 }} variant="contained" type="submit">Add Member</Button>
+                    </form>
+                    {error && <Alert sx={{ mt: 4, width: "300px" }} severity="error">{error}</Alert>}
+                    {success && <Alert sx={{ mt: 4, width: "300px" }} severity="success">{success}</Alert>}
+                </Grid>
                 
-                <TextField sx={{ width: 300 }}
-                    id="standard-basic"
-                    label="date"
-                    name="date"
-                    type="text"
-                    onChange={e => setDate(e.target.value)}
-                    variant="filled" required
-                />
-                <br />
-                <br />
-                <TextField sx={{ width: 300 }}
-                    id="standard-basic"
-                    label="desc"
-                    name="desc"
-                    type="text"
-                    onChange={e => setDesc(e.target.value)}
-                    variant="filled" required
-                />
-                <br />
-                <br />
-                <TextField sx={{ width: 300 }}
-                    id="standard-basic"
-                    label="title"
-                    name="title"
-                    type="text"
-                    onChange={e => setTitle(e.target.value)}
-                    variant="filled" required
-                />
-                <br />
-                <br />
-                <TextField sx={{ width: 300 }}
-                    id="standard-basic"
-                    label="name"
-                    name="name"
-                    type="text"
-                    onChange={e => setName(e.target.value)}
-                    variant="filled" required
-                />
-                <br />
-                <br />
-                <TextField sx={{ width: 300 }}
-                    id="standard-basic"
-                    label="Email"
-                    name="email"
-                    type="email"
-                    onChange={e => setEmail(e.target.value)}
-                    variant="filled" required
-                />
-                <br />
-                <br />
-                <label htmlFor="bannerImage">Banner Image</label>
-                <br />
-                <Input accept="image/*" type="file"
-                    onChange={e => setBanner(e.target.files[0])}
-                />
-                <br />
-                <br />
-                <label htmlFor="profileImage">Profile Image</label>
-                <br />
-                <Input accept="image/*" type="file"
-                    onChange={e => setImage(e.target.files[0])}
-                />
-                <br />
-                <br />
-                {/* <Button sx={{ width: 300 }} variant="contained" component="span" type="submit">
-                    Add Volunteer
-                </Button> */}
-                <input type="submit" value="Add Volunteer"  sx={{ width: 300 }}  />
-            </form>
-            {error && <Alert sx={{ mt: 4, width: "300px" }} severity="error">{error}</Alert>}
-            {success && <Alert sx={{ mt: 4, width: "300px" }} severity="success">{success}</Alert>}
-        </div>
+            </Grid>
+        </Box>           
     );
 };
 

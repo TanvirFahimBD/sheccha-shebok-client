@@ -34,67 +34,43 @@ import Footer from "./Pages/Shared/Footer/Footer";
 function App() {
   return (
     <div className="App">
-    <div id="page-container">
-      <div id="content-wrap">
-      <AuthProvider>
-        <Router>
-          <Header></Header>
-          <Routes>
-            <Route exact path="/" element={<Home />}></Route>
-            <Route path="/home" element={<Home />}></Route>
-            <Route path="/donation/:eventId" element={<Donation />}></Route>
-            <Route path="/eventDetails/:eventId" element={<EventDetails />}></Route>
-            <Route path="/events" element={<PrivateRoute><Events /></PrivateRoute>}></Route>
-
-
-            <Route path="/login" element={<Login />}></Route>
-            <Route path="/register" element={<Register />}></Route>
-            <Route
-              path="/events/register/:singleEventId"
-              element={<SingleEventRegister />}
-            ></Route>
-            <Route
-              path="/events/eventUpdatePage/:singleEventId"
-              element={<EventUpdatePage />}
-            ></Route>
-            <Route
-              path="/events/eventUpdateRegisters/:singleEventId"
-              element={<EventUpdatePublic />}
-            ></Route>
-            <Route path="/dashboard"
-              element={<PrivateRoute>
-                <Dashboard /></PrivateRoute>}>
-              <Route
-                path="/dashboard"
-                element={<DashboardHome />}
-              >
-              </Route>
-              <Route path="/dashboard/myEvents" element={<MyEvents />}></Route>
-              <Route path="/dashboard/addNotice" element={<AddNotices />}></Route>
-              <Route path="/dashboard/makeVolunteer" element={<AddVolunteer />}></Route>
-              <Route path="/dashboard/notices" element={<Notices />}></Route>
-              <Route path="/dashboard/profile" element={<Profile />}></Route>
-              <Route path="/dashboard/donation" element={<MyDonation />}></Route>
-              <Route path="/dashboard/myReview" element={<MyReview />}></Route>
-              <Route
-                path="/dashboard/addEvent"
-                element={
-                  <AddEvent />
-                }
-              ></Route>
-
-              <Route path="/dashboard/allEvents" element={<AllEvents />}></Route>
-              <Route path="/dashboard/addReview" element={<AddReview />}></Route>
-
-              <Route path="/dashboard/allRegistration" element={<AllRegistration />}></Route>
-              <Route path="/dashboard/makeAdmin" element={<AdminRoute><MakeAdmin /></AdminRoute>}></Route>
-              <Route path="/dashboard/addMember" element={<AddMember />}></Route>
-            </Route>
-            <Route path="*" element={<NoMatch />}></Route>
-          </Routes>
-        </Router>
-      </AuthProvider>
-      </div>
+      <div id="page-container">
+        <div id="content-wrap">
+          <AuthProvider>
+            <Router>
+              <Header></Header>
+              <Routes>
+                <Route exact path="/" element={<Home />}></Route>
+                <Route path="/home" element={<Home />}></Route>
+                <Route path="/donation/:eventId" element={<PrivateRoute><Donation /></PrivateRoute>}></Route>
+                <Route path="/eventDetails/:eventId" element={<EventDetails/>}></Route>
+                <Route path="/events" element={<Events />}></Route>
+                <Route path="/login" element={<Login />}></Route>
+                <Route path="/register" element={<Register />}></Route>
+                <Route path="/events/register/:singleEventId" element={<PrivateRoute><SingleEventRegister /></PrivateRoute>}></Route>
+                <Route path="/events/eventUpdatePage/:singleEventId" element={<PrivateRoute><EventUpdatePage /></PrivateRoute>}></Route>
+                <Route path="/events/eventUpdateRegisters/:singleEventId" element={<PrivateRoute><EventUpdatePublic /></PrivateRoute>}></Route>
+                <Route path="/dashboard" element={<PrivateRoute> <Dashboard /></PrivateRoute>}>
+                  <Route path="/dashboard" element={<PrivateRoute><DashboardHome /></PrivateRoute>}> </Route>
+                  <Route path="/dashboard/myEvents" element={<PrivateRoute><MyEvents /></PrivateRoute>}></Route>
+                  <Route path="/dashboard/addNotice" element={<AdminRoute><AddNotices /></AdminRoute>}></Route>
+                  <Route path="/dashboard/makeVolunteer" element={<AdminRoute><AddVolunteer /></AdminRoute>}></Route>
+                  <Route path="/dashboard/notices" element={<Notices />}></Route>
+                  <Route path="/dashboard/profile" element={<Profile />}></Route>
+                  <Route path="/dashboard/donation" element={<MyDonation />}></Route>
+                  <Route path="/dashboard/myReview" element={<MyReview />}></Route>
+                  <Route path="/dashboard/addEvent" element={ <AdminRoute><AddEvent /> </AdminRoute>}></Route>
+                  <Route path="/dashboard/allEvents" element={<AdminRoute><AllEvents /></AdminRoute>}></Route>
+                  <Route path="/dashboard/addReview" element={<AddReview />}></Route>
+                  <Route path="/dashboard/allRegistration" element={<AdminRoute><AllRegistration /></AdminRoute>}></Route>
+                  <Route path="/dashboard/makeAdmin" element={<AdminRoute><MakeAdmin /></AdminRoute>}></Route>
+                  <Route path="/dashboard/addMember" element={<AdminRoute><AddMember /></AdminRoute>}></Route>
+                </Route>
+                <Route path="*" element={<NoMatch />}></Route>
+              </Routes>
+            </Router>
+          </AuthProvider>
+        </div>
       </div>
       <Footer />
     </div>

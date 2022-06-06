@@ -12,7 +12,7 @@ const MySingleDonation = (props) => {
     const amount = props.pay.amount /100;
 
     return (
-            <Grid item xs={12} md={6} lg={4} className="mb-3">
+            <Grid item xs={12} md={6} lg={6} className="mb-3">
             <Card sx={{ maxWidth: 345 }}>
       <CardActionArea className="text-center">
         <img 

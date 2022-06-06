@@ -31,18 +31,18 @@ const Header = () => {
             <Button color="inherit">Seccha Shebok</Button>
           </Link>
           <Link
-            style={{ textDecoration: "none", color: "white", margin: "0 1%" }}
+            style={{ textDecoration: "none", color: "white", margin: "0 34% 0 1%" }}
             to="/events"
           >
             <Button color="inherit">Events</Button>
           </Link>
 
-          <Link
-            style={{ textDecoration: "none", color: "white", margin: "0 34% 0 1%" }}
+          {user.email && <Link
+            style={{ textDecoration: "none", color: "white", margin: "0 1% 0 35%" }}
             to="/dashboard"
           >
             <Button color="inherit">Dashboard</Button>
-          </Link>
+          </Link>}
 
           {user?.photoURL ? (
             <img
@@ -50,7 +50,7 @@ const Header = () => {
                 borderRadius: "50%",
                 border: "2px solid white",
                 height: "40px",
-                marginLeft: "35%",
+                marginLeft: "1%",
               }}
               src={user.photoURL}
               alt=""

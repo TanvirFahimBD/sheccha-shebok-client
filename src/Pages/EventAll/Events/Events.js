@@ -14,7 +14,7 @@ const Events = () => {
 
   return (
     <div className="text-center">
-      <h1 className='my-5 text-center text-primary'  >Events: {events.length}</h1>
+      <h1 className='my-5 text-center text-primary'  > {events.length} Events Available</h1>
       <div className="container">
       <div className="row">
           {events.map((event) => (
