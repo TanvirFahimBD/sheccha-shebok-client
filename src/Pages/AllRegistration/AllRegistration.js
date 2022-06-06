@@ -13,11 +13,12 @@ import { Box, Grid } from "@mui/material";
 import useAuth from '../../hooks/useAuth';
 
 const AllRegistration = () => {
-  const {token} = useAuth()
+  const { token, user } = useAuth()
   const [registrations, setRegistrations] = useState([])
+  const email = user?.email;
 
   useEffect(() => {
-    fetch("http://localhost:5000/register",{
+    fetch("http://localhost:5000/register", {
       headers: {
         'authorization': `Bearer ${token}`
       }
@@ -50,7 +51,6 @@ const AllRegistration = () => {
     }
   };
 
-
   return (
     <>
       <Box sx={{ width: '100%' }}>
@@ -73,7 +73,7 @@ const AllRegistration = () => {
                 </TableHead>
                 <TableBody>
 
-                    {registrations.map(registration => <RegistrationTable key={registration._id} registration={registration} handleDelete={handleDelete} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}></RegistrationTable>)}
+                  {registrations.map(registration => <RegistrationTable key={registration._id} registration={registration} handleDelete={handleDelete} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}></RegistrationTable>)}
                 </TableBody>
               </Table>
             </TableContainer>

@@ -49,7 +49,7 @@ const drawerWidth = 200;
 // }
 
 export default function Dashboard(props) {
-  const { user, admin, logOut } = useAuth();
+  const { user, admin, logOut, volunteer } = useAuth();
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -77,95 +77,109 @@ export default function Dashboard(props) {
           boxShadow: "5px 5px 5px gray",
         }}
       />
-      <h5  className='mx-2'>{user.displayName}</h5>
+      <h5 className='mx-2'>{user.displayName}</h5>
       <Divider />
       <NavLink style={{ textDecoration: "none" }} to="/dashboard">
         <Button color="inherit">
-          <DashboardIcon className='mx-2'/> Dashboard
+          <DashboardIcon className='mx-2' /> Dashboard
         </Button>
       </NavLink>
       <Divider />
       <NavLink style={{ textDecoration: "none" }} to="/dashboard/donation">
         <Button color="inherit">
-          <PaidIcon className='mx-2'/> My Donation
+          <PaidIcon className='mx-2' /> My Donation
         </Button>
       </NavLink>
       <Divider />
-      <NavLink style={{ textDecoration: "none" }} to="/dashboard/myEvents">
+      {
+      volunteer &&
+        <>
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/myEvents">
+            <Button color="inherit">
+              <EventAvailableIcon className='mx-2' /> My Events
+            </Button>
+          </NavLink>
+          <Divider />
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/addReview">
         <Button color="inherit">
-          <EventAvailableIcon  className='mx-2'/> My Events
+          <RateReviewIcon className='mx-2' /> Add Review
         </Button>
       </NavLink>
       <Divider />
-    
-      <NavLink style={{ textDecoration: "none" }} to="/dashboard/notices">
-        <Button color="inherit">
-          <CircleNotificationsIcon  className='mx-2'/> Notices
-        </Button>
-      </NavLink>
-      <Divider />
-      <NavLink style={{ textDecoration: "none" }} to="/dashboard/myReview">
-        <Button color="inherit">
-          <ReviewsIcon  className='mx-2'/> My Review
-        </Button>
-      </NavLink>
-      <Divider />
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/notices">
+            <Button color="inherit">
+              <CircleNotificationsIcon className='mx-2' /> Notices
+            </Button>
+          </NavLink>
+          <Divider />
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/myReview">
+            <Button color="inherit">
+              <ReviewsIcon className='mx-2' /> My Review
+            </Button>
+          </NavLink>
+          <Divider />
+          </>
+          }
+      {
+      admin && 
+      <>
       <NavLink style={{ textDecoration: "none" }} to="/dashboard/addNotice">
         <Button color="inherit">
-          <AddAlertIcon  className='mx-2'/> Add Notice
+          <AddAlertIcon className='mx-2' /> Add Notice
         </Button>
       </NavLink>
       <Divider />
-      
-      <NavLink style={{ textDecoration: "none" }} to="/dashboard/addReview">
+      <NavLink style={{ textDecoration: "none" }} to="/dashboard/addEvent">
         <Button color="inherit">
-          <RateReviewIcon className='mx-2'/> Add Review
+          <AddCardIcon className='mx-2' /> Add Event
         </Button>
       </NavLink>
-      <Divider />
-      {admin && <><NavLink style={{ textDecoration: "none" }} to="/dashboard/addEvent">
-        <Button color="inherit">
-        <AddCardIcon  className='mx-2'/> Add Event
-        </Button>
-      </NavLink>
-      <Divider />
-      <NavLink style={{ textDecoration: "none" }} to="/dashboard/allEvents">
-        <Button color="inherit">
-          {" "}
-          <EventNoteIcon  className='mx-2'/>All Events
-        </Button>
-      </NavLink>{" "}
-      <Divider />
-      <NavLink style={{ textDecoration: "none" }} to="/dashboard/allRegistration">
-        <Button color="inherit">
-        <HowToRegIcon  className='mx-2'/> All Reg.
-        </Button>
-      </NavLink>{" "}
-      <Divider />
-      <NavLink style={{ textDecoration: "none" }} to="/dashboard/makeAdmin">
-        <Button color="inherit">
-        <AdminPanelSettingsIcon className='mx-2'/> Make Admin
-        </Button>
-      </NavLink>
-      <Divider />
+        <Divider />
+        <NavLink style={{ textDecoration: "none" }} to="/dashboard/allEvents">
+          <Button color="inherit">
+            {" "}
+            <EventNoteIcon className='mx-2' />All Events
+          </Button>
+        </NavLink>{" "}
+        <Divider />
+        <NavLink style={{ textDecoration: "none" }} to="/dashboard/allRegistration">
+          <Button color="inherit">
+            <HowToRegIcon className='mx-2' /> All Reg.
+          </Button>
+        </NavLink>{" "}
+        <Divider />
+        <NavLink style={{ textDecoration: "none" }} to="/dashboard/makeAdmin">
+          <Button color="inherit">
+            <AdminPanelSettingsIcon className='mx-2' /> Make Admin
+          </Button>
+        </NavLink>
+        <Divider />
+        <NavLink style={{ textDecoration: "none" }} to="/dashboard/makeVolunteer">
+          <Button color="inherit">
+            <VolunteerActivismIcon className='mx-2' /> Add Volunteer
+          </Button>
+        </NavLink>
+        <Divider />
 
-      <NavLink
-        style={{ textDecoration: "none" }}
-        to="/dashboard/addMember"
-      >
-        <Button color="inherit">
-        <GroupAddIcon  className='mx-2'/> Add Member
-        </Button>
-      </NavLink></>}
+        <NavLink
+          style={{ textDecoration: "none" }}
+          to="/dashboard/addMember"
+        >
+          <Button color="inherit">
+            <GroupAddIcon className='mx-2' /> Add Member
+          </Button>
+        </NavLink>
+        </>
+        }
       <NavLink style={{ textDecoration: "none" }} to="/dashboard/profile">
         <Button color="inherit">
-          <AccountCircleIcon  className='mx-2'/> My Profile
+          <AccountCircleIcon className='mx-2' /> My Profile
         </Button>
       </NavLink>
       <Divider />
       <NavLink style={{ textDecoration: "none" }} to={"/"}>
         <Button color="inherit" onClick={logOut}>
-        <LogoutIcon  className='mx-2'/> Log Out
+          <LogoutIcon className='mx-2' /> Log Out
         </Button>
       </NavLink>
       <Divider />

@@ -28,6 +28,7 @@ import Profile from "./Pages/Dashboard/Profile/Profile";
 import MyReview from "./Pages/Dashboard/MyReview/MyReview";
 import AddNotices from "./Pages/Dashboard/AddNotices/AddNotices";
 import Notices from "./Pages/Dashboard/Notices/Notices";
+import AddVolunteer from "./Pages/Dashboard/AddVolunteer/AddVolunteer";
 
 function App() {
   return (
@@ -67,6 +68,7 @@ function App() {
               </Route>
               <Route path="/dashboard/myEvents" element={<MyEvents />}></Route>
               <Route path="/dashboard/addNotice" element={<AddNotices />}></Route>
+              <Route path="/dashboard/makeVolunteer" element={<AddVolunteer />}></Route>
               <Route path="/dashboard/notices" element={<Notices />}></Route>
               <Route path="/dashboard/profile" element={<Profile />}></Route>
               <Route path="/dashboard/donation" element={<MyDonation />}></Route>

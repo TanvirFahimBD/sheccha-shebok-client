@@ -7,7 +7,7 @@ import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import Notice from "../Notice/Notice";
 
 const Notices = () => {
-    const [notices, setNotices] = useState("")
+    const [notices, setNotices] = useState([])
 
     useEffect(() => {
         fetch('http://localhost:5000/notices')
@@ -26,7 +26,7 @@ const Notices = () => {
 
     return (
         <div>
-            <h1>Notices: {notices.length}</h1>
+            <h1>Notices: {notices?.length}</h1>
             {notices.map(notice=> <Notice notice={notice} key={notice._id} ></Notice>)}
         </div>
     );
