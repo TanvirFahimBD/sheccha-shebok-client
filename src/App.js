@@ -23,6 +23,11 @@ import Donation from "./Pages/Donation/Donation/Donation";
 import EventDetails from "./Pages/EventDetails/EventDetails";
 import MyDonation from "./Pages/Donation/MyDonation/MyDonation";
 import AddMember from "./Pages/Dashboard/AddMember/AddMember";
+import AddReview from "./Pages/Dashboard/AddReview/AddReview";
+import Profile from "./Pages/Dashboard/Profile/Profile";
+import MyReview from "./Pages/Dashboard/MyReview/MyReview";
+import AddNotices from "./Pages/Dashboard/AddNotices/AddNotices";
+import Notices from "./Pages/Dashboard/Notices/Notices";
 
 function App() {
   return (
@@ -61,7 +66,11 @@ function App() {
               >
               </Route>
               <Route path="/dashboard/myEvents" element={<MyEvents />}></Route>
+              <Route path="/dashboard/addNotice" element={<AddNotices />}></Route>
+              <Route path="/dashboard/notices" element={<Notices />}></Route>
+              <Route path="/dashboard/profile" element={<Profile />}></Route>
               <Route path="/dashboard/donation" element={<MyDonation />}></Route>
+              <Route path="/dashboard/myReview" element={<MyReview />}></Route>
               <Route
                 path="/dashboard/addEvent"
                 element={
@@ -70,6 +79,7 @@ function App() {
               ></Route>
 
               <Route path="/dashboard/allEvents" element={<AllEvents />}></Route>
+              <Route path="/dashboard/addReview" element={<AddReview />}></Route>
 
               <Route path="/dashboard/allRegistration" element={<AllRegistration />}></Route>
               <Route path="/dashboard/makeAdmin" element={<AdminRoute><MakeAdmin /></AdminRoute>}></Route>

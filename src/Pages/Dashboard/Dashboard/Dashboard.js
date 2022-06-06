@@ -34,6 +34,10 @@ import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PaidIcon from '@mui/icons-material/Paid';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
+import ReviewsIcon from '@mui/icons-material/Reviews';
+import AddAlertIcon from '@mui/icons-material/AddAlert';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 const drawerWidth = 200;
 
 // interface Props {
@@ -83,19 +87,39 @@ export default function Dashboard(props) {
       <Divider />
       <NavLink style={{ textDecoration: "none" }} to="/dashboard/donation">
         <Button color="inherit">
-          <PaidIcon className='mx-2'/> Donation
-        </Button>
-      </NavLink>
-      <Divider />
-      <NavLink style={{ textDecoration: "none" }} to="/dashboard">
-        <Button color="inherit">
-          <RateReviewIcon className='mx-2'/> Add Review
+          <PaidIcon className='mx-2'/> My Donation
         </Button>
       </NavLink>
       <Divider />
       <NavLink style={{ textDecoration: "none" }} to="/dashboard/myEvents">
         <Button color="inherit">
           <EventAvailableIcon  className='mx-2'/> My Events
+        </Button>
+      </NavLink>
+      <Divider />
+    
+      <NavLink style={{ textDecoration: "none" }} to="/dashboard/notices">
+        <Button color="inherit">
+          <CircleNotificationsIcon  className='mx-2'/> Notices
+        </Button>
+      </NavLink>
+      <Divider />
+      <NavLink style={{ textDecoration: "none" }} to="/dashboard/myReview">
+        <Button color="inherit">
+          <ReviewsIcon  className='mx-2'/> My Review
+        </Button>
+      </NavLink>
+      <Divider />
+      <NavLink style={{ textDecoration: "none" }} to="/dashboard/addNotice">
+        <Button color="inherit">
+          <AddAlertIcon  className='mx-2'/> Add Notice
+        </Button>
+      </NavLink>
+      <Divider />
+      
+      <NavLink style={{ textDecoration: "none" }} to="/dashboard/addReview">
+        <Button color="inherit">
+          <RateReviewIcon className='mx-2'/> Add Review
         </Button>
       </NavLink>
       <Divider />
@@ -133,7 +157,12 @@ export default function Dashboard(props) {
         <GroupAddIcon  className='mx-2'/> Add Member
         </Button>
       </NavLink></>}
-      
+      <NavLink style={{ textDecoration: "none" }} to="/dashboard/profile">
+        <Button color="inherit">
+          <AccountCircleIcon  className='mx-2'/> My Profile
+        </Button>
+      </NavLink>
+      <Divider />
       <NavLink style={{ textDecoration: "none" }} to={"/"}>
         <Button color="inherit" onClick={logOut}>
         <LogoutIcon  className='mx-2'/> Log Out

@@ -8,7 +8,7 @@ const TeamMembers = () => {
         .then(response => response.json())
         .then(data => {
             setMembers(data);
-            console.log(data);
+            // console.log(data);
         })
     }, [])
     
