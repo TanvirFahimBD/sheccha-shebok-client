@@ -3,6 +3,7 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import { Alert, Box, Button, Grid, Typography } from "@mui/material";
 
 const CheckoutForm = (props) => {
     const navigate = useNavigate()
@@ -127,9 +128,9 @@ const CheckoutForm = (props) => {
                         },
                     }}
                 />
-                {processing ? <CircularProgress/> : <button type="submit" disabled={!stripe || success }>
-                    Pay ${amount}
-                </button>}
+                {processing ? <CircularProgress/> : 
+                <Button className="mt-4" sx={{ width: 400 }} variant="contained" type="submit" disabled={!stripe || success }>Pay ${amount}</Button>
+                }
             </form>
 
             {error && <p style={{ color: "red" }}>{error}</p>}

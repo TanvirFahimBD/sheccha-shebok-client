@@ -14,14 +14,14 @@ const Events = () => {
 
   return (
     <div>
-      <h1>events: {events.length}</h1>
-        <div className="container">
-          <div className="row">
+      <h1 className='my-5 text-center text-primary'  >events: {events.length}</h1>
+      <div className="container">
+      <div className="row">
           {events.map((event) => (
-          <SingleEvent key={event._id} event={event}></SingleEvent>
-        ))}
-          </div>
-        </div>
+            <SingleEvent key={event._id} event={event}></SingleEvent>
+          ))}
+      </div>
+    </div>
     </div>
   );
 };

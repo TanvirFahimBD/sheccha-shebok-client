@@ -18,8 +18,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import { Grid } from '@mui/material';
-import AddEvent from '../../AddEvent/AddEvent';
-import AllEvents from '../../AllEvents/AllEvents';
+import AddEvent from '../AddEvent/AddEvent';
 import { Button } from "@mui/material";
 import PropTypes from "prop-types";
 import { NavLink, Outlet } from "react-router-dom";
@@ -38,6 +37,7 @@ import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import AddAlertIcon from '@mui/icons-material/AddAlert';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import HomeIcon from '@mui/icons-material/Home';
 const drawerWidth = 200;
 
 // interface Props {
@@ -57,17 +57,19 @@ export default function Dashboard(props) {
     setMobileOpen(!mobileOpen);
   };
 
+  console.log(user.photoURL.endsWith("-c"))
+
   const drawer = (
     <div>
-      <NavLink style={{ textDecoration: "none" }} to={"/"}>
+      <NavLink className="mx-3" style={{ textDecoration: "none"}} to={"/"}>
         <Button color="inherit" sx={{ m: 3 }}>
-          <i className="mx-2 fas fa-house-user"></i> Home
+        <HomeIcon/>
         </Button>
       </NavLink>
       <br />
       <img
         className="m-4"
-        src={user.photoURL}
+        src={user.photoURL.endsWith("-c") ? "https://i.ibb.co/3czDVCx/undraw-profile-pic-ic5t.png"  : user.photoURL}
         width={100}
         height={100}
         alt=""
@@ -77,112 +79,120 @@ export default function Dashboard(props) {
           boxShadow: "5px 5px 5px gray",
         }}
       />
-      <h5 className='mx-2'>{user.displayName}</h5>
+      <h6 className='mx-2'>{user.displayName}</h6>
+      <br />
       <Divider />
       <NavLink style={{ textDecoration: "none" }} to="/dashboard">
         <Button color="inherit">
           <DashboardIcon className='mx-2' /> Dashboard
         </Button>
       </NavLink>
-      <Divider />
-      <NavLink style={{ textDecoration: "none" }} to="/dashboard/donation">
-        <Button color="inherit">
-          <PaidIcon className='mx-2' /> My Donation
-        </Button>
-      </NavLink>
-      <Divider />
+      <Divider />  <br />
       {
-      volunteer &&
+        (!admin && !volunteer) &&
+        <>
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/donation">
+            <Button color="inherit">
+              <PaidIcon className='mx-2' /> My Donation
+            </Button>
+          </NavLink>
+          <Divider />  <br />
+        </>
+      }
+      {
+        volunteer &&
         <>
           <NavLink style={{ textDecoration: "none" }} to="/dashboard/myEvents">
             <Button color="inherit">
               <EventAvailableIcon className='mx-2' /> My Events
             </Button>
           </NavLink>
-          <Divider />
+          <Divider />  <br />
           <NavLink style={{ textDecoration: "none" }} to="/dashboard/addReview">
-        <Button color="inherit">
-          <RateReviewIcon className='mx-2' /> Add Review
-        </Button>
-      </NavLink>
-      <Divider />
+            <Button color="inherit">
+              <RateReviewIcon className='mx-2' /> Add Review
+            </Button>
+          </NavLink>
+          <Divider />  <br />
           <NavLink style={{ textDecoration: "none" }} to="/dashboard/notices">
             <Button color="inherit">
               <CircleNotificationsIcon className='mx-2' /> Notices
             </Button>
           </NavLink>
-          <Divider />
+          <Divider />  <br />
           <NavLink style={{ textDecoration: "none" }} to="/dashboard/myReview">
             <Button color="inherit">
               <ReviewsIcon className='mx-2' /> My Review
             </Button>
           </NavLink>
-          <Divider />
-          </>
-          }
-      {
-      admin && 
-      <>
-      <NavLink style={{ textDecoration: "none" }} to="/dashboard/addNotice">
-        <Button color="inherit">
-          <AddAlertIcon className='mx-2' /> Add Notice
-        </Button>
-      </NavLink>
-      <Divider />
-      <NavLink style={{ textDecoration: "none" }} to="/dashboard/addEvent">
-        <Button color="inherit">
-          <AddCardIcon className='mx-2' /> Add Event
-        </Button>
-      </NavLink>
-        <Divider />
-        <NavLink style={{ textDecoration: "none" }} to="/dashboard/allEvents">
-          <Button color="inherit">
-            {" "}
-            <EventNoteIcon className='mx-2' />All Events
-          </Button>
-        </NavLink>{" "}
-        <Divider />
-        <NavLink style={{ textDecoration: "none" }} to="/dashboard/allRegistration">
-          <Button color="inherit">
-            <HowToRegIcon className='mx-2' /> All Reg.
-          </Button>
-        </NavLink>{" "}
-        <Divider />
-        <NavLink style={{ textDecoration: "none" }} to="/dashboard/makeAdmin">
-          <Button color="inherit">
-            <AdminPanelSettingsIcon className='mx-2' /> Make Admin
-          </Button>
-        </NavLink>
-        <Divider />
-        <NavLink style={{ textDecoration: "none" }} to="/dashboard/makeVolunteer">
-          <Button color="inherit">
-            <VolunteerActivismIcon className='mx-2' /> Add Volunteer
-          </Button>
-        </NavLink>
-        <Divider />
-
-        <NavLink
-          style={{ textDecoration: "none" }}
-          to="/dashboard/addMember"
-        >
-          <Button color="inherit">
-            <GroupAddIcon className='mx-2' /> Add Member
-          </Button>
-        </NavLink>
+          <Divider />  <br />
         </>
-        }
+      }
+      {
+        admin &&
+        <>
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/addNotice">
+            <Button color="inherit">
+              <AddAlertIcon className='mx-2' /> Add Notice
+            </Button>
+          </NavLink>
+          <Divider />  <br />
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/addEvent">
+            <Button color="inherit">
+              <AddCardIcon className='mx-2' /> Add Event
+            </Button>
+          </NavLink>
+          <Divider />  <br />
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/allEvents">
+            <Button color="inherit">
+              {" "}
+              <EventNoteIcon className='mx-2' />All Events
+            </Button>
+          </NavLink>{" "}
+          <Divider />  <br />
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/allRegistration">
+            <Button color="inherit">
+              <HowToRegIcon className='mx-2' /> All Reg.
+            </Button>
+          </NavLink>{" "}
+          <Divider />  <br />
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/makeAdmin">
+            <Button color="inherit">
+              <AdminPanelSettingsIcon className='mx-2' /> Make Admin
+            </Button>
+          </NavLink>
+          <Divider />  <br />
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/makeVolunteer">
+            <Button color="inherit">
+              <VolunteerActivismIcon className='mx-2' /> Add Volunteer
+            </Button>
+          </NavLink>
+          <Divider />
+  <br />
+          <NavLink
+            style={{ textDecoration: "none" }}
+            to="/dashboard/addMember"
+          >
+            <Button color="inherit">
+              <GroupAddIcon className='mx-2' /> Add Member
+            </Button>
+          </NavLink> 
+          <Divider />
+           <br />
+        </>
+      }
       <NavLink style={{ textDecoration: "none" }} to="/dashboard/profile">
         <Button color="inherit">
           <AccountCircleIcon className='mx-2' /> My Profile
         </Button>
       </NavLink>
-      <Divider />
+      <Divider />  <br />
       <NavLink style={{ textDecoration: "none" }} to={"/"}>
         <Button color="inherit" onClick={logOut}>
           <LogoutIcon className='mx-2' /> Log Out
         </Button>
       </NavLink>
-      <Divider />
+      <Divider />  <br />
     </div>
   );
 

@@ -10,7 +10,7 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { ClassNames } from "@emotion/react";
 import { Box, Grid } from "@mui/material";
-import useAuth from '../../hooks/useAuth';
+import useAuth from '../../../hooks/useAuth';
 
 const AllRegistration = () => {
   const { token, user } = useAuth()

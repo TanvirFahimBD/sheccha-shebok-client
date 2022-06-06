@@ -1,16 +1,13 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./App.css";
 import AuthProvider from "./contexts/AuthProvider";
-import AddEvent from "./Pages/AddEvent/AddEvent";
-import Events from "./Pages/Events/Events";
+import AddEvent from "./Pages/Dashboard/AddEvent/AddEvent";
 import Home from "./Pages/Home/Home/Home";
 import Login from "./Pages/Login/Login/Login";
 import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
-import MyEvents from "./Pages/MyEvents/MyEvents";
+import MyEvents from "./Pages/Dashboard/MyEvents/MyEvents";
 import Header from "./Pages/Shared/Header/Header";
-import SingleEventRegister from "./Pages/SingleEventRegister/SingleEventRegister";
-import AllRegistration from "./Pages/AllRegistration/AllRegistration";
-import AllEvents from "./Pages/AllEvents/AllEvents";
+import SingleEventRegister from "./Pages/EventAll/SingleEventRegister/SingleEventRegister";
 import EventUpdateRegisters from "./Pages/EventUpdateRegisters/EventUpdateRegisters";
 import EventUpdatePage from "./Pages/EventUpdatePage/EventUpdatePage";
 import NoMatch from "./Pages/NoMatch/NoMatch";
@@ -20,15 +17,18 @@ import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
 import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
 import AdminRoute from "./Pages/Login/AdminRoute/AdminRoute";
 import Donation from "./Pages/Donation/Donation/Donation";
-import EventDetails from "./Pages/EventDetails/EventDetails";
+import EventDetails from "./Pages/EventAll/EventDetails/EventDetails";
 import MyDonation from "./Pages/Donation/MyDonation/MyDonation";
-import AddMember from "./Pages/Dashboard/AddMember/AddMember";
 import AddReview from "./Pages/Dashboard/AddReview/AddReview";
 import Profile from "./Pages/Dashboard/Profile/Profile";
 import MyReview from "./Pages/Dashboard/MyReview/MyReview";
-import AddNotices from "./Pages/Dashboard/AddNotices/AddNotices";
+import AddNotices from "./Pages/Dashboard/AddEvent/AddNotices/AddNotices";
 import Notices from "./Pages/Dashboard/Notices/Notices";
 import AddVolunteer from "./Pages/Dashboard/AddVolunteer/AddVolunteer";
+import Events from "./Pages/EventAll/Events/Events";
+import AllEvents from "./Pages/Dashboard/AllEvents/AllEvents";
+import AddMember from "./Pages/Dashboard/AddEvent/AddMember/AddMember";
+import AllRegistration from "./Pages/Dashboard/AllRegistration/AllRegistration";
 
 function App() {
   return (
