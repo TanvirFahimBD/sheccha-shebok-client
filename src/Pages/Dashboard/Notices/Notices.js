@@ -4,6 +4,7 @@ import useAuth from "../../../hooks/useAuth";
 import TextField from '@mui/material/TextField';
 import GoogleIcon from '@mui/icons-material/Google';
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import Notice from "../Notice/Notice";
 
 const Notices = () => {
@@ -20,14 +21,23 @@ const Notices = () => {
                 console.error('Error:', error);
             });
     }, [])
-    
-
-        
 
     return (
+
         <div>
-            <h1>Notices: {notices?.length}</h1>
+            <Box sx={{ width: '100%' }}>
+        <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+          <Grid item xs={6}>
+          <Typography sx={{ my: 2 }} variant="h2" component="h2">
+          <NotificationsActiveIcon/> {notices?.length}
+            </Typography>
             {notices.map(notice=> <Notice notice={notice} key={notice._id} ></Notice>)}
+            </Grid>
+            <Grid item xs={6}>
+            <img className="m-5" src="https://i.ibb.co/WHzHWTR/New-message-bro.png" alt="" height="700px" />
+          </Grid>
+        </Grid>
+      </Box>
         </div>
     );
 };

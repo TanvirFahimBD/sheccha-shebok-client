@@ -61,7 +61,7 @@ const AddMember = () => {
 
     return (
         <div>
-            <h1>Add a Member</h1>
+            
             <form onSubmit={handleAddVolunteer}>
                 <TextField sx={{ width: 300 }}
                     id="standard-basic"

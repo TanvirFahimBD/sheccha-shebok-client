@@ -34,7 +34,7 @@ const AddVolunteer = () => {
                 "content-type": "application/json"
             },
             body: JSON.stringify(email)
-        }) 
+        })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
@@ -44,25 +44,37 @@ const AddVolunteer = () => {
                 }
             })
     }
+
     return (
-        <div>
-            <h1>Make a Volunteer</h1>
-            <form onSubmit={handleAddVolunteer}>
-                <TextField sx={{ width: 300 }}
-                    id="standard-basic"
-                    label="Email"
-                    name="email"
-                    type="email"
-                    onBlur={handleOnChange}
-                    variant="filled"
-                />
-                <br />
-                <br />
-                <Button sx={{ width: 300 }} variant="contained" type="submit">Add Volunteer</Button>
-            </form>
-            {error && <Alert sx={{ mt: 4, width: "300px" }} severity="error">{error}</Alert>}
-            {success && <Alert sx={{ mt: 4, width: "300px" }} severity="success">{success}</Alert>}
-        </div>
+        <Box sx={{ width: '100%' }}>
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+               
+                <Grid item xs={6}>
+                    <Typography sx={{ my: 8 }} variant="h2" component="h2">
+                        Make a <span className="text-primary">Volunteer</span>
+                    </Typography>
+                    <form onSubmit={handleAddVolunteer}>
+                        <TextField sx={{ width: 300 }}
+                            id="standard-basic"
+                            label="Email"
+                            name="email"
+                            type="email"
+                            onBlur={handleOnChange}
+                            variant="filled"
+                        />
+                        <br />
+                        <br />
+                        <Button sx={{ width: 300 }} variant="contained" type="submit">Add Volunteer</Button>
+                    </form>
+                    {error && <Alert sx={{ mt: 4, width: "300px" }} severity="error">{error}</Alert>}
+                    {success && <Alert sx={{ mt: 4, width: "300px" }} severity="success">{success}</Alert>}
+                </Grid>
+                <Grid style={{borderLeft: "1px solid lightGray"}} item xs={6}>
+                    <img className="m-5" src="https://i.ibb.co/xG77gJd/Volunteering-rafiki.png" alt="" height="700px" />
+                </Grid>
+            </Grid>
+        </Box>
+
     );
 };
 

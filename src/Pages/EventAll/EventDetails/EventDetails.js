@@ -24,7 +24,7 @@ const EventDetails = () => {
           <img  className='mx-5' src={matchEvent.banner} alt="" height="400px"/>
             <h2  className='mx-5 my-3 text-primary'>{matchEvent.title}</h2>
             <h5  className='mx-5 '>{matchEvent.date}</h5>
-            <p  className='mx-5' style={{width: "400px"}}>{matchEvent.desc}</p>
+            <p  className='mx-5 mb-4' style={{width: "400px"}}>{matchEvent.desc}</p>
             <Link to={`/events/register/${matchEvent._id}`}>
                   <button className="btn btn-primary mx-5">Register</button>
             </Link>
@@ -32,7 +32,7 @@ const EventDetails = () => {
                   <button className="btn btn-warning">Donate</button>
             </Link>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={6} style={{borderLeft: "1px solid lightGray"}}>
             <img className="m-5" src="https://i.ibb.co/9Wcs4Db/Volunteering-bro.png" alt="" height="700px" />
           </Grid>
         </Grid>

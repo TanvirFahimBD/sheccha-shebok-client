@@ -14,11 +14,9 @@ const Reviews = () => {
     }, [])
     return (
         <div>
-            <h1 className='text-center my-4 text-primary'>Reviews</h1>
-
-            <Box className='mx-5' sx={{ width: '100%' }}>
+            <h1 className='text-center text-primary my-5'>Reviews</h1>
+            <Box sx={{ width: '100%' }}>
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                   
                         {
                             reviews.map(review => <Review review={review} key={review._id} ></Review>)
                         }

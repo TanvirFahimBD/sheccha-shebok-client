@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from "react";
-import SingleEvent from "../SingleEvent/SingleEvent";
+import SingleEvent from "../../EventAll/SingleEvent/SingleEvent";
 
-const Events = () => {
+const HomeEvents = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/events")
       .then((res) => res.json())
       .then((data) => {
-        setEvents(data);
-        // console.log(data);
+        setEvents(data.slice(0, 6));
       });
   }, []);
 
   return (
     <div className="text-center">
-      <h1 className='my-5 text-center text-primary'  >Events: {events.length}</h1>
+      <h1 className='my-5 text-center text-primary'  >Current Events</h1>
       <div className="container">
       <div className="row">
           {events.map((event) => (
@@ -26,4 +25,4 @@ const Events = () => {
   );
 };
 
-export default Events;
+export default HomeEvents;

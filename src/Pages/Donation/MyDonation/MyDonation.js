@@ -19,9 +19,6 @@ const MyDonation = () => {
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           
           <Grid item xs={6} style={{borderRight: "1px solid lightGray"}}>
-            <Typography sx={{ my: 8 }} variant="h2" component="h2">
-            MyDonation
-            </Typography>
             {paymentInfo.map(pay =><MySingleDonation pay={pay} key={pay._id}></MySingleDonation>)}
             </Grid>
             <Grid item xs={6}>

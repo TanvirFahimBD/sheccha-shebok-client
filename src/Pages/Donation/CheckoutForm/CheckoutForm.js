@@ -66,7 +66,8 @@ const CheckoutForm = (props) => {
                 card: card,
                 billing_details: {
                   name: user?.displayName,
-                  email: user?.email
+                  email: user?.email,
+                  
                 },
               },
             },
@@ -88,7 +89,8 @@ const CheckoutForm = (props) => {
                     last4: paymentMethod.card.last4,
                     email: user.email,
                     event: props.currentDonation.title,
-                    eventBanner: props.currentDonation.banner
+                    eventBanner: props.currentDonation.banner,
+                   date: new Date().toDateString()
                 }
 
                 const url = "http://localhost:5000/payment"

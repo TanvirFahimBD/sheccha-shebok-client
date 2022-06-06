@@ -34,37 +34,47 @@ const MakeAdmin = () => {
                 "content-type": "application/json"
             },
             body: JSON.stringify(email)
-        }) 
+        })
             .then(res => res.json())
             .then(data => {
                 console.log(data)
                 if (data.modifiedCount > 0) {
                     setError("")
                     setSuccess("Admin Added Successfully")
-                   
+
                 }
             })
     }
 
     return (
-        <div>
-            <h1>Make an Admin</h1>
-            <form onSubmit={handleAddAdmin}>
-                <TextField sx={{ width: 300 }}
-                    id="standard-basic"
-                    label="Email"
-                    name="email"
-                    type="email"
-                    onBlur={handleOnChange}
-                    variant="filled"
-                />
-                <br />
-                <br />
-                <Button sx={{ width: 300 }} variant="contained" type="submit">Add Admin</Button>
-            </form>
-            {error && <Alert sx={{ mt: 4, width: "300px" }} severity="error">{error}</Alert>}
-            {success && <Alert sx={{ mt: 4, width: "300px" }} severity="success">{success}</Alert>}
-        </div>
+        <Box sx={{ width: '100%' }}>
+            <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                <Grid item xs={6}>
+                    <img className="m-5" src="https://i.ibb.co/Lrq12RF/Admin-pana.png" alt="" height="700px" />
+                </Grid>
+                <Grid item xs={6}>
+                    <Typography sx={{ my: 8 }} variant="h2" component="h2">
+                        Make an <span className="text-primary">Admin</span>
+                    </Typography>
+                    <form onSubmit={handleAddAdmin}>
+                        <TextField sx={{ width: 300 }}
+                            id="standard-basic"
+                            label="Email"
+                            name="email"
+                            type="email"
+                            onBlur={handleOnChange}
+                            variant="filled"
+                        />
+                        <br />
+                        <br />
+                        <Button sx={{ width: 300 }} variant="contained" type="submit">Add Admin</Button>
+                    </form>
+                    {error && <Alert sx={{ mt: 4, width: "300px" }} severity="error">{error}</Alert>}
+                    {success && <Alert sx={{ mt: 4, width: "300px" }} severity="success">{success}</Alert>}
+                </Grid>
+            </Grid>
+        </Box>
+
     );
 };
 

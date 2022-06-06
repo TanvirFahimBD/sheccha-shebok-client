@@ -1,0 +1,36 @@
+p{
+  margin-bottom: 0rem;
+}
+.box-footer {
+  margin-top: 10em;
+    background-color: #0093e9;
+    background-image: linear-gradient(160deg, #0093e9 0%, #80d0c7 100%);
+  }
+  
+  .main-footer {
+    padding-top: 3em;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 100px;
+  }
+  
+  .main-footer a {
+    text-decoration: none;
+  }
+  
+  .list-unstyled {
+    list-style: none;
+  }
+  .list-unstyled a {
+    text-decoration: none;
+  }
+  
+  .btn-msg {
+    padding: 0 10px;
+    border: 1px solid gray;
+  }
+  
+  #copyright {
+    text-align: center;
+  }

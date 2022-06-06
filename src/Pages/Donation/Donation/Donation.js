@@ -28,7 +28,7 @@ const Donation = () => {
             <Box   className="my-5" sx={{ width: '100%' }}>
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                     <Grid item xs={6}>
-                        <img className="m-5" src="https://i.ibb.co/cy4ghxM/Events-rafiki.png" alt="" height="700px" />
+                        <img className="m-5" src="https://i.ibb.co/wWRybJ3/Payment-Information-bro.png" alt="" height="700px" />
                     </Grid>
                     <Grid item xs={6}>
                         <Typography sx={{ my: 8 }} variant="h2" component="h2">
@@ -50,6 +50,15 @@ const Donation = () => {
                             type="text"
                             variant="filled"
                             value={currentDonation.title || ""} readOnly
+                        />
+                        <br />
+                        <TextField sx={{ width: 400 }}
+                            id="standard-basic"
+                            label="amount"
+                            name="amount"
+                            type="text"
+                            variant="filled"
+                            value={amount || ""} readOnly
                         />
                         <br />
                         <br />

@@ -17,7 +17,9 @@ const EventTable = (props) => {
             </TableCell>
             <TableCell align="right">{date}</TableCell>
             <TableCell align="right">{desc}</TableCell>
-            <TableCell align="right">{banner}</TableCell>
+            <TableCell align="right">
+                <img style={{borderRadius: "100%"}} src={banner} alt="" width="100px" height="100px" />
+            </TableCell>
             <TableCell align="right">
                 <button className='btn btn-danger' onClick={() => props.handleDelete(_id)}><DeleteForeverIcon/>
                 </button>

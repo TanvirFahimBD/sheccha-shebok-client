@@ -6,21 +6,22 @@ const MySingleEvent = (props) => {
 //    console.log(props.myEvent);
 
     return (
-        <div className='col-md-12 col-lg-6'>
+        <div  style={{width: "400px"}} className='col-md-12 col-lg-6 mx-2 mb-5'>
             <img src={banner} alt="" height="300px" />
-            <h1>{title}</h1>
+            <h1  className='text-primary'>{title}</h1>
             <p>{date}</p>
-            <span>Volunteer: </span>
+            <div className='mt-3'>
             <img src={image} alt="" width="40px" height="40px" style={{borderRadius: "100%"}} />
-            <br />
+            <span className='text-primary'> &nbsp; Volunteer </span>
+            </div>
             <br />
             <small>{desc}</small>
             <br />
             <button
-              className="btn btn-danger"
+              className="btn btn-danger mt-2"
               onClick={() => props.handleDelete(_id)}
               >
-              Cancel
+              Cancel Event
             </button>
         </div>
     );

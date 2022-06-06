@@ -8,7 +8,7 @@ import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 import MyEvents from "./Pages/Dashboard/MyEvents/MyEvents";
 import Header from "./Pages/Shared/Header/Header";
 import SingleEventRegister from "./Pages/EventAll/SingleEventRegister/SingleEventRegister";
-import EventUpdateRegisters from "./Pages/EventUpdateRegisters/EventUpdateRegisters";
+import EventUpdatePublic from "./Pages/EventUpdatePublic/EventUpdatePublic";
 import EventUpdatePage from "./Pages/EventUpdatePage/EventUpdatePage";
 import NoMatch from "./Pages/NoMatch/NoMatch";
 import Register from "./Pages/Login/Register/Register";
@@ -29,10 +29,13 @@ import Events from "./Pages/EventAll/Events/Events";
 import AllEvents from "./Pages/Dashboard/AllEvents/AllEvents";
 import AddMember from "./Pages/Dashboard/AddEvent/AddMember/AddMember";
 import AllRegistration from "./Pages/Dashboard/AllRegistration/AllRegistration";
+import Footer from "./Pages/Shared/Footer/Footer";
 
 function App() {
   return (
-    <div>
+    <div className="App">
+    <div id="page-container">
+      <div id="content-wrap">
       <AuthProvider>
         <Router>
           <Header></Header>
@@ -56,7 +59,7 @@ function App() {
             ></Route>
             <Route
               path="/events/eventUpdateRegisters/:singleEventId"
-              element={<EventUpdateRegisters />}
+              element={<EventUpdatePublic />}
             ></Route>
             <Route path="/dashboard"
               element={<PrivateRoute>
@@ -86,16 +89,14 @@ function App() {
               <Route path="/dashboard/allRegistration" element={<AllRegistration />}></Route>
               <Route path="/dashboard/makeAdmin" element={<AdminRoute><MakeAdmin /></AdminRoute>}></Route>
               <Route path="/dashboard/addMember" element={<AddMember />}></Route>
-
-
-
             </Route>
-
-
             <Route path="*" element={<NoMatch />}></Route>
           </Routes>
         </Router>
       </AuthProvider>
+      </div>
+      </div>
+      <Footer />
     </div>
   );
 }

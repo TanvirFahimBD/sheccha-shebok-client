@@ -15,19 +15,19 @@ const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 const images = [
   {
     imgPath:
-      'https://i.ibb.co/rG8BvCT/child-Support.png',
+      'https://i.ibb.co/vk060NL/sam-mann-41eo5e8j-W08-unsplash.jpg',
   },
   {
     imgPath:
-      'https://i.ibb.co/TRmrftm/food-Charity.png',
+      'https://i.ibb.co/0y3XPf7/larm-rmah-AEa-TUnvneik-unsplash.jpg',
   },
   {
     imgPath:
-      'https://i.ibb.co/MpFW8Ns/refuse-Shelter.png',
+      'https://i.ibb.co/wdThKPD/ocg-saving-the-ocean-xch7j-XAaqqo-unsplash.jpg',
   },
   {
     imgPath:
-      'https://i.ibb.co/bmQ2wqw/bird-House.png',
+      'https://i.ibb.co/8gpXR6S/eric-masur-Hkw1er-Brzwc-unsplash.jpg',
   },
 ];
 
@@ -49,7 +49,7 @@ const Banner = () => {
   };
     return (
         <div>
-          <Box sx={{ minWidth: 1920, flexGrow: 1 }}>
+          <Box sx={{ minWidth: "100%", flexGrow: 1 }}>
       <Paper
         square
         elevation={0}
@@ -76,7 +76,7 @@ const Banner = () => {
                 sx={{
                   height: 600,
                   display: 'block',
-                  minWidth: 1920,
+                  minWidth: 349,
                   overflow: 'hidden',
                   width: '100%',
                 }}
@@ -87,35 +87,6 @@ const Banner = () => {
           </div>
         ))}
       </AutoPlaySwipeableViews>
-      {/* <MobileStepper
-        steps={maxSteps}
-        position="static"
-        activeStep={activeStep}
-        nextButton={
-          <Button
-            size="small"
-            onClick={handleNext}
-            disabled={activeStep === maxSteps - 1}
-          >
-            Next
-            {theme.direction === 'rtl' ? (
-              <KeyboardArrowLeft />
-            ) : (
-              <KeyboardArrowRight />
-            )}
-          </Button>
-        }
-        backButton={
-          <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-            {theme.direction === 'rtl' ? (
-              <KeyboardArrowRight />
-            ) : (
-              <KeyboardArrowLeft />
-            )}
-            Back
-          </Button>
-        }
-      /> */}
     </Box>  
         </div>
     );

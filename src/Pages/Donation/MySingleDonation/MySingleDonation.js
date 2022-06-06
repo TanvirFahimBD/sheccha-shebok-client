@@ -8,11 +8,11 @@ import { CardActionArea } from '@mui/material';
 
 
 const MySingleDonation = (props) => {
-    const {transaction, email, event, eventBanner} = props.pay;
+    const {transaction, email, date, event, eventBanner} = props.pay;
     const amount = props.pay.amount /100;
 
     return (
-            <Grid item xs={12} md={6} lg={4}>
+            <Grid item xs={12} md={6} lg={4} className="mb-3">
             <Card sx={{ maxWidth: 345 }}>
       <CardActionArea className="text-center">
         <img 
@@ -28,8 +28,12 @@ const MySingleDonation = (props) => {
           <Typography className="text-primary" variant="h5" color="text.secondary">
           {amount}
           </Typography>
+
           <Typography variant="body2" color="text.secondary">
           Transaction ID: {transaction.substring(3,27)}
+          </Typography>
+          <Typography className="text-primary" variant="h6" color="text.secondary">
+          {date}
           </Typography>
         </CardContent>
       </CardActionArea>
