@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import SingleEvent from "../SingleEvent/SingleEvent";
+import useAuth from "../../../hooks/useAuth";
+import { Button, TextField } from "@mui/material";
 
 const Events = () => {
+  const {user} = useAuth()
   const [events, setEvents] = useState([]);
   const [searchEvents, setSearchEvents] = useState([]);
   const [search, setSearch] = useState("");
@@ -18,31 +21,21 @@ const Events = () => {
           setSearchEvents(newData)
         }
       })
-  }, []);
-
-  // const handleSearchAction = (e) => {
-    // e.preventDefault()
-    // fetch("http://localhost:5000/events")
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     const newData = data.filter(dt => dt.title.toLowerCase().includes(search.toLowerCase()))
-    //     if (newData) {
-    //       console.log("newData", newData);
-    //       setSearchEvents(newData)
-    //     }
-    //   })
-
-  // }
+  }, [search]);
 
   return (
     <div className="text-center">
       {(searchEvents.length === 0) && <h1 className='my-5 text-center text-primary'  > {events.length} Events Available</h1>}
       {(searchEvents.length > 0) && <h1 className='my-5 text-center text-primary'  > {searchEvents.length} Events Available</h1>}
-      {/* <form onSubmit={handleSearchAction}> */}
-        <input type="text" name="" id="" onChange={(e) => setSearch(e.target.value)} />
-        <input type="submit" value="Search" />
-      {/* </form> */}
-      <div className="container">
+      <TextField sx={{ width: 300 }}
+                id="filled-password-input"
+                label="Search"
+                name="Search"
+                type="text"
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <Button sx={{ height: 55 }} variant="contained" type="submit">Search</Button>
+              <div className="container">
         <div className="row">
 
 
