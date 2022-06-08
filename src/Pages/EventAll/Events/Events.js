@@ -3,31 +3,59 @@ import SingleEvent from "../SingleEvent/SingleEvent";
 
 const Events = () => {
   const [events, setEvents] = useState([]);
+  const [searchEvents, setSearchEvents] = useState([]);
   const [search, setSearch] = useState("");
-  // console.log(search);
+  console.log(search);
+
   useEffect(() => {
     fetch("http://localhost:5000/events")
       .then((res) => res.json())
       .then((data) => {
         setEvents(data);
-        console.log("data",data);
-        const newData = data.find(dt => dt.title === search)
-        console.log("newData",newData)
-      });
+        const newData = data.filter(dt => dt.title.toLowerCase().includes(search.toLowerCase()))
+        if (newData) {
+          console.log("newData", newData);
+          setSearchEvents(newData)
+        }
+      })
   }, []);
+
+  // const handleSearchAction = (e) => {
+    // e.preventDefault()
+    // fetch("http://localhost:5000/events")
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     const newData = data.filter(dt => dt.title.toLowerCase().includes(search.toLowerCase()))
+    //     if (newData) {
+    //       console.log("newData", newData);
+    //       setSearchEvents(newData)
+    //     }
+    //   })
+
+  // }
 
   return (
     <div className="text-center">
-      <h1 className='my-5 text-center text-primary'  > {events.length} Events Available</h1>
-      <input type="text" name="" id="" onBlur={(e) => setSearch(e.target.value)} />
-      <input type="submit" value="Search" />
+      {(searchEvents.length === 0) && <h1 className='my-5 text-center text-primary'  > {events.length} Events Available</h1>}
+      {(searchEvents.length > 0) && <h1 className='my-5 text-center text-primary'  > {searchEvents.length} Events Available</h1>}
+      {/* <form onSubmit={handleSearchAction}> */}
+        <input type="text" name="" id="" onChange={(e) => setSearch(e.target.value)} />
+        <input type="submit" value="Search" />
+      {/* </form> */}
       <div className="container">
-      <div className="row">
-          {events.map((event) => (
+        <div className="row">
+
+
+          {(searchEvents.length == 0) && events.map((event) => (
             <SingleEvent key={event._id} event={event}></SingleEvent>
           ))}
+
+          {(searchEvents.length > 0) && searchEvents.map((event) => (
+            <SingleEvent key={event._id} event={event}></SingleEvent>
+          ))}
+
+        </div>
       </div>
-    </div>
     </div>
   );
 };
