@@ -32,7 +32,7 @@ const Donation = () => {
                     </Grid>
                     <Grid item xs={6}>
                         <Typography sx={{ my: 8 }} variant="h2" component="h2">
-                            Make Payment
+                            Make Donation
                         </Typography>
                         <TextField sx={{ width: 400 }}
                             id="standard-basic"
