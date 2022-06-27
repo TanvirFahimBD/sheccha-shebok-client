@@ -6,7 +6,7 @@ import { Box, Grid } from "@mui/material";
 const TeamMembers = () => {
     const [members, setMembers] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/teamMembers')
+        fetch('https://tranquil-cliffs-23009.herokuapp.com/teamMembers')
             .then(response => response.json())
             .then(data => {
                 setMembers(data);

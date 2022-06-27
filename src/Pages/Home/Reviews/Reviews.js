@@ -5,7 +5,7 @@ import { Box, Grid } from "@mui/material";
 const Reviews = () => {
     const [reviews, setReviews] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://tranquil-cliffs-23009.herokuapp.com/review')
             .then(response => response.json())
             .then(data => {
                 setReviews(data);

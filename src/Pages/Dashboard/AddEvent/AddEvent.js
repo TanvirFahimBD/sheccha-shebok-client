@@ -19,7 +19,7 @@ const AddEvent = () => {
     const banner = bannerRef.current.value;
     const date = dateRef.current.value;
     const newEvent = { index, key, title, desc, banner, date };
-    axios.post("http://localhost:5000/events", newEvent).then((res) => {
+    axios.post("https://tranquil-cliffs-23009.herokuapp.com/events", newEvent).then((res) => {
       if (res?.data?.insertedId) {
         alert("Event Added Successfully");
         e.target.reset();

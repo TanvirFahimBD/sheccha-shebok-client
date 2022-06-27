@@ -7,7 +7,7 @@ const EventDetails = () => {
     const {eventId} = useParams()
     const [matchEvent, setMatchEvent] = useState({});
     useEffect(() => {
-      fetch("http://localhost:5000/events")
+      fetch("https://tranquil-cliffs-23009.herokuapp.com/events")
         .then((res) => res.json())
         .then((data) => {
             const event = data.find( ev => ev._id === eventId)

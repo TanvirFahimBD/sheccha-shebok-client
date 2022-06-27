@@ -11,7 +11,7 @@ const Events = () => {
   console.log(search);
 
   useEffect(() => {
-    fetch("http://localhost:5000/events")
+    fetch("https://tranquil-cliffs-23009.herokuapp.com/events")
       .then((res) => res.json())
       .then((data) => {
         setEvents(data);

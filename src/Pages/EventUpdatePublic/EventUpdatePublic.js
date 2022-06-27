@@ -12,7 +12,7 @@ const EventUpdatePublic = () => {
   
     //Get Current Event Info
     useEffect(() => {
-      fetch(`http://localhost:5000/register/${user.email}`)
+      fetch(`https://tranquil-cliffs-23009.herokuapp.com/register/${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           setEvent(data[0]);
@@ -53,7 +53,7 @@ const EventUpdatePublic = () => {
     }
   
     const handleEventUpdate = (e) => {    
-        fetch(`http://localhost:5000/register/${singleEventId}`, {
+        fetch(`https://tranquil-cliffs-23009.herokuapp.com/register/${singleEventId}`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",

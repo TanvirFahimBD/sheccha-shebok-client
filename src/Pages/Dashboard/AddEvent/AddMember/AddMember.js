@@ -41,7 +41,7 @@ const AddMember = () => {
         formData.append("banner", banner)
         formData.append("image", image)
 
-        fetch('http://localhost:5000/teamMembers', {
+        fetch('https://tranquil-cliffs-23009.herokuapp.com/teamMembers', {
             method: 'POST',
             body: formData
         })

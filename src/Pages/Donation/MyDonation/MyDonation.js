@@ -7,7 +7,7 @@ const MyDonation = () => {
   const { user } = useAuth()
   const [paymentInfo, setPaymentInfo] = useState([])
   useEffect(() => {
-    fetch(`http://localhost:5000/payment/${user.email || ""}`)
+    fetch(`https://tranquil-cliffs-23009.herokuapp.com/payment/${user.email || ""}`)
       .then(res => res.json())
       .then(data => {
         setPaymentInfo(data);

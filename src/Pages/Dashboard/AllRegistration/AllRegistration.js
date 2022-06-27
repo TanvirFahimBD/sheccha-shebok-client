@@ -18,7 +18,7 @@ const AllRegistration = () => {
   const email = user?.email;
 
   useEffect(() => {
-    fetch("http://localhost:5000/register", {
+    fetch("https://tranquil-cliffs-23009.herokuapp.com/register", {
       headers: {
         'authorization': `Bearer ${token}`
       }
@@ -34,7 +34,7 @@ const AllRegistration = () => {
   const handleDelete = (id) => {
     const deleteData = window.confirm("Are you sure you want to delete?");
     if (deleteData) {
-      fetch(`http://localhost:5000/register/${id}`, {
+      fetch(`https://tranquil-cliffs-23009.herokuapp.com/register/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

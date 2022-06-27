@@ -13,7 +13,7 @@ import { Box, Grid } from "@mui/material";
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/events")
+    fetch("https://tranquil-cliffs-23009.herokuapp.com/events")
       .then((res) => res.json())
       .then((data) => {
         setEvents(data);
@@ -25,7 +25,7 @@ const AllEvents = () => {
   const handleDelete = (id) => {
     const deleteData = window.confirm("Are you sure you want to delete?");
     if (deleteData) {
-      fetch(`http://localhost:5000/events/${id}`, {
+      fetch(`https://tranquil-cliffs-23009.herokuapp.com/events/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

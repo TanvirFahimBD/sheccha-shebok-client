@@ -11,7 +11,7 @@ const Notices = () => {
     const [notices, setNotices] = useState([])
 
     useEffect(() => {
-        fetch('http://localhost:5000/notices')
+        fetch('https://tranquil-cliffs-23009.herokuapp.com/notices')
             .then(response => response.json())
             .then(data => {
                 setNotices(data)

@@ -9,7 +9,7 @@ const MyReview = () => {
     const [myReview, setMyReview] = useState([])
     const myEmail = user?.email;
     useEffect(() => {
-        fetch(`http://localhost:5000/review/${myEmail}`)
+        fetch(`https://tranquil-cliffs-23009.herokuapp.com/review/${myEmail}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

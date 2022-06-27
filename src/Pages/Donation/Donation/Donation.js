@@ -15,7 +15,7 @@ const Donation = () => {
     const [currentDonation, setCurrentDonation] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:5000/events")
+        fetch("https://tranquil-cliffs-23009.herokuapp.com/events")
             .then(res => res.json())
             .then(data => {
                 const match = data.find(dt => dt._id === eventId)

@@ -18,7 +18,7 @@ const Profile = () => {
   const handleProfileUpdate = (e) => {
     e.preventDefault()
     const updateUser = { email: user.email, name: user.displayName, address, age, education, occupation }
-    fetch('http://localhost:5000/users', {
+    fetch('https://tranquil-cliffs-23009.herokuapp.com/users', {
       method: 'POST',
       headers: {
         "content-type": "application/json"

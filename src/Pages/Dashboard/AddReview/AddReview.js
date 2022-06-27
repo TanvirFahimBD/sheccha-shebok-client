@@ -14,7 +14,7 @@ const AddReview = () => {
     const handleAddReview = (e) => {
         e.preventDefault()
         const reviewNow = {email:user.email, message, review, name: user.displayName, img: user.photoURL, date: new Date().toLocaleDateString()}
-        fetch('http://localhost:5000/review', {
+        fetch('https://tranquil-cliffs-23009.herokuapp.com/review', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

@@ -27,7 +27,7 @@ const AddVolunteer = () => {
             setSuccess("")
             setError("Enter proper email")
         }
-        fetch("http://localhost:5000/users/volunteer", {
+        fetch("https://tranquil-cliffs-23009.herokuapp.com/users/volunteer", {
             method: "PUT",
             headers: {
                 "authorization": `Bearer ${token}`,

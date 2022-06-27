@@ -17,7 +17,7 @@ const CheckoutForm = (props) => {
     const elements = useElements();
 
     useEffect(() => {
-      fetch("http://localhost:5000/create-payment-intent",{
+      fetch("https://tranquil-cliffs-23009.herokuapp.com/create-payment-intent",{
           method: "POST",
           headers: {
               'content-type': "application/json"
@@ -93,7 +93,7 @@ const CheckoutForm = (props) => {
                    date: new Date().toDateString()
                 }
 
-                const url = "http://localhost:5000/payment"
+                const url = "https://tranquil-cliffs-23009.herokuapp.com/payment"
                 fetch(url, {
                     method: "POST",
                     headers: {

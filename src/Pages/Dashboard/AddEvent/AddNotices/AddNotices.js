@@ -17,7 +17,7 @@ const AddNotices = () => {
         const date = new Date().toLocaleTimeString()
         // console.log(date)
         const reviewNow = { email: user.email, notice, name: user.displayName, img: user.photoURL, date }
-        fetch('http://localhost:5000/notices', {
+        fetch('https://tranquil-cliffs-23009.herokuapp.com/notices', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"
