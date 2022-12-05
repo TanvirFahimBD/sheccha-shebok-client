@@ -25,7 +25,7 @@ const AddNotices = () => {
             .then(response => response.json())
             .then(data => {
                 if (data.insertedId) {
-                    toast.success("Notice Added Successfully")
+                    toast.success("Notice published Successfully")
                 }
             })
             .catch(error => {

@@ -1,14 +1,15 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import TextField from '@mui/material/TextField';
-import { Alert, Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SingleEventRegister = () => {
   const { user } = useAuth()
   const { singleEventId } = useParams();
   const [event, setEvent] = useState({});
-  const navigate = useNavigate();
 
   //Get Current Event Info
   useEffect(() => {
@@ -16,12 +17,13 @@ const SingleEventRegister = () => {
       .then((res) => res.json())
       .then((data) => {
         setEvent(data);
-        // console.log(data);
       });
-  }, []);
+  }, [singleEventId]);
 
   const handleVolunteerRegister = (e) => {
+    e.preventDefault();
     const eventRegister = { index: event.index, key: event.key, name: user.displayName, email: user.email, date: event.date, desc: event.desc, title: event.title, banner: event.banner, image: user.photoURL }
+
     fetch("http://localhost:5000/register", {
       method: "POST",
       headers: {
@@ -32,11 +34,9 @@ const SingleEventRegister = () => {
       .then((res) => res.json())
       .then((data) => {
         if (data?.insertedId) {
-          alert("Registration Successful")
-          navigate("/dashboard/myEvents")
+          toast.success('Successfully registered');
         }
       });
-    e.preventDefault();
   };
 
   return (
@@ -120,6 +120,7 @@ const SingleEventRegister = () => {
           </Grid>
         </Grid>
       </Box>
+      <ToastContainer />
     </div>
   );
 };

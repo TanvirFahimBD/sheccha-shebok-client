@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import useAuth from '../../../hooks/useAuth';
 import MySingleEvent from '../MySingleEvent/MySingleEvent';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const MyEvents = () => {
   const { user } = useAuth()
   const [myEvents, setMyEvents] = useState([])
   const myEmail = user?.email;
+
   useEffect(() => {
     fetch(`http://localhost:5000/register/${myEmail}`)
       .then(res => res.json())
@@ -15,23 +18,22 @@ const MyEvents = () => {
   }, [myEmail])
 
   //DELETE ITEM
-  const handleDelete = (id) => {
+  const handleDelete = (myEvent) => {
     const deleteData = window.confirm("Are you sure you want to delete?");
     if (deleteData) {
-      fetch(`http://localhost:5000/register/${id}`, {
+      fetch(`http://localhost:5000/register/${myEvent._id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data)
           if (data.deletedCount) {
-            alert("The data is deleted successfully");
-            const userRemainingEvents = myEvents.filter((userEvent) => userEvent._id !== id);
+            toast.success(`${myEvent.title} deleted successfully`);
+            const userRemainingEvents = myEvents.filter((userEvent) => userEvent._id !== myEvent._id);
             setMyEvents(userRemainingEvents);
           }
         });
     } else {
-      alert("The data is not deleted");
+      toast.error(`${myEvent.title} not deleted`);
     }
   };
 
@@ -42,6 +44,7 @@ const MyEvents = () => {
           {myEvents.map(myEvent => <MySingleEvent key={myEvent._id} myEvent={myEvent} handleDelete={handleDelete}></MySingleEvent>)}
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

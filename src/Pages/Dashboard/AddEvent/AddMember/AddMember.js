@@ -1,8 +1,7 @@
-import { Alert, Box, Button, Grid, Input, Typography } from "@mui/material";
+import { Alert, Box, Button, Grid, Input } from "@mui/material";
 import React, { useState } from "react";
 import TextField from '@mui/material/TextField';
-import GoogleIcon from '@mui/icons-material/Google';
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AddMember = () => {
     const navigate = useNavigate()
@@ -20,7 +19,6 @@ const AddMember = () => {
 
     const handleAddMember = (e) => {
         e.preventDefault()
-        console.log("working")
         const pattern = /\S+@\S+\.\S+/;
         if (!pattern.test(email)) {
             setSuccess("")
@@ -55,9 +53,7 @@ const AddMember = () => {
             .catch(error => {
                 console.error('Error:', error);
             });
-
     }
-
 
     return (
         <Box sx={{ width: '100%' }}>
@@ -87,7 +83,6 @@ const AddMember = () => {
                         />
                         <br />
                         <br />
-
                         <TextField sx={{ width: 300 }}
                             id="standard-basic"
                             label="date"
@@ -157,7 +152,6 @@ const AddMember = () => {
                     {error && <Alert sx={{ mt: 4, width: "300px" }} severity="error">{error}</Alert>}
                     {success && <Alert sx={{ mt: 4, width: "300px" }} severity="success">{success}</Alert>}
                 </Grid>
-
             </Grid>
         </Box>
     );

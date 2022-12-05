@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 import TextField from '@mui/material/TextField';
-import { Alert, Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 
 const EventUpdatePublic = () => {
   const { user } = useAuth()
   const { singleEventId } = useParams();
   const [event, setEvent] = useState({});
-  const navigate = useNavigate();
 
   //Get Current Event Info
   useEffect(() => {
     fetch(`http://localhost:5000/register/${user.email}`)
       .then((res) => res.json())
       .then((data) => {
+        console.log(data);
         setEvent(data[0]);
-        // console.log(data[0]);
       });
-  }, []);
+  }, [user]);
 
   const handleTitleChange = (e) => {
     const newTitle = e.target.value;
@@ -62,19 +61,17 @@ const EventUpdatePublic = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log("register",data);
         if (data?.modifiedCount) {
-          alert("Event Updated Successful")
-          navigate("/dashboard/allEvents")
+          alert(`${event.title} Updated Successfully`)
         }
       });
     e.preventDefault();
   };
+
   return (
     <div> <Box sx={{ width: '100%' }}>
       <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-
-        <Grid item xs={6}>
+        <Grid className="text-center my-4" item xs={6}>
           <Typography sx={{ my: 8 }} variant="h2" component="h2">
             Publish <span className="text-primary">Event</span>
           </Typography>

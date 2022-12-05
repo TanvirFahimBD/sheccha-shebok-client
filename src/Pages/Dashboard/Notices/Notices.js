@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import Notice from "../Notice/Notice";
 
-// todo - show notices date
+// todo - show notices also date
 
 const Notices = () => {
   const [notices, setNotices] = useState([])

@@ -6,7 +6,6 @@ import {
   signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, getIdToken
 } from "firebase/auth";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
 
 initializeAuthentication();
@@ -52,7 +51,6 @@ const useFirebase = () => {
         }).catch((error) => {
         });
         setError("")
-        // navigate("/")
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -104,7 +102,6 @@ const useFirebase = () => {
         getIdToken(user)
           .then(idToken => {
             setToken(idToken)
-            // console.log(idToken)
           })
       } else {
         setUser({});
@@ -112,7 +109,7 @@ const useFirebase = () => {
       setIsLoading(false);
     });
     return () => unsubscribed;
-  }, []);
+  }, [auth]);
 
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName }
@@ -125,7 +122,6 @@ const useFirebase = () => {
     })
       .then(res => res.json())
       .then(data => {
-        // console.log(data)
       })
   }
 
@@ -133,7 +129,6 @@ const useFirebase = () => {
     fetch(`http://localhost:5000/users/${user?.email || ""}`)
       .then(res => res.json())
       .then(data => {
-        // console.log(data)
         setAdmin(data[0]?.admin)
       })
   }, [user?.email])
@@ -142,7 +137,6 @@ const useFirebase = () => {
     fetch(`http://localhost:5000/users/${user?.email || ""}`)
       .then(res => res.json())
       .then(data => {
-        // console.log(data[1]?.volunteer)
         setVolunteer(data[1]?.volunteer)
       })
   }, [user?.email])

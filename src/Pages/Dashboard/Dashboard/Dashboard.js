@@ -90,6 +90,7 @@ export default function Dashboard(props) {
         </Button>
       </NavLink>
       <Divider />
+      <br />
       {
         volunteer &&
         <>

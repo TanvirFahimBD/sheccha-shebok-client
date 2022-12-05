@@ -6,7 +6,6 @@ const Events = () => {
   const [events, setEvents] = useState([]);
   const [searchEvents, setSearchEvents] = useState([]);
   const [search, setSearch] = useState("");
-  console.log(search);
 
   useEffect(() => {
     fetch("http://localhost:5000/events")
@@ -15,7 +14,6 @@ const Events = () => {
         setEvents(data);
         const newData = data.filter(dt => dt.title.toLowerCase().includes(search.toLowerCase()))
         if (newData) {
-          console.log("newData", newData);
           setSearchEvents(newData)
         }
       })

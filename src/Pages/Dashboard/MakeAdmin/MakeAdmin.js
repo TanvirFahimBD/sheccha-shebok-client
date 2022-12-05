@@ -2,8 +2,6 @@ import { Alert, Box, Button, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import TextField from '@mui/material/TextField';
-import GoogleIcon from '@mui/icons-material/Google';
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
 
 const MakeAdmin = () => {
     const { token } = useAuth();
@@ -17,7 +15,6 @@ const MakeAdmin = () => {
         const newEmail = { ...email }
         newEmail[field] = value;
         setEmail(newEmail)
-        // console.log(newEmail);
     }
 
     const handleAddAdmin = (e) => {
@@ -37,11 +34,9 @@ const MakeAdmin = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 if (data.modifiedCount > 0) {
                     setError("")
                     setSuccess("Admin Added Successfully")
-
                 }
             })
     }

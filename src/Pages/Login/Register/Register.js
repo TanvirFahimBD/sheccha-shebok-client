@@ -1,16 +1,12 @@
-import { Alert, Box, Button, CircularProgress, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import TextField from '@mui/material/TextField';
 import GoogleIcon from '@mui/icons-material/Google';
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Register = () => {
   const { signInUsingGoogle, registerUser, setError, error, user } = useAuth();
-  const navigate = useNavigate()
-  const location = useLocation()
-  const redirect_uri = location?.state?.from || "/"
   const [registerData, setRegisterData] = useState({})
 
   const handleOnBlur = (e) => {
@@ -19,7 +15,6 @@ const Register = () => {
     const newLoginData = { ...registerData }
     newLoginData[field] = value;
     setRegisterData(newLoginData)
-    // console.log(newLoginData);
   }
 
   const handleRegisterSubmit = (e) => {
@@ -35,7 +30,6 @@ const Register = () => {
       setError("Enter proper email")
     }
     registerUser(registerData.email, registerData.password, registerData.name, registerData.profileImage)
-
     e.preventDefault()
   }
 
@@ -43,7 +37,7 @@ const Register = () => {
     <div>
       <Box sx={{ width: '100%' }}>
         <Grid className="mx-5" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-          <Grid item xs={6}>
+          <Grid className='text-center' item xs={6}>
             <Typography sx={{ mt: 8 }} variant="h2" component="h2">
               Register
             </Typography>
@@ -103,13 +97,13 @@ const Register = () => {
               <br />
               <Button sx={{ width: 300 }} variant="contained" type="submit" onClick={handleRegisterSubmit}>Register</Button>
             </form>
-            <p className="mt-4">------------Or Continue Us With------------</p>
-            {error && <Alert sx={{ mt: 4, width: "300px" }} severity="error">{error}</Alert>}
-            {user?.email && <Alert sx={{ mt: 4, width: "300px" }} severity="success">Registration Successful</Alert>}
-            <Button sx={{ width: 300 }} className="mt-3" variant="contained" onClick={signInUsingGoogle}><GoogleIcon className="mx-4" /> Continue With Google</Button>
+            <p className="mt-4">Already a User?<NavLink style={{ textDecoration: "none" }} to="/login"> Login</NavLink></p>
+            <p className="mt-4"> -------------------- OR--------------------</p>
+            <Button sx={{ width: 300 }} className="mt-3  p-2" variant="contained" onClick={signInUsingGoogle}><GoogleIcon className="mx-4" /> Continue With Google</Button>
+            {error && <p className="text-center text-danger my-4" sx={{ mt: 4, width: "300px" }} severity="error">{error}</p>}
+            {user?.email && <p className="text-center text-success my-3" sx={{ mt: 4, width: "300px" }} severity="success">Login Successful</p>}
             <br />
             <br />
-            <p>Already a User?<NavLink style={{ textDecoration: "none" }} to="/login"> Login</NavLink></p>
           </Grid>
           <Grid item xs={6}>
             <img src="https://i.ibb.co/Vj0SM8d/Forgot-password-rafiki.png" alt="" height="700px" />

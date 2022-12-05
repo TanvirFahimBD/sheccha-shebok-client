@@ -25,9 +25,7 @@ const Profile = () => {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('data', data);
-        if (data.insertedId) {
-          alert("Profile Updated Successfully")
+        if (data.modifiedCount) {
           setError("")
           toast.success('Profile Updated Successfully')
         }
@@ -62,7 +60,7 @@ const Profile = () => {
               <br />
               <TextField sx={{ width: 300 }} className="my-3"
                 id="standard-basic"
-                label="email"
+                label="Email"
                 name="email"
                 type="email"
                 variant="filled"
@@ -71,7 +69,7 @@ const Profile = () => {
               <br />
               <TextField sx={{ width: 300 }} className="my-3"
                 id="standard-basic"
-                label="address"
+                label="Address"
                 name="address"
                 type="text"
                 variant="filled"
@@ -80,7 +78,7 @@ const Profile = () => {
               <br />
               <TextField sx={{ width: 300 }} className="my-3"
                 id="standard-basic"
-                label="age"
+                label="Age"
                 name="age"
                 type="text"
                 variant="filled"
@@ -89,7 +87,7 @@ const Profile = () => {
               <br />
               <TextField sx={{ width: 300 }} className="my-3"
                 id="standard-basic"
-                label="education"
+                label="Education"
                 name="education"
                 type="text"
                 variant="filled"
@@ -98,7 +96,7 @@ const Profile = () => {
               <br />
               <TextField sx={{ width: 300 }} className="my-3"
                 id="standard-basic"
-                label="occupation"
+                label="Occupation"
                 name="occupation"
                 type="text"
                 variant="filled"

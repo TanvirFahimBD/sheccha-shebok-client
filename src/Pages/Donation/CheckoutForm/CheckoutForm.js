@@ -1,12 +1,12 @@
 import { CircularProgress } from '@mui/material';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
-import { Alert, Box, Button, Grid, Typography } from "@mui/material";
+import { Button } from "@mui/material";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CheckoutForm = (props) => {
-    const navigate = useNavigate()
     const { amount } = props;
     const { user } = useAuth();
     const [error, setError] = useState("")
@@ -52,10 +52,8 @@ const CheckoutForm = (props) => {
         if (error) {
             setSuccess("")
             setError(error.message)
-            console.log('[error]', error);
         } else {
             setError("")
-            console.log('[PaymentMethod]', paymentMethod);
         }
 
         //payment intent
@@ -78,7 +76,6 @@ const CheckoutForm = (props) => {
             setSuccess("")
         }
         else {
-            console.log("paymentIntent", paymentIntent);
             setSuccess("Donation Completed Successfully")
             setError("")
             setProcessing(false)
@@ -103,12 +100,11 @@ const CheckoutForm = (props) => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+                    if (data.insertedId) {
+                        toast.success(`Successfully paid $${amount}`)
+                    }
                 })
-
-            navigate("/dashboard/donation")
         }
-
     };
 
     return (
@@ -134,9 +130,9 @@ const CheckoutForm = (props) => {
                     <Button className="mt-4" sx={{ width: 400 }} variant="contained" type="submit" disabled={!stripe || success}>Pay ${amount}</Button>
                 }
             </form>
-
             {error && <p style={{ color: "red" }}>{error}</p>}
             {success && <p style={{ color: "green" }}>{success}</p>}
+            <ToastContainer />
         </div>
     );
 };

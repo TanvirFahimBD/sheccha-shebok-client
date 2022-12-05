@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
 import CheckoutForm from '../CheckoutForm/CheckoutForm';
-import { Alert, Box, Button, Grid, TextField, Typography } from "@mui/material";
+import { Box, Grid, TextField, Typography } from "@mui/material";
 
 const Donation = () => {
     const [amount, setAmount] = useState(30)
@@ -21,7 +21,7 @@ const Donation = () => {
                 const match = data.find(dt => dt._id === eventId)
                 setCurrentDonation(match)
             })
-    }, [])
+    }, [eventId])
 
     return (
         <div>

@@ -5,7 +5,6 @@ import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-
 const MySingleDonation = (props) => {
   const { transaction, date, event, eventBanner } = props.pay;
   const amount = props.pay.amount / 100;

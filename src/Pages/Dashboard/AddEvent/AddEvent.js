@@ -1,33 +1,29 @@
 import axios from "axios";
 import TextField from '@mui/material/TextField';
-import React, { useRef } from "react";
-import { Alert, Box, Button, Grid, Typography } from "@mui/material";
+import React from "react";
+import { Box, Button, Grid, Typography } from "@mui/material";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useState } from "react";
 
 const AddEvent = () => {
-  const indexRef = useRef();
-  const keyRef = useRef();
-  const titleRef = useRef();
-  const descRef = useRef();
-  const bannerRef = useRef();
-  const dateRef = useRef();
+  const [index, setIndex] = useState('')
+  const [key, setKey] = useState('')
+  const [title, setTitle] = useState('')
+  const [desc, setDesc] = useState('')
+  const [banner, setBanner] = useState('')
+  const [date, setDate] = useState('')
 
   const handleAdd = (e) => {
-    const index = indexRef.current.value;
-    const key = keyRef.current.value;
-    const title = titleRef.current.value;
-    const desc = descRef.current.value;
-    const banner = bannerRef.current.value;
-    const date = dateRef.current.value;
     const newEvent = { index, key, title, desc, banner, date };
     axios.post("http://localhost:5000/events", newEvent).then((res) => {
       if (res?.data?.insertedId) {
-        alert("Event Added Successfully");
-        e.target.reset();
+        toast.success(`${newEvent.title} Added Successfully`);
       }
     });
     e.preventDefault();
+    e.target.reset()
   };
-
 
   return (
     <div >
@@ -46,7 +42,7 @@ const AddEvent = () => {
                 label="Event Index"
                 name="Event Index"
                 type="text"
-                ref={indexRef}
+                onBlur={(e) => setIndex(e.target.value)}
                 variant="filled"
               />
               <br />
@@ -56,7 +52,7 @@ const AddEvent = () => {
                 label="Event Key "
                 name="Event Key"
                 type="text"
-                ref={keyRef}
+                onBlur={(e) => setKey(e.target.value)}
                 variant="filled"
               />
               <br />
@@ -66,7 +62,7 @@ const AddEvent = () => {
                 label="Event Title"
                 name="Event Title"
                 type="text"
-                ref={titleRef}
+                onBlur={(e) => setTitle(e.target.value)}
                 variant="filled"
               />
               <br />
@@ -76,7 +72,7 @@ const AddEvent = () => {
                 label="Description"
                 name="Description"
                 type="text"
-                ref={descRef}
+                onBlur={(e) => setDesc(e.target.value)}
                 variant="filled"
               />
               <br />
@@ -86,7 +82,7 @@ const AddEvent = () => {
                 label="Banner URL"
                 name="Banner URL"
                 type="text"
-                ref={bannerRef}
+                onBlur={(e) => setBanner(e.target.value)}
                 variant="filled"
               />
               <br />
@@ -96,7 +92,7 @@ const AddEvent = () => {
                 label="Event Date"
                 name="Event Date"
                 type="text"
-                ref={dateRef}
+                onBlur={(e) => setDate(e.target.value)}
                 variant="filled"
               />
               <br />
@@ -106,11 +102,8 @@ const AddEvent = () => {
           </Grid>
         </Grid>
       </Box>
+      <ToastContainer />
     </div>
-
-
-
-
   );
 };
 

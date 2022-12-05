@@ -1,24 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { Alert, Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Grid } from "@mui/material";
 import useAuth from '../../../hooks/useAuth';
-
 import SingleReview from '../SingleReview/SingleReview';
+
+// todo - display event based review history
 
 const MyReview = () => {
     const { user } = useAuth()
     const [myReview, setMyReview] = useState([])
     const myEmail = user?.email;
+
     useEffect(() => {
         fetch(`http://localhost:5000/review/${myEmail}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 setMyReview(data);
             })
     }, [myEmail])
-    //  <Typography sx={{ my: 8 }} variant="h2" component="h2">
-    // MyReview
-    // </Typography>
+
     return (
         <div>
 

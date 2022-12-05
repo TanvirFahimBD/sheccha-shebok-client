@@ -1,13 +1,14 @@
-import { Alert, Box, Button, Grid, Input, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import TextField from '@mui/material/TextField';
-import GoogleIcon from '@mui/icons-material/Google';
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// todo- review based on event details with  not just message and star
 
 const AddReview = () => {
     const { user } = useAuth()
-    const navigate = useNavigate()
     const [message, setMessage] = useState("")
     const [review, setReview] = useState("")
 
@@ -24,16 +25,15 @@ const AddReview = () => {
             .then(response => response.json())
             .then(data => {
                 if (data.insertedId) {
-                    alert("Review Added Successfully")
-                    navigate("/")
+                    toast.success("Reviewed Successfully")
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
             });
-
+        e.target.reset()
     }
-    // 
+
     return (
         <div>
             <Box sx={{ width: '100%' }}>
@@ -48,7 +48,7 @@ const AddReview = () => {
                         <form onSubmit={handleAddReview}>
                             <TextField sx={{ width: 300 }}
                                 id="standard-basic"
-                                label="message"
+                                label="Message"
                                 name="message"
                                 type="text"
                                 onChange={e => setMessage(e.target.value)}
@@ -58,7 +58,7 @@ const AddReview = () => {
                             <br />
                             <TextField sx={{ width: 300 }}
                                 id="standard-basic"
-                                label="review"
+                                label="Review"
                                 name="review"
                                 type="text"
                                 onChange={e => setReview(e.target.value)}
@@ -71,6 +71,7 @@ const AddReview = () => {
                     </Grid>
                 </Grid>
             </Box>
+            <ToastContainer />
         </div>
     );
 };

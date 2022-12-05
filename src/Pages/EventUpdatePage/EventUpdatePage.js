@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Alert, Box, Button, Grid, Typography } from "@mui/material";
-import { useNavigate, useParams } from "react-router-dom";
+import { Box, Button, Grid, Typography } from "@mui/material";
+import { useParams } from "react-router-dom";
 import TextField from '@mui/material/TextField';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const EventUpdatePage = () => {
   const { singleEventId } = useParams();
   const [event, setEvent] = useState({});
-  //   const [title, setTitle] = useState(event?.title);
-  const navigate = useNavigate();
 
   //Get Current Event Info
   useEffect(() => {
@@ -15,9 +15,8 @@ const EventUpdatePage = () => {
       .then((res) => res.json())
       .then((data) => {
         setEvent(data);
-        // console.log(data);
       });
-  }, []);
+  }, [singleEventId]);
 
   const handleTitleChange = (e) => {
     const newTitle = e.target.value;
@@ -61,12 +60,10 @@ const EventUpdatePage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        // console.log("events", data);
+        console.log(data);
         if (data?.modifiedCount) {
-          alert("Event Updated Successful")
-          navigate("/dashboard/allEvents")
+          toast.success(`${event.title} Updated Successful`)
         }
-
       });
     e.preventDefault();
   };
@@ -85,7 +82,7 @@ const EventUpdatePage = () => {
             <form onSubmit={handleEventUpdate}>
               <TextField sx={{ width: 300 }}
                 id="standard-basic"
-                label="title"
+                label="Title"
                 name="title"
                 type="text"
                 value={event.title || ""}
@@ -96,7 +93,7 @@ const EventUpdatePage = () => {
               <br />
               <TextField sx={{ width: 300 }}
                 id="standard-basic"
-                label="date"
+                label="Date"
                 name="date"
                 type="text"
                 value={event.date || ""}
@@ -107,7 +104,7 @@ const EventUpdatePage = () => {
               <br />
               <TextField sx={{ width: 300 }}
                 id="standard-basic"
-                label="desc"
+                label="Description"
                 name="desc"
                 type="text"
                 value={event.desc || ""}
@@ -118,7 +115,7 @@ const EventUpdatePage = () => {
               <br />
               <TextField sx={{ width: 300 }}
                 id="standard-basic"
-                label="banner"
+                label="Banner"
                 name="banner"
                 type="text"
                 value={event.banner || ""}
@@ -132,6 +129,7 @@ const EventUpdatePage = () => {
           </Grid>
         </Grid>
       </Box>
+      <ToastContainer />
     </div>
   );
 };

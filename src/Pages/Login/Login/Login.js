@@ -1,4 +1,4 @@
-import { Alert, Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import TextField from '@mui/material/TextField';
@@ -18,7 +18,6 @@ const Login = () => {
     const newLoginData = { ...loginData }
     newLoginData[field] = value;
     setLoginData(newLoginData)
-    console.log(newLoginData);
   }
 
   const handleGoogleLogin = (e) => {
@@ -47,7 +46,7 @@ const Login = () => {
           <Grid item xs={6}>
             <img className="m-5" src="https://i.ibb.co/GFRRrh2/Privacy-policy-rafiki.png" alt="" height="700px" />
           </Grid>
-          <Grid item xs={6}>
+          <Grid className='text-center' item xs={6}>
             <Typography sx={{ my: 8 }} variant="h2" component="h2">
               Login
             </Typography>
@@ -75,13 +74,13 @@ const Login = () => {
               <br />
               <Button sx={{ width: 300 }} variant="contained" type="submit">Log In</Button>
             </form>
-            <p className="mt-4">------------Or Continue Us With------------</p>
-            {error && <Alert sx={{ mt: 4, width: "300px" }} severity="error">{error}</Alert>}
-            {user?.email && <Alert sx={{ mt: 4, width: "300px" }} severity="success">Login Successful</Alert>}
-            <Button sx={{ width: 300 }} className="mt-3" variant="contained" onClick={handleGoogleLogin}><GoogleIcon className="mx-4" /> Continue With Google</Button>
+            <p className="mt-4">New User?<NavLink style={{ textDecoration: "none" }} to="/register"> Create a account</NavLink></p>
+            <p className="mt-4"> -------------------- OR--------------------</p>
+            <Button sx={{ width: 300 }} className="mt-3 p-2" variant="contained" onClick={handleGoogleLogin}><GoogleIcon className="mx-4" /> Continue With Google</Button>
+            {error && <p className="text-center text-danger my-4" sx={{ mt: 4, width: "300px" }} severity="error">{error}</p>}
+            {user?.email && <p className="text-center text-success my-3" sx={{ mt: 4, width: "300px" }} severity="success">Login Successful</p>}
             <br />
             <br />
-            <p>New User?<NavLink style={{ textDecoration: "none" }} to="/register"> Create a account</NavLink></p>
           </Grid>
         </Grid>
       </Box>
