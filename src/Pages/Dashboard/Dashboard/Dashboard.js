@@ -6,21 +6,11 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
-import { Grid } from '@mui/material';
-import AddEvent from '../AddEvent/AddEvent';
 import { Button } from "@mui/material";
-import PropTypes from "prop-types";
 import { NavLink, Outlet } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
@@ -38,15 +28,8 @@ import ReviewsIcon from '@mui/icons-material/Reviews';
 import AddAlertIcon from '@mui/icons-material/AddAlert';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import HomeIcon from '@mui/icons-material/Home';
-const drawerWidth = 200;
 
-// interface Props {
-//   /**
-//    * Injected by the documentation to work in an iframe.
-//    * You won't need it on your project.
-//    */
-//   window?: () => Window;
-// }
+const drawerWidth = 200;
 
 export default function Dashboard(props) {
   const { user, admin, logOut, volunteer } = useAuth();
@@ -57,28 +40,40 @@ export default function Dashboard(props) {
     setMobileOpen(!mobileOpen);
   };
 
-  console.log(user.photoURL.endsWith("-c"))
-
   const drawer = (
     <div>
-      <NavLink className="mx-3" style={{ textDecoration: "none"}} to={"/"}>
+      <NavLink className="mx-3" style={{ textDecoration: "none" }} to={"/"}>
         <Button color="inherit" sx={{ m: 3 }}>
-        <HomeIcon/>
+          <HomeIcon />
         </Button>
       </NavLink>
       <br />
-      <img
-        className="m-4"
-        src={user.photoURL.endsWith("-c") ? "https://i.ibb.co/3czDVCx/undraw-profile-pic-ic5t.png"  : user.photoURL}
-        width={100}
-        height={100}
-        alt=""
-        style={{
-          borderRadius: "50%",
-          border: "1px solid lightGray",
-          boxShadow: "5px 5px 5px gray",
-        }}
-      />
+      <Link className="text-white text-decoration-none" to="/dashboard/profile">
+        {user?.photoURL
+          ?
+          <img
+            style={{
+              borderRadius: "50%",
+              border: "2px solid white",
+              height: "100px",
+              marginLeft: "20%",
+              marginBottom: "20%",
+            }}
+            src={user?.photoURL}
+            alt=""
+          />
+          :
+          <img src="https://i.ibb.co/3czDVCx/undraw-profile-pic-ic5t.png"
+            style={{
+              borderRadius: "50%",
+              border: "2px solid white",
+              height: "100px",
+              marginLeft: "20%",
+              marginBottom: "20%",
+            }}
+            alt="" />
+        }
+      </Link>
       <h6 className='mx-2'>{user.displayName}</h6>
       <br />
       <Divider />
@@ -87,18 +82,14 @@ export default function Dashboard(props) {
           <DashboardIcon className='mx-2' /> Dashboard
         </Button>
       </NavLink>
-      <Divider />  <br />
-      {
-        (!admin && !volunteer) &&
-        <>
-          <NavLink style={{ textDecoration: "none" }} to="/dashboard/donation">
-            <Button color="inherit">
-              <PaidIcon className='mx-2' /> My Donation
-            </Button>
-          </NavLink>
-          <Divider />  <br />
-        </>
-      }
+      <Divider />
+      <br />
+      <NavLink style={{ textDecoration: "none" }} to="/dashboard/donation">
+        <Button color="inherit">
+          <PaidIcon className='mx-2' /> My Donation
+        </Button>
+      </NavLink>
+      <Divider />
       {
         volunteer &&
         <>
@@ -168,7 +159,7 @@ export default function Dashboard(props) {
             </Button>
           </NavLink>
           <Divider />
-  <br />
+          <br />
           <NavLink
             style={{ textDecoration: "none" }}
             to="/dashboard/addMember"
@@ -176,9 +167,9 @@ export default function Dashboard(props) {
             <Button color="inherit">
               <GroupAddIcon className='mx-2' /> Add Member
             </Button>
-          </NavLink> 
+          </NavLink>
           <Divider />
-           <br />
+          <br />
         </>
       }
       <NavLink style={{ textDecoration: "none" }} to="/dashboard/profile">
@@ -196,8 +187,7 @@ export default function Dashboard(props) {
     </div>
   );
 
-  const container =
-    window !== undefined ? () => window().document.body : undefined;
+  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -270,8 +260,6 @@ export default function Dashboard(props) {
         }}
       >
         <Outlet></Outlet>
-
-
       </Box>
     </Box>
   );

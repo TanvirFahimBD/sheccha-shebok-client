@@ -11,13 +11,13 @@ const Banner = () => {
         </div>
         <div className="carousel-inner">
           <div className="carousel-item active">
-            <img src="https://i.ibb.co/wdThKPD/ocg-saving-the-ocean-xch7j-XAaqqo-unsplash.jpg" className="d-block w-100" alt="..."/>
+            <img src="https://i.ibb.co/wdThKPD/ocg-saving-the-ocean-xch7j-XAaqqo-unsplash.jpg" className="d-block w-100" alt="..." style={{ height: '850px' }} />
           </div>
           <div className="carousel-item">
-            <img src="https://i.ibb.co/0y3XPf7/larm-rmah-AEa-TUnvneik-unsplash.jpg" className="d-block w-100" alt="..."/>
+            <img src="https://i.ibb.co/0y3XPf7/larm-rmah-AEa-TUnvneik-unsplash.jpg" className="d-block w-100" alt="..." style={{ height: '850px' }} />
           </div>
           <div className="carousel-item">
-            <img src="https://i.ibb.co/vk060NL/sam-mann-41eo5e8j-W08-unsplash.jpg" className="d-block w-100" alt="..."/>
+            <img src="https://i.ibb.co/vk060NL/sam-mann-41eo5e8j-W08-unsplash.jpg" className="d-block w-100" alt="..." style={{ height: '850px' }} />
           </div>
         </div>
         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">

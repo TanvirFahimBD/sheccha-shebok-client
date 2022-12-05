@@ -18,7 +18,7 @@ const AllRegistration = () => {
   const email = user?.email;
 
   useEffect(() => {
-    fetch("https://tranquil-cliffs-23009.herokuapp.com/register", {
+    fetch("http://localhost:5000/register", {
       headers: {
         'authorization': `Bearer ${token}`
       }
@@ -34,7 +34,7 @@ const AllRegistration = () => {
   const handleDelete = (id) => {
     const deleteData = window.confirm("Are you sure you want to delete?");
     if (deleteData) {
-      fetch(`https://tranquil-cliffs-23009.herokuapp.com/register/${id}`, {
+      fetch(`http://localhost:5000/register/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -55,7 +55,7 @@ const AllRegistration = () => {
     <>
       <Box sx={{ width: '100%' }}>
         <Grid className="d-flex" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        {/* <Grid item xs={4}>
+          {/* <Grid item xs={4}>
             <img className="mb-5" src="https://i.ibb.co/9Wcs4Db/Volunteering-bro.png" alt="" height="600px" width="400px" />
           </Grid> */}
           <Grid item xs={12}>
@@ -78,7 +78,7 @@ const AllRegistration = () => {
               </Table>
             </TableContainer>
           </Grid>
-          
+
         </Grid>
       </Box>
 

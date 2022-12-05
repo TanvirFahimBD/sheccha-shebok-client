@@ -20,7 +20,6 @@ const useFirebase = () => {
   const [token, setToken] = useState("");
   const googleProvider = new GoogleAuthProvider();
   const auth = getAuth();
-  // const navigate = useNavigate()
 
   const signInUsingGoogle = () => {
     setIsLoading(true);
@@ -117,7 +116,7 @@ const useFirebase = () => {
 
   const saveUser = (email, displayName, method) => {
     const user = { email, displayName }
-    fetch("https://tranquil-cliffs-23009.herokuapp.com/users", {
+    fetch("http://localhost:5000/users", {
       method: method,
       headers: {
         "content-type": "application/json"
@@ -126,12 +125,12 @@ const useFirebase = () => {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
       })
   }
 
   useEffect(() => {
-    fetch(`https://tranquil-cliffs-23009.herokuapp.com/users/${user?.email || ""}`)
+    fetch(`http://localhost:5000/users/${user?.email || ""}`)
       .then(res => res.json())
       .then(data => {
         // console.log(data)
@@ -140,10 +139,10 @@ const useFirebase = () => {
   }, [user?.email])
 
   useEffect(() => {
-    fetch(`https://tranquil-cliffs-23009.herokuapp.com/users/${user?.email || ""}`)
+    fetch(`http://localhost:5000/users/${user?.email || ""}`)
       .then(res => res.json())
       .then(data => {
-        console.log(data[1]?.volunteer)
+        // console.log(data[1]?.volunteer)
         setVolunteer(data[1]?.volunteer)
       })
   }, [user?.email])
@@ -153,7 +152,7 @@ const useFirebase = () => {
     signInUsingGoogle,
     logOut,
     user,
-    isLoading, registerUser, loginUser, setError, error, admin, token,volunteer
+    isLoading, registerUser, loginUser, setError, error, admin, token, volunteer
   };
 };
 

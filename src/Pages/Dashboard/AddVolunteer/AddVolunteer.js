@@ -27,7 +27,7 @@ const AddVolunteer = () => {
             setSuccess("")
             setError("Enter proper email")
         }
-        fetch("https://tranquil-cliffs-23009.herokuapp.com/users/volunteer", {
+        fetch("http://localhost:5000/users/volunteer", {
             method: "PUT",
             headers: {
                 "authorization": `Bearer ${token}`,
@@ -48,7 +48,7 @@ const AddVolunteer = () => {
     return (
         <Box sx={{ width: '100%' }}>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-               
+
                 <Grid item xs={6}>
                     <Typography sx={{ my: 8 }} variant="h2" component="h2">
                         Make a <span className="text-primary">Volunteer</span>
@@ -69,7 +69,7 @@ const AddVolunteer = () => {
                     {error && <Alert sx={{ mt: 4, width: "300px" }} severity="error">{error}</Alert>}
                     {success && <Alert sx={{ mt: 4, width: "300px" }} severity="success">{success}</Alert>}
                 </Grid>
-                <Grid style={{borderLeft: "1px solid lightGray"}} item xs={6}>
+                <Grid style={{ borderLeft: "1px solid lightGray" }} item xs={6}>
                     <img className="m-5" src="https://i.ibb.co/xG77gJd/Volunteering-rafiki.png" alt="" height="700px" />
                 </Grid>
             </Grid>

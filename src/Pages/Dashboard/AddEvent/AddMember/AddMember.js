@@ -41,7 +41,7 @@ const AddMember = () => {
         formData.append("banner", banner)
         formData.append("image", image)
 
-        fetch('https://tranquil-cliffs-23009.herokuapp.com/teamMembers', {
+        fetch('http://localhost:5000/teamMembers', {
             method: 'POST',
             body: formData
         })
@@ -62,7 +62,7 @@ const AddMember = () => {
     return (
         <Box sx={{ width: '100%' }}>
             <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-            <Grid style={{ borderRight: "1px solid lightGray" }} item xs={6}>
+                <Grid style={{ borderRight: "1px solid lightGray" }} item xs={6}>
                     <img className="m-5" src="https://i.ibb.co/p0FN2ry/Profile-Interface-bro.png" alt="" height="700px" />
                 </Grid>
                 <Grid item xs={6}>
@@ -157,9 +157,9 @@ const AddMember = () => {
                     {error && <Alert sx={{ mt: 4, width: "300px" }} severity="error">{error}</Alert>}
                     {success && <Alert sx={{ mt: 4, width: "300px" }} severity="success">{success}</Alert>}
                 </Grid>
-                
+
             </Grid>
-        </Box>           
+        </Box>
     );
 };
 

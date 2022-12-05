@@ -6,7 +6,7 @@ import { Box, Grid } from "@mui/material";
 const TeamMembers = () => {
     const [members, setMembers] = useState([])
     useEffect(() => {
-        fetch('https://tranquil-cliffs-23009.herokuapp.com/teamMembers')
+        fetch('http://localhost:5000/teamMembers')
             .then(response => response.json())
             .then(data => {
                 setMembers(data);
@@ -19,18 +19,18 @@ const TeamMembers = () => {
         return <CircularProgress />
     }
     else {
-         return (
-            <div >
-            <h1 className='text-center text-primary my-5'>Our Team</h1>
-            <Box  sx={{ width: '100%' }}>
-                <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-                    {
-                        members.map(member => <TeamMember member={member} key={member._id} ></TeamMember>)
-                    }
-                </Grid>
-            </Box>
-        </div>
-         )
+        return (
+            <div className='mx-5' >
+                <h1 className='text-center text-primary my-5'>Our Goal</h1>
+                <Box sx={{ width: '100%' }}>
+                    <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+                        {
+                            members.map(member => <TeamMember member={member} key={member._id} ></TeamMember>)
+                        }
+                    </Grid>
+                </Box>
+            </div>
+        )
     };
 };
 

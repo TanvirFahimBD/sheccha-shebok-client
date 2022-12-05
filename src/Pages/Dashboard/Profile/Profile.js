@@ -2,24 +2,22 @@ import useAuth from '../../../hooks/useAuth';
 import { Alert, Box, Button, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import TextField from '@mui/material/TextField';
-import GoogleIcon from '@mui/icons-material/Google';
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Profile = () => {
   const { user } = useAuth()
-  const navigate = useNavigate()
   const [address, setAddress] = useState("")
   const [age, setAge] = useState("")
   const [education, setEducation] = useState("")
   const [occupation, setOccupation] = useState("")
   const [error, setError] = useState("")
-  const [success, setSuccess] = useState("")
 
   const handleProfileUpdate = (e) => {
     e.preventDefault()
     const updateUser = { email: user.email, name: user.displayName, address, age, education, occupation }
-    fetch('https://tranquil-cliffs-23009.herokuapp.com/users', {
-      method: 'POST',
+    fetch('http://localhost:5000/users', {
+      method: 'PUT',
       headers: {
         "content-type": "application/json"
       },
@@ -27,18 +25,18 @@ const Profile = () => {
     })
       .then(response => response.json())
       .then(data => {
+        console.log('data', data);
         if (data.insertedId) {
           alert("Profile Updated Successfully")
-          navigate("/dashboard")
-          setSuccess("Profile Updated Successfully")
           setError("")
+          toast.success('Profile Updated Successfully')
         }
       })
       .catch(error => {
         console.error('Error:', error);
         setError(error.message)
-        setSuccess("")
       });
+    e.target.reset()
   }
   return (
     <div>
@@ -53,7 +51,7 @@ const Profile = () => {
             </Typography>
             <img src={user.photoURL} alt="" style={{ borderRadius: "100%" }} />
             <form className='mt-3' onSubmit={handleProfileUpdate}>
-              <TextField sx={{ width: 300 }}
+              <TextField sx={{ width: 300 }} className="my-3"
                 id="standard-basic"
                 label="Name"
                 name="name"
@@ -62,7 +60,7 @@ const Profile = () => {
                 value={user.displayName || ""} readOnly
               />
               <br />
-              <TextField sx={{ width: 300 }}
+              <TextField sx={{ width: 300 }} className="my-3"
                 id="standard-basic"
                 label="email"
                 name="email"
@@ -71,52 +69,49 @@ const Profile = () => {
                 value={user.email || ""} readOnly
               />
               <br />
-              <TextField sx={{ width: 300 }}
+              <TextField sx={{ width: 300 }} className="my-3"
                 id="standard-basic"
                 label="address"
                 name="address"
                 type="text"
                 variant="filled"
-                onChange={e => setAddress(e.target.value)}
+                onChange={e => setAddress(e.target.value)} required
               />
               <br />
-              <TextField sx={{ width: 300 }}
+              <TextField sx={{ width: 300 }} className="my-3"
                 id="standard-basic"
                 label="age"
                 name="age"
                 type="text"
                 variant="filled"
-                onChange={e => setAge(e.target.value)}
+                onChange={e => setAge(e.target.value)} required
               />
               <br />
-              <TextField sx={{ width: 300 }}
+              <TextField sx={{ width: 300 }} className="my-3"
                 id="standard-basic"
                 label="education"
                 name="education"
                 type="text"
                 variant="filled"
-                onChange={e => setEducation(e.target.value)}
+                onChange={e => setEducation(e.target.value)} required
               />
               <br />
-              <TextField sx={{ width: 300 }}
+              <TextField sx={{ width: 300 }} className="my-3"
                 id="standard-basic"
                 label="occupation"
                 name="occupation"
                 type="text"
                 variant="filled"
-                onChange={e => setOccupation(e.target.value)}
+                onChange={e => setOccupation(e.target.value)} required
               />
-              <br />
-              <br />
               <br />
               <Button sx={{ width: 300 }} variant="contained" type="submit">Update</Button>
             </form>
             {error && <Alert sx={{ mt: 4, width: "300px" }} severity="error">{error}</Alert>}
-            {success && <Alert sx={{ mt: 4, width: "300px" }} severity="success">{success}</Alert>}
           </Grid>
         </Grid>
       </Box>
-
+      <ToastContainer />
     </div>
   );
 };

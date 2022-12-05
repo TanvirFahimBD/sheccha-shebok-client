@@ -27,7 +27,7 @@ const MakeAdmin = () => {
             setSuccess("")
             setError("Enter proper email")
         }
-        fetch("https://tranquil-cliffs-23009.herokuapp.com/users/admin", {
+        fetch("http://localhost:5000/users/admin", {
             method: "PUT",
             headers: {
                 "authorization": `Bearer ${token}`,

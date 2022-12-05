@@ -11,7 +11,7 @@ const EventUpdatePage = () => {
 
   //Get Current Event Info
   useEffect(() => {
-    fetch(`https://tranquil-cliffs-23009.herokuapp.com/events/${singleEventId}`)
+    fetch(`http://localhost:5000/events/${singleEventId}`)
       .then((res) => res.json())
       .then((data) => {
         setEvent(data);
@@ -52,7 +52,7 @@ const EventUpdatePage = () => {
   }
 
   const handleEventUpdate = (e) => {
-    fetch(`https://tranquil-cliffs-23009.herokuapp.com/events/${singleEventId}`, {
+    fetch(`http://localhost:5000/events/${singleEventId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -110,7 +110,7 @@ const EventUpdatePage = () => {
                 label="desc"
                 name="desc"
                 type="text"
-                value={event.desc || ""} 
+                value={event.desc || ""}
                 onChange={handleDescChange}
                 variant="filled"
               />

@@ -7,8 +7,8 @@ import { Alert, Box, Button, Grid, Typography } from "@mui/material";
 
 const CheckoutForm = (props) => {
     const navigate = useNavigate()
-    const {amount} = props;   
-    const {user} = useAuth();
+    const { amount } = props;
+    const { user } = useAuth();
     const [error, setError] = useState("")
     const [success, setSuccess] = useState("")
     const [clientSecret, setClientSecret] = useState("")
@@ -17,20 +17,20 @@ const CheckoutForm = (props) => {
     const elements = useElements();
 
     useEffect(() => {
-      fetch("https://tranquil-cliffs-23009.herokuapp.com/create-payment-intent",{
-          method: "POST",
-          headers: {
-              'content-type': "application/json"
-          },
-          body: JSON.stringify({amount})
-      })
-      .then(res => res.json())
-      .then(data => {
-        setClientSecret(data.clientSecret);
-      })
+        fetch("http://localhost:5000/create-payment-intent", {
+            method: "POST",
+            headers: {
+                'content-type': "application/json"
+            },
+            body: JSON.stringify({ amount })
+        })
+            .then(res => res.json())
+            .then(data => {
+                setClientSecret(data.clientSecret);
+            })
     }, [amount])
-  
-        const handleSubmit = async (event) => {
+
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         if (!stripe || !elements) {
@@ -59,58 +59,58 @@ const CheckoutForm = (props) => {
         }
 
         //payment intent
-        const {paymentIntent, error: intentError} = await stripe.confirmCardPayment(
+        const { paymentIntent, error: intentError } = await stripe.confirmCardPayment(
             clientSecret,
             {
-              payment_method: {
-                card: card,
-                billing_details: {
-                  name: user?.displayName,
-                  email: user?.email,
-                  
-                },
-              },
-            },
-          );
+                payment_method: {
+                    card: card,
+                    billing_details: {
+                        name: user?.displayName,
+                        email: user?.email,
 
-            if(intentError){
-                setError(intentError.message)
-                setSuccess("")
-            }
-            else{
-                console.log("paymentIntent",paymentIntent);
-                setSuccess("Donation Completed Successfully")
-                setError("")
-                setProcessing(false)
-                const payment = {
-                    amount: paymentIntent.amount,
-                    created: paymentIntent.created,
-                    transaction: paymentIntent.client_secret,
-                    last4: paymentMethod.card.last4,
-                    email: user.email,
-                    event: props.currentDonation.title,
-                    eventBanner: props.currentDonation.banner,
-                   date: new Date().toDateString()
-                }
-
-                const url = "https://tranquil-cliffs-23009.herokuapp.com/payment"
-                fetch(url, {
-                    method: "POST",
-                    headers: {
-                        'content-type': "application/json"
                     },
-                    body: JSON.stringify(payment)
-                })
+                },
+            },
+        );
+
+        if (intentError) {
+            setError(intentError.message)
+            setSuccess("")
+        }
+        else {
+            console.log("paymentIntent", paymentIntent);
+            setSuccess("Donation Completed Successfully")
+            setError("")
+            setProcessing(false)
+            const payment = {
+                amount: paymentIntent.amount,
+                created: paymentIntent.created,
+                transaction: paymentIntent.client_secret,
+                last4: paymentMethod.card.last4,
+                email: user.email,
+                event: props.currentDonation.title,
+                eventBanner: props.currentDonation.banner,
+                date: new Date().toDateString()
+            }
+
+            const url = "http://localhost:5000/payment"
+            fetch(url, {
+                method: "POST",
+                headers: {
+                    'content-type': "application/json"
+                },
+                body: JSON.stringify(payment)
+            })
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
                 })
 
-                navigate("/dashboard/donation")
-            }
+            navigate("/dashboard/donation")
+        }
 
     };
-    
+
     return (
         <div style={{ width: "400px" }}>
             <form onSubmit={handleSubmit}>
@@ -130,8 +130,8 @@ const CheckoutForm = (props) => {
                         },
                     }}
                 />
-                {processing ? <CircularProgress/> : 
-                <Button className="mt-4" sx={{ width: 400 }} variant="contained" type="submit" disabled={!stripe || success }>Pay ${amount}</Button>
+                {processing ? <CircularProgress /> :
+                    <Button className="mt-4" sx={{ width: 400 }} variant="contained" type="submit" disabled={!stripe || success}>Pay ${amount}</Button>
                 }
             </form>
 

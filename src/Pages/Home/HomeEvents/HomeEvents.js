@@ -4,7 +4,7 @@ import SingleEvent from "../../EventAll/SingleEvent/SingleEvent";
 const HomeEvents = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
-    fetch("https://tranquil-cliffs-23009.herokuapp.com/events")
+    fetch("http://localhost:5000/events")
       .then((res) => res.json())
       .then((data) => {
         setEvents(data.slice(0, 6));
@@ -13,14 +13,14 @@ const HomeEvents = () => {
 
   return (
     <div className="text-center">
-      <h1 className='my-5 text-center text-primary'  >Current Events</h1>
+      <h1 className='my-5 text-center text-primary'  >Ongoing Events</h1>
       <div className="container">
-      <div className="row">
+        <div className="row">
           {events.map((event) => (
             <SingleEvent key={event._id} event={event}></SingleEvent>
           ))}
+        </div>
       </div>
-    </div>
     </div>
   );
 };

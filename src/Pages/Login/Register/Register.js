@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
 import TextField from '@mui/material/TextField';
 import GoogleIcon from '@mui/icons-material/Google';
-import { NavLink, useLocation} from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Register = () => {
   const { signInUsingGoogle, registerUser, setError, error, user } = useAuth();
   const navigate = useNavigate()
   const location = useLocation()
-  const redirect_uri = location?.state?.from  || "/"
+  const redirect_uri = location?.state?.from || "/"
   const [registerData, setRegisterData] = useState({})
 
   const handleOnBlur = (e) => {
@@ -34,8 +34,8 @@ const Register = () => {
     else if (!pattern.test(registerData.email)) {
       setError("Enter proper email")
     }
-      registerUser(registerData.email, registerData.password, registerData.name , registerData.profileImage )
-   
+    registerUser(registerData.email, registerData.password, registerData.name, registerData.profileImage)
+
     e.preventDefault()
   }
 
@@ -104,15 +104,15 @@ const Register = () => {
               <Button sx={{ width: 300 }} variant="contained" type="submit" onClick={handleRegisterSubmit}>Register</Button>
             </form>
             <p className="mt-4">------------Or Continue Us With------------</p>
-            {error && <Alert sx={{mt: 4, width: "300px"}} severity="error">{error}</Alert>}
-            {user?.email && <Alert sx={{mt: 4, width: "300px"}} severity="success">Registration Successful</Alert>}
+            {error && <Alert sx={{ mt: 4, width: "300px" }} severity="error">{error}</Alert>}
+            {user?.email && <Alert sx={{ mt: 4, width: "300px" }} severity="success">Registration Successful</Alert>}
             <Button sx={{ width: 300 }} className="mt-3" variant="contained" onClick={signInUsingGoogle}><GoogleIcon className="mx-4" /> Continue With Google</Button>
             <br />
             <br />
             <p>Already a User?<NavLink style={{ textDecoration: "none" }} to="/login"> Login</NavLink></p>
           </Grid>
           <Grid item xs={6}>
-            <img src="https://i.ibb.co/Wp80CQ0/Sign-up-rafiki.png" alt="" height="700px" />
+            <img src="https://i.ibb.co/Vj0SM8d/Forgot-password-rafiki.png" alt="" height="700px" />
           </Grid>
         </Grid>
       </Box>

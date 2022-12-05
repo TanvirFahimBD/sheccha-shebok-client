@@ -3,23 +3,22 @@ import useAuth from '../../../hooks/useAuth';
 import MySingleEvent from '../MySingleEvent/MySingleEvent';
 
 const MyEvents = () => {
-    const {user} = useAuth()
-    const [myEvents, setMyEvents] = useState([])
-    const myEmail = user?.email;
-    useEffect(() => {
-      fetch(`https://tranquil-cliffs-23009.herokuapp.com/register/${myEmail}`)
+  const { user } = useAuth()
+  const [myEvents, setMyEvents] = useState([])
+  const myEmail = user?.email;
+  useEffect(() => {
+    fetch(`http://localhost:5000/register/${myEmail}`)
       .then(res => res.json())
       .then(data => {
-          // console.log(data);
-          setMyEvents(data);
+        setMyEvents(data);
       })
-    }, [myEmail])
+  }, [myEmail])
 
-    //DELETE ITEM
+  //DELETE ITEM
   const handleDelete = (id) => {
     const deleteData = window.confirm("Are you sure you want to delete?");
     if (deleteData) {
-      fetch(`https://tranquil-cliffs-23009.herokuapp.com/register/${id}`, {
+      fetch(`http://localhost:5000/register/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -35,16 +34,16 @@ const MyEvents = () => {
       alert("The data is not deleted");
     }
   };
-    
-    return (
-        <div>
-           <div className='container'>
-               <div className='row'>
-                   {myEvents.map(myEvent=><MySingleEvent key={myEvent._id} myEvent={myEvent} handleDelete={handleDelete}></MySingleEvent>)}
-               </div>
-           </div>
+
+  return (
+    <div>
+      <div className='container'>
+        <div className='row'>
+          {myEvents.map(myEvent => <MySingleEvent key={myEvent._id} myEvent={myEvent} handleDelete={handleDelete}></MySingleEvent>)}
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default MyEvents;

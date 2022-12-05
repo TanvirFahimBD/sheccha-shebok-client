@@ -13,7 +13,7 @@ import { Box, Grid } from "@mui/material";
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
-    fetch("https://tranquil-cliffs-23009.herokuapp.com/events")
+    fetch("http://localhost:5000/events")
       .then((res) => res.json())
       .then((data) => {
         setEvents(data);
@@ -25,7 +25,7 @@ const AllEvents = () => {
   const handleDelete = (id) => {
     const deleteData = window.confirm("Are you sure you want to delete?");
     if (deleteData) {
-      fetch(`https://tranquil-cliffs-23009.herokuapp.com/events/${id}`, {
+      fetch(`http://localhost:5000/events/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -45,31 +45,31 @@ const AllEvents = () => {
 
   return (
     <>
-    <Box  sx={{ width: '100%' }}>
-        <Grid  className="d-flex" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Box sx={{ width: '100%' }}>
+        <Grid className="d-flex" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Grid item xs={12}>
-          <TableContainer component={Paper}>
-        <Table sx={{ minWidth: "100%" }} aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Title</TableCell>
-              <TableCell align="right">Date</TableCell>
-              <TableCell align="right">Description&nbsp;</TableCell>
-              <TableCell align="right">Banner&nbsp;</TableCell>
-              <TableCell align="right">Action&nbsp;</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-              {events.map((event) => <EventTable key={event._id} event={event} handleDelete={handleDelete}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}></EventTable>)}
-            
-          </TableBody>
-        </Table>
-      </TableContainer>       
+            <TableContainer component={Paper}>
+              <Table sx={{ minWidth: "100%" }} aria-label="simple table">
+                <TableHead>
+                  <TableRow>
+                    <TableCell>Title</TableCell>
+                    <TableCell align="right">Date</TableCell>
+                    <TableCell align="right">Description&nbsp;</TableCell>
+                    <TableCell align="right">Banner&nbsp;</TableCell>
+                    <TableCell align="right">Action&nbsp;</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {events.map((event) => <EventTable key={event._id} event={event} handleDelete={handleDelete}
+                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}></EventTable>)}
+
+                </TableBody>
+              </Table>
+            </TableContainer>
           </Grid>
         </Grid>
       </Box>
-      
+
 
     </>
   );

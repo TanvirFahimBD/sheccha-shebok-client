@@ -6,6 +6,7 @@ import "./Footer.css";
 
 const Footer = () => {
   return (
+
     // footer area
     <Box className="box-footer" sx={{ flexGrow: 1 }}>
       <Grid
@@ -13,15 +14,15 @@ const Footer = () => {
         spacing={{ xs: 2, sm: 3, md: 3 }}
         columns={{ xs: 2, sm: 12, md: 12 }}
       >
-        <Grid style={{ textAlign: "center" }} item xs={2} sm={3} md={3}>
-          {/* info & address area */}
+        <Grid className="text-start" style={{ textAlign: "center" }} item xs={2} sm={3} md={3}>
 
-          <h5>Seccha Shebok </h5>
+          {/* info & address area */}
+          <h5 className="ms-4">Seccha Shebok </h5>
           <p style={{ width: "80%", marginLeft: "25px" }}>
             We are working for all types people those who's are facing hard time on their life.
           </p>
         </Grid>
-        <Grid style={{ textAlign: "center" }} item xs={2} sm={3} md={3}>
+        <Grid className="text-start" style={{ textAlign: "center" }} item xs={2} sm={3} md={3}>
           <h5>CONTACT US</h5>
           <ul className="list-unstyled">
             <li>
@@ -38,7 +39,8 @@ const Footer = () => {
             </li>
           </ul>
         </Grid>
-        <Grid style={{ textAlign: "center" }} item xs={2} sm={3} md={3}>
+        <Grid className="text-start" style={{ textAlign: "center" }} item xs={2} sm={3} md={3}>
+
           {/* social links area */}
           <h5>SOCIAL LINKS</h5>
           <ul className="list-unstyled">
@@ -56,8 +58,8 @@ const Footer = () => {
             </li>
           </ul>
         </Grid>
-        <Grid style={{ textAlign: "center" }} item xs={2} sm={3} md={3}>
-          <h5>SUBSCRIBE NOW</h5>
+        <Grid className="text-start" style={{ textAlign: "center" }} item xs={2} sm={3} md={3}>
+          <h5 className="my-3">SUBSCRIBE NOW</h5>
           <TextField
             style={{ width: "50%" }}
             id="outlined-basic"
@@ -69,6 +71,7 @@ const Footer = () => {
           </Button>
         </Grid>
       </Grid>
+
       {/* copyright area */}
       <p id="copyright" className="col-sm">
         All rights reserved &copy; {new Date().getFullYear()}| Terms of services
