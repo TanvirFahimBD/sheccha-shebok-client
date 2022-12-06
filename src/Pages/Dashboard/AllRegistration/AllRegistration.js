@@ -56,11 +56,11 @@ const AllRegistration = () => {
                 <TableHead>
                   <TableRow>
                     <TableCell>Title</TableCell>
-                    <TableCell align="right">First Name</TableCell>
-                    <TableCell align="right">Email ID&nbsp;</TableCell>
-                    <TableCell align="right">Registration Date&nbsp;</TableCell>
-                    <TableCell align="right">Volunteer List&nbsp;</TableCell>
-                    <TableCell align="right">Action&nbsp;</TableCell>
+                    <TableCell align="left">First Name</TableCell>
+                    <TableCell align="left">Email ID&nbsp;</TableCell>
+                    <TableCell align="left">Registration Date&nbsp;</TableCell>
+                    <TableCell align="left">Update&nbsp;</TableCell>
+                    <TableCell align="right">Delete&nbsp;</TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>

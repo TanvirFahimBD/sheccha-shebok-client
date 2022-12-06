@@ -57,7 +57,7 @@ const EventUpdatePublic = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(event),
+      body: JSON.stringify(event)
     })
       .then((res) => res.json())
       .then((data) => {
