@@ -86,7 +86,7 @@ const Header = () => {
             )}
             {!user?.email && (
               <Link
-                style={{ textDecoration: "none", color: "white" }}
+                style={{ textDecoration: "none", color: "white", margin: "0 1% 0 35%" }}
                 to="/login"
               >
                 <Button color="inherit">Login</Button>
