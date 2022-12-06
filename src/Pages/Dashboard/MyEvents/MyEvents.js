@@ -7,15 +7,14 @@ import 'react-toastify/dist/ReactToastify.css';
 const MyEvents = () => {
   const { user } = useAuth()
   const [myEvents, setMyEvents] = useState([])
-  const myEmail = user?.email;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/register/${myEmail}`)
+    fetch(`http://localhost:5000/register/event/${user?.email}`)
       .then(res => res.json())
       .then(data => {
         setMyEvents(data);
       })
-  }, [myEmail])
+  }, [user])
 
   //DELETE ITEM
   const handleDelete = (myEvent) => {

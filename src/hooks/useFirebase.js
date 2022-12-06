@@ -11,6 +11,7 @@ import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
 initializeAuthentication();
 
 const useFirebase = () => {
+  const auth = getAuth();
   const [user, setUser] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -18,15 +19,13 @@ const useFirebase = () => {
   const [volunteer, setVolunteer] = useState(false);
   const [token, setToken] = useState("");
   const googleProvider = new GoogleAuthProvider();
-  const auth = getAuth();
 
   const signInUsingGoogle = () => {
-    setIsLoading(true);
     signInWithPopup(auth, googleProvider)
       .then((result) => {
         const user = result.user;
         setUser(user);
-        saveUser(user.email, user.displayName, "PUT")
+        saveUser(user?.email, user?.displayName, "PUT")
         setError("")
       })
       .catch((error) => {
@@ -39,7 +38,6 @@ const useFirebase = () => {
   };
 
   const registerUser = (email, password, name, url) => {
-    setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const newUser = { email, displayName: name, photoURL: url }
@@ -62,7 +60,6 @@ const useFirebase = () => {
   };
 
   const loginUser = (email, password) => {
-    setIsLoading(true);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
@@ -120,27 +117,23 @@ const useFirebase = () => {
       },
       body: JSON.stringify(user)
     })
-      .then(res => res.json())
-      .then(data => {
-      })
   }
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email || ""}`)
+    fetch(`http://localhost:5000/users/${user.email}`)
       .then(res => res.json())
       .then(data => {
-        setAdmin(data[0]?.admin)
+        setAdmin(data[0].admin)
       })
-  }, [user?.email])
+  }, [user])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/users/${user?.email || ""}`)
+    fetch(`http://localhost:5000/users/${user.email}`)
       .then(res => res.json())
       .then(data => {
-        setVolunteer(data[1]?.volunteer)
+        setVolunteer(data[1].volunteer)
       })
-  }, [user?.email])
-
+  }, [user])
 
   return {
     signInUsingGoogle,

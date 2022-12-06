@@ -47,7 +47,7 @@ const Profile = () => {
             <Typography sx={{ my: 8 }} variant="h2" component="h2">
               Edit Profile
             </Typography>
-            <img src={user.photoURL} alt="" style={{ borderRadius: "100%" }} />
+            <img src={user.photoURL} alt="" style={{ borderRadius: "100%" }} width={100} height={100} />
             <form className='mt-3' onSubmit={handleProfileUpdate}>
               <TextField sx={{ width: 300 }} className="my-3"
                 id="standard-basic"

@@ -19,10 +19,9 @@ import EventNoteIcon from '@mui/icons-material/EventNote';
 import AddCardIcon from '@mui/icons-material/AddCard';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
-import VolunteerActivismIcon from '@mui/icons-material/VolunteerActivism';
 import LogoutIcon from '@mui/icons-material/Logout';
 import PaidIcon from '@mui/icons-material/Paid';
-import GroupAddIcon from '@mui/icons-material/GroupAdd';
+import GroupsIcon from '@mui/icons-material/Groups';
 import CircleNotificationsIcon from '@mui/icons-material/CircleNotifications';
 import ReviewsIcon from '@mui/icons-material/Reviews';
 import AddAlertIcon from '@mui/icons-material/AddAlert';
@@ -74,7 +73,7 @@ export default function Dashboard(props) {
             alt="" />
         }
       </Link>
-      <h6 className='mx-2'>{user.displayName}</h6>
+      <h6 className='ms-5'>{user.displayName}</h6>
       <br />
       <Divider />
       <NavLink style={{ textDecoration: "none" }} to="/dashboard">
@@ -84,13 +83,17 @@ export default function Dashboard(props) {
       </NavLink>
       <Divider />
       <br />
-      <NavLink style={{ textDecoration: "none" }} to="/dashboard/donation">
-        <Button color="inherit">
-          <PaidIcon className='mx-2' /> My Donation
-        </Button>
-      </NavLink>
-      <Divider />
-      <br />
+      {(!volunteer && !admin) &&
+        <>
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/donation">
+            <Button color="inherit">
+              <PaidIcon className='mx-2' /> My Donation
+            </Button>
+          </NavLink>
+          <Divider />
+          <br />
+        </>
+      }
       {
         volunteer &&
         <>
@@ -142,31 +145,23 @@ export default function Dashboard(props) {
             </Button>
           </NavLink>{" "}
           <Divider />  <br />
-          <NavLink style={{ textDecoration: "none" }} to="/dashboard/allRegistration">
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/all-event-registration">
             <Button color="inherit">
               <HowToRegIcon className='mx-2' /> All Reg.
             </Button>
           </NavLink>{" "}
-          <Divider />  <br />
-          <NavLink style={{ textDecoration: "none" }} to="/dashboard/makeAdmin">
+          <Divider />
+          <br />
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/all-donation">
             <Button color="inherit">
-              <AdminPanelSettingsIcon className='mx-2' /> Make Admin
-            </Button>
-          </NavLink>
-          <Divider />  <br />
-          <NavLink style={{ textDecoration: "none" }} to="/dashboard/makeVolunteer">
-            <Button color="inherit">
-              <VolunteerActivismIcon className='mx-2' /> Add Volunteer
+              <AdminPanelSettingsIcon className='mx-2' /> All Donation
             </Button>
           </NavLink>
           <Divider />
           <br />
-          <NavLink
-            style={{ textDecoration: "none" }}
-            to="/dashboard/addMember"
-          >
+          <NavLink style={{ textDecoration: "none" }} to="/dashboard/all-accounts">
             <Button color="inherit">
-              <GroupAddIcon className='mx-2' /> Add Member
+              <GroupsIcon className='mx-2' /> All Accounts
             </Button>
           </NavLink>
           <Divider />

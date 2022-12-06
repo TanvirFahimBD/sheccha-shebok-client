@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import TableCell from '@mui/material/TableCell';
 import { TableRow } from '@mui/material';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import EditLocationAltIcon from '@mui/icons-material/EditLocationAlt';
+import AddModeratorIcon from '@mui/icons-material/AddModerator';
 
-const RegistrationTable = (props) => {
-    const { _id, name, email, date, title } = props.registration;
+const RegistrationTable = ({ registration, handleDelete }) => {
+    const { _id, name, email, date, title } = registration;
+
     return (
         <>
             <TableRow>
@@ -14,15 +15,15 @@ const RegistrationTable = (props) => {
                     {title}
                 </TableCell>
                 <TableCell align="left">{name}</TableCell>
-                <TableCell align="left">{email}</TableCell>
                 <TableCell align="left">{date}</TableCell>
+                <TableCell align="left">{email}</TableCell>
                 <TableCell align="left">
-                    <Link to={`/events/eventUpdatePage/${_id}`}>
-                        <button className="btn btn-warning"><EditLocationAltIcon /></button>
+                    <Link to={`/dashboard/event-register-role-update/${_id}`}>
+                        <button className="btn btn-warning"><AddModeratorIcon /></button>
                     </Link>
                 </TableCell>
                 <TableCell align="right">
-                    <button className='btn btn-danger' onClick={() => props.handleDelete(_id)}><DeleteForeverIcon /></button>
+                    <button className='btn btn-danger' onClick={() => handleDelete(registration)}><DeleteForeverIcon /></button>
                 </TableCell>
             </TableRow>
         </>

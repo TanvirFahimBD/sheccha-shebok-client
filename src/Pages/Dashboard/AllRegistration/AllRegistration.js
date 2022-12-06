@@ -9,9 +9,12 @@ import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Box, Grid } from "@mui/material";
 import useAuth from '../../../hooks/useAuth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Loading from '../../Shared/Loading/Loading';
 
 const AllRegistration = () => {
-  const { token } = useAuth()
+  const { token, isLoading } = useAuth()
   const [registrations, setRegistrations] = useState([])
 
   useEffect(() => {
@@ -26,25 +29,31 @@ const AllRegistration = () => {
       })
   }, [token])
 
+
+  if (isLoading || !registrations.length) {
+    return <Loading />
+  }
+
   //DELETE Registration
-  const handleDelete = (id) => {
+  const handleDelete = (registration) => {
     const deleteData = window.confirm("Are you sure you want to delete?");
     if (deleteData) {
-      fetch(`http://localhost:5000/register/${id}`, {
+      fetch(`http://localhost:5000/register/${registration._id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount) {
-            alert("The data is deleted successfully");
-            const userRemainingEvents = registrations.filter((userEvent) => userEvent._id !== id);
+            const userRemainingEvents = registrations.filter((userEvent) => userEvent._id !== registration._id);
             setRegistrations(userRemainingEvents);
+            toast.success(`${registration.title} is deleted successfully`);
           }
         });
     } else {
-      alert("The data is not deleted");
+      toast.error(`${registration.title} not deleted`);
     }
   };
+
 
   return (
     <>
@@ -57,9 +66,9 @@ const AllRegistration = () => {
                   <TableRow>
                     <TableCell>Title</TableCell>
                     <TableCell align="left">First Name</TableCell>
-                    <TableCell align="left">Email ID&nbsp;</TableCell>
                     <TableCell align="left">Registration Date&nbsp;</TableCell>
-                    <TableCell align="left">Update&nbsp;</TableCell>
+                    <TableCell align="left">Email ID&nbsp;</TableCell>
+                    <TableCell align="left">Change Role&nbsp;</TableCell>
                     <TableCell align="right">Delete&nbsp;</TableCell>
                   </TableRow>
                 </TableHead>
@@ -71,6 +80,7 @@ const AllRegistration = () => {
           </Grid>
         </Grid>
       </Box>
+      <ToastContainer />
     </>
   );
 };

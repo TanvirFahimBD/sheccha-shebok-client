@@ -3,13 +3,10 @@ import React, { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import TextField from '@mui/material/TextField';
 import GoogleIcon from '@mui/icons-material/Google';
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const Login = () => {
   const { signInUsingGoogle, loginUser, setError, error, user } = useAuth();
-  const navigate = useNavigate()
-  const location = useLocation()
-  const redirect_uri = location?.state?.from || "/"
   const [loginData, setLoginData] = useState({})
 
   const handleOnChange = (e) => {
@@ -36,7 +33,6 @@ const Login = () => {
       setError("Enter proper email")
     }
     loginUser(loginData.email, loginData.password)
-    navigate(redirect_uri)
   }
 
   return (

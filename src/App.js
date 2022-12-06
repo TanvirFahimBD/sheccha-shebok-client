@@ -8,13 +8,11 @@ import PrivateRoute from "./Pages/Login/PrivateRoute/PrivateRoute";
 import MyEvents from "./Pages/Dashboard/MyEvents/MyEvents";
 import Header from "./Pages/Shared/Header/Header";
 import SingleEventRegister from "./Pages/EventAll/SingleEventRegister/SingleEventRegister";
-import EventUpdatePublic from "./Pages/EventUpdatePublic/EventUpdatePublic";
 import EventUpdatePage from "./Pages/EventUpdatePage/EventUpdatePage";
 import NoMatch from "./Pages/NoMatch/NoMatch";
 import Register from "./Pages/Login/Register/Register";
 import Dashboard from "./Pages/Dashboard/Dashboard/Dashboard";
 import DashboardHome from "./Pages/Dashboard/DashboardHome/DashboardHome";
-import MakeAdmin from "./Pages/Dashboard/MakeAdmin/MakeAdmin";
 import AdminRoute from "./Pages/Login/AdminRoute/AdminRoute";
 import Donation from "./Pages/Donation/Donation/Donation";
 import EventDetails from "./Pages/EventAll/EventDetails/EventDetails";
@@ -24,14 +22,18 @@ import Profile from "./Pages/Dashboard/Profile/Profile";
 import MyReview from "./Pages/Dashboard/MyReview/MyReview";
 import AddNotices from "./Pages/Dashboard/AddEvent/AddNotices/AddNotices";
 import Notices from "./Pages/Dashboard/Notices/Notices";
-import AddVolunteer from "./Pages/Dashboard/AddVolunteer/AddVolunteer";
 import Events from "./Pages/EventAll/Events/Events";
 import AllEvents from "./Pages/Dashboard/AllEvents/AllEvents";
-import AddMember from "./Pages/Dashboard/AddEvent/AddMember/AddMember";
 import AllRegistration from "./Pages/Dashboard/AllRegistration/AllRegistration";
 import Footer from "./Pages/Shared/Footer/Footer";
+import EventRegisterRoleUpdate from "./Pages/EventRegisterRoleUpdate/EventRegisterRoleUpdate";
+import AllDonation from "./Pages/Dashboard/AllDonation/AllDonation";
+import AllAccounts from "./Pages/Dashboard/AllAccounts/AllAccounts";
+import AccountRoleUpdate from "./Pages/Dashboard/AllAccounts/AccountRoleUpdate";
 
-//TODO: not used imports removed from component
+//TODO: donation amount select or input not keep fixed 
+//TODO: dashboard -> admin -> event based group members add
+
 //TODO: all pages human face image replace
 
 function App() {
@@ -53,29 +55,30 @@ function App() {
                 {/* private routes  */}
                 <Route path="/donation/:eventId" element={<PrivateRoute><Donation /></PrivateRoute>} />
                 <Route path="/events/register/:singleEventId" element={<PrivateRoute><SingleEventRegister /></PrivateRoute>} />
-                <Route path="/events/eventUpdatePage/:singleEventId" element={<PrivateRoute><EventUpdatePage /></PrivateRoute>} />
-                <Route path="/events/eventUpdateRegisters/:singleEventId" element={<PrivateRoute><EventUpdatePublic /></PrivateRoute>} />
 
                 {/* dashboard routes  */}
                 <Route path="/dashboard"
                   element={
                     <PrivateRoute>
                       <Dashboard />
-                    </PrivateRoute>}>
+                    </PrivateRoute>
+                  }>
+                  <Route path="/dashboard" element={<DashboardHome />} />
                   <Route path="/dashboard/notices" element={<Notices />} />
                   <Route path="/dashboard/profile" element={<Profile />} />
                   <Route path="/dashboard/donation" element={<MyDonation />} />
                   <Route path="/dashboard/myReview" element={<MyReview />} />
                   <Route path="/dashboard/addReview" element={<AddReview />} />
-                  <Route path="/dashboard" element={<PrivateRoute><DashboardHome /></PrivateRoute>} />
-                  <Route path="/dashboard/myEvents" element={<PrivateRoute><MyEvents /></PrivateRoute>} />
+                  <Route path="/dashboard/myEvents" element={<MyEvents />} />
+                  <Route path="/dashboard/event-register-role-update/:singleEventId" element={<AdminRoute><EventRegisterRoleUpdate /></AdminRoute>} />
                   <Route path="/dashboard/addNotice" element={<AdminRoute><AddNotices /></AdminRoute>} />
                   <Route path="/dashboard/addEvent" element={<AdminRoute><AddEvent /> </AdminRoute>} />
-                  <Route path="/dashboard/makeVolunteer" element={<AdminRoute><AddVolunteer /></AdminRoute>} />
+                  <Route path="/dashboard/eventUpdatePage/:singleEventId" element={<AdminRoute><EventUpdatePage /></AdminRoute>} />
+                  <Route path="/dashboard/users/:accountId" element={<AdminRoute><AccountRoleUpdate /></AdminRoute>} />
                   <Route path="/dashboard/allEvents" element={<AdminRoute><AllEvents /></AdminRoute>} />
-                  <Route path="/dashboard/allRegistration" element={<AdminRoute><AllRegistration /></AdminRoute>} />
-                  <Route path="/dashboard/makeAdmin" element={<AdminRoute><MakeAdmin /></AdminRoute>} />
-                  <Route path="/dashboard/addMember" element={<AdminRoute><AddMember /></AdminRoute>} />
+                  <Route path="/dashboard/all-event-registration" element={<AdminRoute><AllRegistration /></AdminRoute>} />
+                  <Route path="/dashboard/all-donation" element={<AdminRoute> <AllDonation /> </AdminRoute>} />
+                  <Route path="/dashboard/all-accounts" element={<AdminRoute> <AllAccounts /> </AdminRoute>} />
                 </Route>
 
                 {/* unknown routes  */}

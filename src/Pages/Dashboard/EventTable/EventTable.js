@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import TableCell from '@mui/material/TableCell';
 import TableRow from '@mui/material/TableRow';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import EditLocationAltIcon from '@mui/icons-material/EditLocationAlt';
+import EditIcon from '@mui/icons-material/Edit';
 
 const EventTable = ({ event, handleDelete }) => {
     const { _id, title, banner, date } = event;
@@ -18,8 +18,8 @@ const EventTable = ({ event, handleDelete }) => {
                 <img style={{ borderRadius: "100%" }} src={banner} alt="" width="100px" height="100px" />
             </TableCell>
             <TableCell align="right">
-                <Link to={`/events/eventUpdatePage/${_id}`}>
-                    <button className="btn btn-warning"><EditLocationAltIcon /></button>
+                <Link to={`/dashboard/eventUpdatePage/${_id}`}>
+                    <button className="btn btn-warning"><EditIcon /></button>
                 </Link>
             </TableCell>
             <TableCell align="right">

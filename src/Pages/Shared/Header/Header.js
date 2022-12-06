@@ -77,7 +77,7 @@ const Header = () => {
             {user?.email && (
               <Link
                 style={{ textDecoration: "none", color: "white", margin: "0 1%" }}
-                to="/"
+                to="/login"
               >
                 <Button color="inherit" onClick={logOut}>
                   Logout
