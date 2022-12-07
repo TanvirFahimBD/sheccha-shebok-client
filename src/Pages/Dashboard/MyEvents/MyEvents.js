@@ -9,7 +9,7 @@ const MyEvents = () => {
   const [myEvents, setMyEvents] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/register/event/${user?.email}`)
+    fetch(`https://sheccha-shebok-server.up.railway.app/register/event/${user?.email}`)
       .then(res => res.json())
       .then(data => {
         setMyEvents(data);
@@ -20,7 +20,7 @@ const MyEvents = () => {
   const handleDelete = (myEvent) => {
     const deleteData = window.confirm("Are you sure you want to delete?");
     if (deleteData) {
-      fetch(`http://localhost:5000/register/${myEvent._id}`, {
+      fetch(`https://sheccha-shebok-server.up.railway.app/register/${myEvent._id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

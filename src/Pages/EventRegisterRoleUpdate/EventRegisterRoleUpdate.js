@@ -16,7 +16,7 @@ const EventRegisterRoleUpdate = () => {
 
   //Get Current Event Info
   useEffect(() => {
-    fetch(`http://localhost:5000/register/${singleEventId}`)
+    fetch(`https://sheccha-shebok-server.up.railway.app/register/${singleEventId}`)
       .then((res) => res.json())
       .then((data) => {
         setEvent(data);
@@ -32,7 +32,7 @@ const EventRegisterRoleUpdate = () => {
   }
 
   const handleEditRole = (e) => {
-    fetch("http://localhost:5000/users/role", {
+    fetch("https://sheccha-shebok-server.up.railway.app/users/role", {
       method: "PUT",
       headers: {
         "content-type": "application/json",

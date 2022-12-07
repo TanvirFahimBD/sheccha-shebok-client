@@ -13,7 +13,7 @@ const SingleEventRegister = () => {
 
   //Get Current Event Info
   useEffect(() => {
-    fetch(`http://localhost:5000/events/${singleEventId}`)
+    fetch(`https://sheccha-shebok-server.up.railway.app/events/${singleEventId}`)
       .then((res) => res.json())
       .then((data) => {
         setEvent(data);
@@ -24,7 +24,7 @@ const SingleEventRegister = () => {
     e.preventDefault();
     const eventRegister = { index: event.index, key: event.key, name: user.displayName, email: user.email, date: event.date, desc: event.desc, title: event.title, banner: event.banner, image: user.photoURL }
 
-    fetch("http://localhost:5000/register", {
+    fetch("https://sheccha-shebok-server.up.railway.app/register", {
       method: "POST",
       headers: {
         "content-type": "application/json",

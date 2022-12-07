@@ -15,7 +15,7 @@ const AllDonation = () => {
     const [paymentInfo, setPaymentInfo] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:5000/payment")
+        fetch("https://sheccha-shebok-server.up.railway.app/payment")
             .then(res => res.json())
             .then(data => {
                 setPaymentInfo(data);

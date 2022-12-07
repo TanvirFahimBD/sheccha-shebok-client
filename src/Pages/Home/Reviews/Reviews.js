@@ -5,7 +5,7 @@ import { Box, Grid } from "@mui/material";
 const Reviews = () => {
     const [reviews, setReviews] = useState([])
     useEffect(() => {
-        fetch('http://localhost:5000/review')
+        fetch('https://sheccha-shebok-server.up.railway.app/review')
             .then(response => response.json())
             .then(data => {
                 setReviews(data);

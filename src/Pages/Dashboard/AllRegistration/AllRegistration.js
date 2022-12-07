@@ -18,7 +18,7 @@ const AllRegistration = () => {
   const [registrations, setRegistrations] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:5000/register", {
+    fetch("https://sheccha-shebok-server.up.railway.app/register", {
       headers: {
         'authorization': `Bearer ${token}`
       }
@@ -38,7 +38,7 @@ const AllRegistration = () => {
   const handleDelete = (registration) => {
     const deleteData = window.confirm("Are you sure you want to delete?");
     if (deleteData) {
-      fetch(`http://localhost:5000/register/${registration._id}`, {
+      fetch(`https://sheccha-shebok-server.up.railway.app/register/${registration._id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

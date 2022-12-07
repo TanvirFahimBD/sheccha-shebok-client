@@ -9,7 +9,7 @@ const Notices = () => {
   const [notices, setNotices] = useState([])
 
   useEffect(() => {
-    fetch('http://localhost:5000/notices')
+    fetch('https://sheccha-shebok-server.up.railway.app/notices')
       .then(response => response.json())
       .then(data => {
         setNotices(data)

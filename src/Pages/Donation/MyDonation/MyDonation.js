@@ -8,7 +8,7 @@ const MyDonation = () => {
   const [paymentInfo, setPaymentInfo] = useState([])
 
   useEffect(() => {
-    fetch(`http://localhost:5000/payment/${user.email || ""}`)
+    fetch(`https://sheccha-shebok-server.up.railway.app/payment/${user.email || ""}`)
       .then(res => res.json())
       .then(data => {
         setPaymentInfo(data);

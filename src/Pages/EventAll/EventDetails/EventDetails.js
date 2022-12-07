@@ -8,7 +8,7 @@ const EventDetails = () => {
   const [matchEvent, setMatchEvent] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:5000/events")
+    fetch("https://sheccha-shebok-server.up.railway.app/events")
       .then((res) => res.json())
       .then((data) => {
         const event = data.find(ev => ev._id === eventId)

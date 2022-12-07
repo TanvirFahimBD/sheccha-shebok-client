@@ -14,11 +14,10 @@ const AccountRoleUpdate = () => {
     const { accountId } = useParams();
     const [account, setAccount] = useState({});
 
-    console.log('account', account)
     const { displayName, email, occupation, role } = account;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/account/${accountId}`)
+        fetch(`https://sheccha-shebok-server.up.railway.app/users/account/${accountId}`)
             .then((res) => res.json())
             .then((data) => {
                 setAccount(data);
@@ -34,7 +33,7 @@ const AccountRoleUpdate = () => {
     }
 
     const handleEditRole = (e) => {
-        fetch("http://localhost:5000/users/role", {
+        fetch("https://sheccha-shebok-server.up.railway.app/users/role", {
             method: "PUT",
             headers: {
                 "content-type": "application/json",

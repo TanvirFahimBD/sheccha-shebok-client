@@ -11,7 +11,7 @@ const EventUpdatePage = () => {
 
   //Get Current Event Info
   useEffect(() => {
-    fetch(`http://localhost:5000/events/${singleEventId}`)
+    fetch(`https://sheccha-shebok-server.up.railway.app/events/${singleEventId}`)
       .then((res) => res.json())
       .then((data) => {
         setEvent(data);
@@ -51,7 +51,7 @@ const EventUpdatePage = () => {
   }
 
   const handleEventUpdate = (e) => {
-    fetch(`http://localhost:5000/events/${singleEventId}`, {
+    fetch(`https://sheccha-shebok-server.up.railway.app/events/${singleEventId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -60,7 +60,6 @@ const EventUpdatePage = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data?.modifiedCount) {
           toast.success(`${event.title} Updated Successful`)
         }

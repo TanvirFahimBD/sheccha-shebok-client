@@ -4,7 +4,7 @@ import SingleEvent from "../../EventAll/SingleEvent/SingleEvent";
 const HomeEvents = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/events")
+    fetch("https://sheccha-shebok-server.up.railway.app/events")
       .then((res) => res.json())
       .then((data) => {
         setEvents(data.slice(0, 6));

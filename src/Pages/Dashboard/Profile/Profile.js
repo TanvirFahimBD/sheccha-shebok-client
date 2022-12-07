@@ -16,7 +16,7 @@ const Profile = () => {
   const handleProfileUpdate = (e) => {
     e.preventDefault()
     const updateUser = { email: user.email, name: user.displayName, address, age, education, occupation }
-    fetch('http://localhost:5000/users', {
+    fetch('https://sheccha-shebok-server.up.railway.app/users', {
       method: 'PUT',
       headers: {
         "content-type": "application/json"

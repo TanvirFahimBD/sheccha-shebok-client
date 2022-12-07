@@ -1,6 +1,6 @@
 ### Live Site: https://humanity-hand.web.app/
 
-### Live Server(API): http://localhost:5000/
+### Live Server(API): https://sheccha-shebok-server.up.railway.app/
 
 ---
 

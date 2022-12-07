@@ -15,7 +15,7 @@ const AddNotices = () => {
         e.preventDefault()
         const date = new Date().toLocaleTimeString()
         const reviewNow = { email: user.email, notice, name: user.displayName, img: user.photoURL, date }
-        fetch('http://localhost:5000/notices', {
+        fetch('https://sheccha-shebok-server.up.railway.app/notices', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

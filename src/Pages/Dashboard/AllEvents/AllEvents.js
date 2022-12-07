@@ -15,7 +15,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const AllEvents = () => {
   const [events, setEvents] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/events")
+    fetch("https://sheccha-shebok-server.up.railway.app/events")
       .then((res) => res.json())
       .then((data) => {
         setEvents(data);
@@ -26,7 +26,7 @@ const AllEvents = () => {
   const handleDelete = (event) => {
     const deleteData = window.confirm("Are you sure you want to delete?");
     if (deleteData) {
-      fetch(`http://localhost:5000/events/${event._id}`, {
+      fetch(`https://sheccha-shebok-server.up.railway.app/events/${event._id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())

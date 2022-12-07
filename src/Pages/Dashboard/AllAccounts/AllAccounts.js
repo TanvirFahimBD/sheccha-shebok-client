@@ -18,7 +18,7 @@ const AllAccounts = () => {
     const [accounts, setAccounts] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:5000/users", {
+        fetch("https://sheccha-shebok-server.up.railway.app/users", {
             headers: {
                 'authorization': `Bearer ${token}`
             }
@@ -33,7 +33,7 @@ const AllAccounts = () => {
     const handleDelete = (account) => {
         const deleteData = window.confirm("Are you sure you want to delete?");
         if (deleteData) {
-            fetch(`http://localhost:5000/users/${account._id}`, {
+            fetch(`https://sheccha-shebok-server.up.railway.app/users/${account._id}`, {
                 method: "DELETE",
             })
                 .then((res) => res.json())

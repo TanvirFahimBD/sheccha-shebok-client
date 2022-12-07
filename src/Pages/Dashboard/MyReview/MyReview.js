@@ -11,7 +11,7 @@ const MyReview = () => {
     const myEmail = user?.email;
 
     useEffect(() => {
-        fetch(`http://localhost:5000/review/${myEmail}`)
+        fetch(`https://sheccha-shebok-server.up.railway.app/review/${myEmail}`)
             .then(res => res.json())
             .then(data => {
                 setMyReview(data);

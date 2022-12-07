@@ -16,7 +16,7 @@ const AddEvent = () => {
 
   const handleAdd = (e) => {
     const newEvent = { index, key, title, desc, banner, date };
-    axios.post("http://localhost:5000/events", newEvent).then((res) => {
+    axios.post("https://sheccha-shebok-server.up.railway.app/events", newEvent).then((res) => {
       if (res?.data?.insertedId) {
         toast.success(`${newEvent.title} Added Successfully`);
       }
