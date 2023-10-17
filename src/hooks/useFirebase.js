@@ -3,7 +3,11 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithPopup,
-  signOut, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, getIdToken
+  signOut,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  updateProfile,
+  getIdToken,
 } from "firebase/auth";
 import { useEffect, useState } from "react";
 import initializeAuthentication from "../Pages/Login/Firebase/firebase.init";
@@ -25,12 +29,12 @@ const useFirebase = () => {
       .then((result) => {
         const user = result.user;
         setUser(user);
-        saveUser(user?.email, user?.displayName, "PUT")
-        setError("")
+        saveUser(user?.email, user?.displayName, "PUT");
+        setError("");
       })
       .catch((error) => {
         const errorMessage = error.message;
-        setError(errorMessage)
+        setError(errorMessage);
       })
       .finally(() => {
         setIsLoading(false);
@@ -40,19 +44,20 @@ const useFirebase = () => {
   const registerUser = (email, password, name, url) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const newUser = { email, displayName: name, photoURL: url }
-        setUser(newUser)
-        saveUser(email, name, "POST")
+        const newUser = { email, displayName: name, photoURL: url };
+        setUser(newUser);
+        saveUser(email, name, "POST");
         updateProfile(auth.currentUser, {
-          displayName: name, photoURL: url
-        }).then(() => {
-        }).catch((error) => {
-        });
-        setError("")
+          displayName: name,
+          photoURL: url,
+        })
+          .then(() => {})
+          .catch((error) => {});
+        setError("");
       })
       .catch((error) => {
         const errorMessage = error.message;
-        setError(errorMessage)
+        setError(errorMessage);
       })
       .finally(() => {
         setIsLoading(false);
@@ -63,12 +68,12 @@ const useFirebase = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        setUser(user)
-        setError("")
+        setUser(user);
+        setError("");
       })
       .catch((error) => {
         const errorMessage = error.message;
-        setError(errorMessage)
+        setError(errorMessage);
       })
       .finally(() => {
         setIsLoading(false);
@@ -80,11 +85,11 @@ const useFirebase = () => {
     signOut(auth)
       .then(() => {
         setUser({});
-        setError("")
+        setError("");
       })
       .catch((error) => {
         const errorMessage = error.message;
-        setError(errorMessage)
+        setError(errorMessage);
       })
       .finally(() => {
         setIsLoading(false);
@@ -96,10 +101,9 @@ const useFirebase = () => {
     const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
-        getIdToken(user)
-          .then(idToken => {
-            setToken(idToken)
-          })
+        getIdToken(user).then((idToken) => {
+          setToken(idToken);
+        });
       } else {
         setUser({});
       }
@@ -109,37 +113,44 @@ const useFirebase = () => {
   }, [auth]);
 
   const saveUser = (email, displayName, method) => {
-    const user = { email, displayName }
-    fetch("https://sheccha-shebok-server.up.railway.app/users", {
+    const user = { email, displayName };
+    fetch("https://sheccha-shebok-server.vercel.app/users", {
       method: method,
       headers: {
-        "content-type": "application/json"
+        "content-type": "application/json",
       },
-      body: JSON.stringify(user)
-    })
-  }
+      body: JSON.stringify(user),
+    });
+  };
 
   useEffect(() => {
-    fetch(`https://sheccha-shebok-server.up.railway.app/users/${user.email}`)
-      .then(res => res.json())
-      .then(data => {
-        setAdmin(data[0].admin)
-      })
-  }, [user])
+    fetch(`https://sheccha-shebok-server.vercel.app/users/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setAdmin(data[0].admin);
+      });
+  }, [user]);
 
   useEffect(() => {
-    fetch(`https://sheccha-shebok-server.up.railway.app/users/${user.email}`)
-      .then(res => res.json())
-      .then(data => {
-        setVolunteer(data[1].volunteer)
-      })
-  }, [user])
+    fetch(`https://sheccha-shebok-server.vercel.app/users/${user.email}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setVolunteer(data[1].volunteer);
+      });
+  }, [user]);
 
   return {
     signInUsingGoogle,
     logOut,
     user,
-    isLoading, registerUser, loginUser, setError, error, admin, token, volunteer
+    isLoading,
+    registerUser,
+    loginUser,
+    setError,
+    error,
+    admin,
+    token,
+    volunteer,
   };
 };
 

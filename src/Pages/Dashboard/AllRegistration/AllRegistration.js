@@ -1,50 +1,54 @@
-import React, { useEffect, useState } from 'react';
-import RegistrationTable from '../RegistrationTable/RegistrationTable';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+import React, { useEffect, useState } from "react";
+import RegistrationTable from "../RegistrationTable/RegistrationTable";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 import { Box, Grid } from "@mui/material";
-import useAuth from '../../../hooks/useAuth';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import Loading from '../../Shared/Loading/Loading';
+import useAuth from "../../../hooks/useAuth";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Loading from "../../Shared/Loading/Loading";
 
 const AllRegistration = () => {
-  const { token, isLoading } = useAuth()
-  const [registrations, setRegistrations] = useState([])
+  const { token, isLoading } = useAuth();
+  const [registrations, setRegistrations] = useState([]);
 
   useEffect(() => {
-    fetch("https://sheccha-shebok-server.up.railway.app/register", {
+    fetch("https://sheccha-shebok-server.vercel.app/register", {
       headers: {
-        'authorization': `Bearer ${token}`
-      }
+        authorization: `Bearer ${token}`,
+      },
     })
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         setRegistrations(data);
-      })
-  }, [token])
-
+      });
+  }, [token]);
 
   if (isLoading || !registrations.length) {
-    return <Loading />
+    return <Loading />;
   }
 
   //DELETE Registration
   const handleDelete = (registration) => {
     const deleteData = window.confirm("Are you sure you want to delete?");
     if (deleteData) {
-      fetch(`https://sheccha-shebok-server.up.railway.app/register/${registration._id}`, {
-        method: "DELETE",
-      })
+      fetch(
+        `https://sheccha-shebok-server.vercel.app/register/${registration._id}`,
+        {
+          method: "DELETE",
+        }
+      )
         .then((res) => res.json())
         .then((data) => {
           if (data.deletedCount) {
-            const userRemainingEvents = registrations.filter((userEvent) => userEvent._id !== registration._id);
+            const userRemainingEvents = registrations.filter(
+              (userEvent) => userEvent._id !== registration._id
+            );
             setRegistrations(userRemainingEvents);
             toast.success(`${registration.title} is deleted successfully`);
           }
@@ -54,11 +58,15 @@ const AllRegistration = () => {
     }
   };
 
-
   return (
     <>
-      <Box sx={{ width: '100%' }}>
-        <Grid className="d-flex" container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+      <Box sx={{ width: "100%" }}>
+        <Grid
+          className="d-flex"
+          container
+          rowSpacing={1}
+          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+        >
           <Grid item xs={12}>
             <TableContainer component={Paper}>
               <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -73,7 +81,14 @@ const AllRegistration = () => {
                   </TableRow>
                 </TableHead>
                 <TableBody>
-                  {registrations.map(registration => <RegistrationTable key={registration._id} registration={registration} handleDelete={handleDelete} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}></RegistrationTable>)}
+                  {registrations.map((registration) => (
+                    <RegistrationTable
+                      key={registration._id}
+                      registration={registration}
+                      handleDelete={handleDelete}
+                      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                    ></RegistrationTable>
+                  ))}
                 </TableBody>
               </Table>
             </TableContainer>

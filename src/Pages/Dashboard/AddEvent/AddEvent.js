@@ -1,43 +1,52 @@
 import axios from "axios";
-import TextField from '@mui/material/TextField';
+import TextField from "@mui/material/TextField";
 import React from "react";
 import { Box, Button, Grid, Typography } from "@mui/material";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 
 const AddEvent = () => {
-  const [index, setIndex] = useState('')
-  const [key, setKey] = useState('')
-  const [title, setTitle] = useState('')
-  const [desc, setDesc] = useState('')
-  const [banner, setBanner] = useState('')
-  const [date, setDate] = useState('')
+  const [index, setIndex] = useState("");
+  const [key, setKey] = useState("");
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+  const [banner, setBanner] = useState("");
+  const [date, setDate] = useState("");
 
   const handleAdd = (e) => {
     const newEvent = { index, key, title, desc, banner, date };
-    axios.post("https://sheccha-shebok-server.up.railway.app/events", newEvent).then((res) => {
-      if (res?.data?.insertedId) {
-        toast.success(`${newEvent.title} Added Successfully`);
-      }
-    });
+    axios
+      .post("https://sheccha-shebok-server.vercel.app/events", newEvent)
+      .then((res) => {
+        if (res?.data?.insertedId) {
+          toast.success(`${newEvent.title} Added Successfully`);
+        }
+      });
     e.preventDefault();
-    e.target.reset()
+    e.target.reset();
   };
 
   return (
-    <div >
-      <Box sx={{ width: '100%' }}>
+    <div>
+      <Box sx={{ width: "100%" }}>
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Grid item xs={6}>
-            <img className="m-5" src="https://i.ibb.co/6wf1Mhh/Events-pana.png" alt="" height="700px" />
+            <img
+              className="m-5"
+              src="https://i.ibb.co/6wf1Mhh/Events-pana.png"
+              alt=""
+              height="700px"
+            />
           </Grid>
           <Grid item xs={6}>
             <Typography sx={{ my: 2 }} variant="h2" component="h2">
-              <span className="text-primary">Add</span> an <span className="text-primary">Event</span>
+              <span className="text-primary">Add</span> an{" "}
+              <span className="text-primary">Event</span>
             </Typography>
             <form onSubmit={handleAdd}>
-              <TextField sx={{ width: 300 }}
+              <TextField
+                sx={{ width: 300 }}
                 id="standard-basic"
                 label="Event Index"
                 name="Event Index"
@@ -47,7 +56,8 @@ const AddEvent = () => {
               />
               <br />
               <br />
-              <TextField sx={{ width: 300 }}
+              <TextField
+                sx={{ width: 300 }}
                 id="standard-basic"
                 label="Event Key "
                 name="Event Key"
@@ -57,7 +67,8 @@ const AddEvent = () => {
               />
               <br />
               <br />
-              <TextField sx={{ width: 300 }}
+              <TextField
+                sx={{ width: 300 }}
                 id="standard-basic"
                 label="Event Title"
                 name="Event Title"
@@ -67,7 +78,8 @@ const AddEvent = () => {
               />
               <br />
               <br />
-              <TextField sx={{ width: 300 }}
+              <TextField
+                sx={{ width: 300 }}
                 id="standard-basic"
                 label="Description"
                 name="Description"
@@ -77,7 +89,8 @@ const AddEvent = () => {
               />
               <br />
               <br />
-              <TextField sx={{ width: 300 }}
+              <TextField
+                sx={{ width: 300 }}
                 id="standard-basic"
                 label="Banner URL"
                 name="Banner URL"
@@ -87,7 +100,8 @@ const AddEvent = () => {
               />
               <br />
               <br />
-              <TextField sx={{ width: 300 }}
+              <TextField
+                sx={{ width: 300 }}
                 id="standard-basic"
                 label="Event Date"
                 name="Event Date"
@@ -97,7 +111,9 @@ const AddEvent = () => {
               />
               <br />
               <br />
-              <Button sx={{ width: 300 }} variant="contained" type="submit">Add Event</Button>
+              <Button sx={{ width: 300 }} variant="contained" type="submit">
+                Add Event
+              </Button>
             </form>
           </Grid>
         </Grid>

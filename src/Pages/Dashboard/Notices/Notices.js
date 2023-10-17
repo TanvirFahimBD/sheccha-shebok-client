@@ -9,7 +9,7 @@ const Notices = () => {
   const [notices, setNotices] = useState([])
 
   useEffect(() => {
-    fetch('https://sheccha-shebok-server.up.railway.app/notices')
+    fetch('https://sheccha-shebok-server.vercel.app/notices')
       .then(response => response.json())
       .then(data => {
         setNotices(data)
